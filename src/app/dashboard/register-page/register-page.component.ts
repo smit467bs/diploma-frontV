@@ -18,7 +18,6 @@ export class RegisterPageComponent {
   activeSection: SectionType = null;
 
   changeActiveSection(type: SectionType) {
-    console.log(type);
     this.activeSection = type;
   }
 }
