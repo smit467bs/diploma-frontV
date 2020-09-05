@@ -3,11 +3,8 @@
        [ngClass]="{'active': activeSection === sectionType.teacher }"
        (click)="changeActiveSection(sectionType.teacher)"
   >
-    <div
-      [ngStyle]="{'background-color': 'green'}"
-      class="register-shade register-teacher-shade"
-    >
-      Я учитель
+    <div class="register-shade register-teacher-shade">
+      <span class="mat-display-2">teacher</span>
     </div>
     <app-register></app-register>
   </div>
@@ -15,11 +12,8 @@
        [ngClass]="{'active': activeSection === sectionType.child }"
        (click)="changeActiveSection(sectionType.child)"
   >
-    <div
-      [ngStyle]="{'background-color': 'blue'}"
-      class="register-shade register-child-shade"
-    >
-      Я студент
+    <div class="register-shade register-child-shade">
+      <span class="mat-display-2">student</span>
     </div>
     <app-register></app-register>
   </div>

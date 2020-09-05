@@ -1,0 +1,14 @@
+@import '~@angular/material/theming';
+@include mat-core();
+
+$primary-palette: mat-palette($mat-indigo, 500);
+$accent-palette: mat-palette($mat-pink, 400);
+$warn-palette: mat-palette($mat-red, 600);
+$background-palette: mat-palette($mat-gray, 200);
+$background-light-palette: mat-palette($mat-blue-grey, 200);
+
+$accent-color: mat-color($accent-palette);
+$primary-color: mat-color($primary-palette);
+$warn-color: mat-color($warn-palette);
+$background-color: mat-color($background-palette);
+$background-light-color: mat-color($background-light-palette);
