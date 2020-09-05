@@ -1,20 +1,24 @@
 <div class="register">
   <div class="register-teacher"
-       [ngClass]="{'active': activeSection === sectionType.teacher }"
-       (click)="changeActiveSection(sectionType.teacher)"
+       [ngClass]="{'active': activeUser === userType.teacher }"
+       (click)="changeActiveSection(userType.teacher)"
   >
     <div class="register-shade register-teacher-shade">
       <span class="mat-display-2">teacher</span>
     </div>
-    <app-register></app-register>
+    <app-register
+      [type]="activeUser"
+    ></app-register>
   </div>
   <div class="register-child"
-       [ngClass]="{'active': activeSection === sectionType.child }"
-       (click)="changeActiveSection(sectionType.child)"
+       [ngClass]="{'active': activeUser === userType.student }"
+       (click)="changeActiveSection(userType.student)"
   >
     <div class="register-shade register-child-shade">
       <span class="mat-display-2">student</span>
     </div>
-    <app-register></app-register>
+    <app-register
+      [type]="activeUser"
+    ></app-register>
   </div>
 </div>

@@ -1,10 +1,5 @@
 import { Component } from '@angular/core';
-
-
-enum SectionType {
-  teacher = 'teacher',
-  child = 'child'
-}
+import { UserType } from '../../core/models/enums';
 
 @Component({
   selector: 'app-register-page',
@@ -13,11 +8,13 @@ enum SectionType {
 })
 
 export class RegisterPageComponent {
-  sectionType = SectionType;
+  activeUser: UserType = null;
 
-  activeSection: SectionType = null;
+  // to access in the template
+  userType = UserType;
 
-  changeActiveSection(type: SectionType) {
-    this.activeSection = type;
+
+  changeActiveSection(type: UserType) {
+    this.activeUser = type;
   }
 }
