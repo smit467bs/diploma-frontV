@@ -1,2 +1,26 @@
-<app-register></app-register>
-<app-register></app-register>
+<div class="register">
+  <div class="register-teacher"
+       [ngClass]="{'active': activeSection === sectionType.teacher }"
+       (click)="changeActiveSection(sectionType.teacher)"
+  >
+    <div
+      [ngStyle]="{'background-color': 'green'}"
+      class="register-shade register-teacher-shade"
+    >
+      Я учитель
+    </div>
+    <app-register></app-register>
+  </div>
+  <div class="register-child"
+       [ngClass]="{'active': activeSection === sectionType.child }"
+       (click)="changeActiveSection(sectionType.child)"
+  >
+    <div
+      [ngStyle]="{'background-color': 'blue'}"
+      class="register-shade register-child-shade"
+    >
+      Я студент
+    </div>
+    <app-register></app-register>
+  </div>
+</div>

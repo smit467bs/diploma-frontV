@@ -1,0 +1,82 @@
+.register {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100%;
+  overflow: hidden;
+
+  //&-teacher {
+  //  position: relative;
+  //  transition: all 0.3s ease;
+  //
+  //  &:hover {
+  //    transform: translateX(100%);
+  //
+  //  }
+  //
+  //  app-register::after {
+  //    content: "";
+  //    position: absolute;
+  //    left: 0;
+  //    top: 0;
+  //    width: 100%;
+  //    height: 100%;
+  //    background-color: blue;
+  //    //transform: translateX(-100%);
+  //    transition: transform 0.3s ease;
+  //  }
+  //}
+  //
+  //&-child{
+  //  position: relative;
+  //  transition: all 0.3s ease;
+  //
+  //  &:hover {
+  //    transform: translateX(-100%);
+  //  }
+  //
+  //  app-register::after {
+  //    content: "";
+  //    position: absolute;
+  //    left: 0;
+  //    top: 0;
+  //    width: 100%;
+  //    height: 100%;
+  //    background-color: green;
+  //    //transform: translateX(-100%);
+  //    transition: transform 0.3s ease;
+  //  }
+  //}
+
+
+  &-teacher, &-child {
+    position: relative;
+    transition: all 1s ease;
+  }
+
+  &-child.active {
+    .register-child-shade {
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+    }
+  }
+
+  &-teacher.active {
+    .register-teacher-shade {
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+    }
+  }
+
+
+  &-shade {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+}

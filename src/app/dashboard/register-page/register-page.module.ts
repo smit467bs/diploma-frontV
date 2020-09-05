@@ -3,6 +3,7 @@ import { RouterModule } from '@angular/router';
 
 import { RegisterPageComponent } from './register-page.component';
 import { SharedModule } from '../../shared/shared.module';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -10,7 +11,8 @@ import { SharedModule } from '../../shared/shared.module';
   ],
   imports: [
     RouterModule.forChild([{path: '', component: RegisterPageComponent}]),
-    SharedModule
+    SharedModule,
+    CommonModule
   ],
   exports: [
     RegisterPageComponent
