@@ -1,8 +1,7 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { MyErrorStateMatcher } from '../../../core/matcher/error-state-mathcer';
-import { ActiveAuthSection } from '../../../dashboard/auth-page/auth-page.component';
+import { AuthBaseComponent } from '../../../core/components/auth-base/auth-base.component';
 
 @Component({
   selector: 'app-login',
@@ -10,26 +9,18 @@ import { ActiveAuthSection } from '../../../dashboard/auth-page/auth-page.compon
   styleUrls: ['./login.component.scss']
 })
 
-export class LoginComponent {
-  @Input() activeAuthSection: ActiveAuthSection;
-  @Output() changeActiveSection = new EventEmitter<ActiveAuthSection>();
+export class LoginComponent extends AuthBaseComponent {
 
-  matcher = new MyErrorStateMatcher();
-
-  userForm = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required]),
-  });
-
-  onSectionChange() {
-    this.changeActiveSection.emit('IN');
+  constructor() {
+    super();
+    this.authForm = new FormGroup({
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [Validators.required]),
+    });
   }
 
-  loginUser() {
-    console.log(this.userForm.value);
+  submitForm(): void {
+    console.log(this.authForm.value);
   }
 
-  getControl(controlName: string) {
-    return this.userForm.get(controlName);
-  }
 }

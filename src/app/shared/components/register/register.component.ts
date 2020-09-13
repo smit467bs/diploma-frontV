@@ -1,8 +1,7 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { MyErrorStateMatcher } from '../../../core/matcher/error-state-mathcer';
-import { ActiveAuthSection } from '../../../dashboard/auth-page/auth-page.component';
+import { AuthBaseComponent } from '../../../core/components/auth-base/auth-base.component';
 
 @Component({
   selector: 'app-register',
@@ -11,30 +10,21 @@ import { ActiveAuthSection } from '../../../dashboard/auth-page/auth-page.compon
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 
-export class RegisterComponent {
-  @Input() activeAuthSection: ActiveAuthSection;
-  @Output() changeActiveSection = new EventEmitter<ActiveAuthSection>();
+export class RegisterComponent extends AuthBaseComponent {
 
-  matcher = new MyErrorStateMatcher();
-
-  userForm = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
-    firstName: new FormControl('', [Validators.required]),
-    surname: new FormControl('', [Validators.required]),
-    password: new FormControl('', [Validators.required, Validators.minLength(8)]),
-    confirm_password: new FormControl('', [Validators.required, Validators.minLength(8)]),
-    group: new FormControl('')
-  });
-
-  onSectionChange() {
-    this.changeActiveSection.emit('UP');
+  constructor() {
+    super();
+    this.authForm = new FormGroup({
+      email: new FormControl('', [Validators.required, Validators.email]),
+      firstName: new FormControl('', [Validators.required]),
+      surname: new FormControl('', [Validators.required]),
+      password: new FormControl('', [Validators.required, Validators.minLength(8)]),
+      confirm_password: new FormControl('', [Validators.required, Validators.minLength(8)]),
+      group: new FormControl('')
+    });
   }
 
-  createUser(): void {
-    console.log(this.userForm.value);
-  }
-
-  getControl(controlName: string) {
-    return this.userForm.get(controlName);
+  submitForm(): void {
+    console.log(this.authForm.value);
   }
 }

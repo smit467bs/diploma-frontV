@@ -1,4 +1,4 @@
-<form class="user-form" [formGroup]="userForm">
+<form class="user-form" [formGroup]="authForm">
 
   <mat-form-field class="full-width">
     <mat-label>Email</mat-label>
@@ -26,10 +26,10 @@
     </mat-error>
   </mat-form-field>
 
-  <button mat-raised-button color="basic" (click)="loginUser()">Sign in</button>
+  <button mat-raised-button color="basic" (click)="submitForm()">Sign in</button>
 
 </form>
 
 <div *ngIf="activeAuthSection !== 'IN'" class="wrapper">
-  <button (click)="onSectionChange()">Sign in</button>
+  <button (click)="onSectionChange('IN')">Sign in</button>
 </div>
