@@ -7,11 +7,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { LoginComponent } from './components/login';
+import { CoverComponent } from './components/cover';
 
 @NgModule({
   declarations: [
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    CoverComponent
   ],
   imports: [
     CommonModule,
@@ -26,7 +28,8 @@ import { LoginComponent } from './components/login';
   ],
   exports: [
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    CoverComponent
   ]
 })
 

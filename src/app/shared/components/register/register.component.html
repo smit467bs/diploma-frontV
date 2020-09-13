@@ -70,13 +70,17 @@
 
   <button mat-raised-button color="basic" (click)="submitForm()">Sign up</button>
 
-  <div class="social-buttons button-container">
-    <button mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
-      <mat-icon>gmail</mat-icon>
-    </button>
-  </div>
+<!--  <div class="social-buttons button-container">-->
+<!--    <button mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">-->
+<!--      <mat-icon>gmail</mat-icon>-->
+<!--    </button>-->
+<!--  </div>-->
 </form>
 
-<div *ngIf="activeAuthSection !== 'UP'" class="wrapper">
-  <button (click)="onSectionChange('UP')">Sign up</button>
-</div>
+<app-cover
+  *ngIf="activeAuthSection !== 'UP'"
+  [text]="'Sign up'"
+  [section] = "'UP'"
+  (sectionChange)="onSectionChange($event)"
+>
+</app-cover>

@@ -30,6 +30,10 @@
 
 </form>
 
-<div *ngIf="activeAuthSection !== 'IN'" class="wrapper">
-  <button (click)="onSectionChange('IN')">Sign in</button>
-</div>
+<app-cover
+  *ngIf="activeAuthSection !== 'IN'"
+  [text]="'Sign in'"
+  [section] = "'IN'"
+  (sectionChange)="onSectionChange($event)"
+>
+</app-cover>
