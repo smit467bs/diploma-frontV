@@ -1,0 +1,86 @@
+<form class="user-form" [formGroup]="authForm">
+
+  <mat-form-field class="full-width">
+    <mat-label>Email</mat-label>
+    <input matInput formControlName="email" [errorStateMatcher]="matcher"
+           placeholder="Ex. jhon.doe@gmail.com">
+    <mat-error
+      *ngIf="getControl('email').hasError('email') && !getControl('email').hasError('required')"
+    >
+      Please enter a valid email address
+    </mat-error>
+    <mat-error
+      *ngIf="getControl('email').hasError('required')"
+    >
+      Email is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <mat-label>Password</mat-label>
+    <input matInput formControlName="password">
+    <mat-error
+      *ngIf="getControl('password').hasError('required')"
+    >
+      Password is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <mat-label>Confirm password</mat-label>
+    <input matInput formControlName="surname">
+    <mat-error
+      *ngIf="getControl('confirm_password').hasError('required')"
+    >
+      Surname is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <mat-label>First name</mat-label>
+    <input matInput formControlName="firstName">
+    <mat-error
+      *ngIf="getControl('firstName').hasError('required')"
+    >
+      First name is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <mat-label>Surname</mat-label>
+    <input matInput formControlName="surname">
+    <mat-error
+      *ngIf="getControl('surname').hasError('required')"
+    >
+      Surname is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+
+  <mat-form-field class="full-width">
+    <mat-label>Group</mat-label>
+    <input matInput type="text" formControlName="group">
+    <button
+      *ngIf="getControl('group').value"
+      mat-button matSuffix mat-icon-button aria-label="Clear"
+      (click)="getControl('group').setValue('')">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <button mat-raised-button color="basic" (click)="submitForm()">Sign up</button>
+
+<!--  <div class="social-buttons button-container">-->
+<!--    <button mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">-->
+<!--      <mat-icon>gmail</mat-icon>-->
+<!--    </button>-->
+<!--  </div>-->
+</form>
+
+<app-cover
+  *ngIf="activeAuthSection !== 'UP'"
+  [text]="'Sign up'"
+  [section] = "'UP'"
+  (sectionChange)="onSectionChange($event)"
+>
+</app-cover>
