@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 
 import { AuthBaseComponent } from '../../../core/components/auth-base/auth-base.component';
 
@@ -11,11 +11,11 @@ import { AuthBaseComponent } from '../../../core/components/auth-base/auth-base.
 
 export class LoginComponent extends AuthBaseComponent {
 
-  constructor() {
+  constructor(private fb: FormBuilder) {
     super();
-    this.authForm = new FormGroup({
-      email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required]),
+    this.authForm = fb.group({
+      email: fb.control('', [Validators.required, Validators.email]),
+      password: fb.control('', [Validators.required]),
     });
   }
 
