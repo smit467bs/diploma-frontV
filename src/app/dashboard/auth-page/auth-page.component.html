@@ -1,2 +1,8 @@
-<app-login></app-login>
-<app-register></app-register>
+<app-login
+  [activeAuthSection]="activeAuthSection"
+  (changeActiveSection)="onChangeActiveSection($event)"
+></app-login>
+<app-register
+  [activeAuthSection]="activeAuthSection"
+  (changeActiveSection)="onChangeActiveSection($event)"
+></app-register>

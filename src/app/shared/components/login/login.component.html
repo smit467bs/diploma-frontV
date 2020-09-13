@@ -30,6 +30,6 @@
 
 </form>
 
-<!--<div class="wrapper">-->
-<!--  <button>Sign in</button>-->
-<!--</div>-->
+<div *ngIf="activeAuthSection !== 'IN'" class="wrapper">
+  <button (click)="onSectionChange()">Sign in</button>
+</div>

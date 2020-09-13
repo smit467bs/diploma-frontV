@@ -1,9 +1,8 @@
-import { ChangeDetectionStrategy, Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { MyErrorStateMatcher } from '../../../core/matcher/error-state-mathcer';
-import { UserType } from '../../../core/models/enums';
-import { changed } from '../../../core/utils';
+import { ActiveAuthSection } from '../../../dashboard/auth-page/auth-page.component';
 
 @Component({
   selector: 'app-register',
@@ -12,28 +11,23 @@ import { changed } from '../../../core/utils';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 
-export class RegisterComponent implements OnChanges {
-  userType = UserType;
+export class RegisterComponent {
+  @Input() activeAuthSection: ActiveAuthSection;
+  @Output() changeActiveSection = new EventEmitter<ActiveAuthSection>();
 
-  @Input()
-  type: UserType;
+  matcher = new MyErrorStateMatcher();
 
   userForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     firstName: new FormControl('', [Validators.required]),
-    surname: new FormControl('', [Validators.required])
+    surname: new FormControl('', [Validators.required]),
+    password: new FormControl('', [Validators.required, Validators.minLength(8)]),
+    confirm_password: new FormControl('', [Validators.required, Validators.minLength(8)]),
+    group: new FormControl('')
   });
 
-  matcher = new MyErrorStateMatcher();
-
-  ngOnChanges(changes: SimpleChanges): void {
-    const type = changed(changes, 'type');
-    if (type === UserType.student) {
-      this.userForm.addControl('group', new FormControl(''));
-    } else {
-      this.userForm.removeControl('group');
-    }
-    console.log(type);
+  onSectionChange() {
+    this.changeActiveSection.emit('UP');
   }
 
   createUser(): void {

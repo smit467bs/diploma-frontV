@@ -1,26 +1,6 @@
-<form class="example-form" [formGroup]="userForm">
+<form class="user-form" [formGroup]="userForm">
 
-  <mat-form-field class="example-full-width">
-    <mat-label>First name</mat-label>
-    <input matInput formControlName="firstName">
-    <mat-error
-      *ngIf="getControl('firstName').hasError('required')"
-    >
-      Email is <strong>required</strong>
-    </mat-error>
-  </mat-form-field>
-
-  <mat-form-field class="example-full-width">
-    <mat-label>Surname</mat-label>
-    <input matInput formControlName="surname">
-    <mat-error
-      *ngIf="getControl('surname').hasError('required')"
-    >
-      Email is <strong>required</strong>
-    </mat-error>
-  </mat-form-field>
-
-  <mat-form-field class="example-full-width">
+  <mat-form-field class="full-width">
     <mat-label>Email</mat-label>
     <input matInput formControlName="email" [errorStateMatcher]="matcher"
            placeholder="Ex. jhon.doe@gmail.com">
@@ -36,18 +16,67 @@
     </mat-error>
   </mat-form-field>
 
- <ng-container *ngIf="type === userType.student">
-   <mat-form-field class="example-form-field">
-     <mat-label>Group</mat-label>
-     <input matInput type="text" formControlName="group">
-     <button
-       *ngIf="getControl('group').value"
-       mat-button matSuffix mat-icon-button aria-label="Clear"
-       (click)="getControl('group').setValue('')">
-       <mat-icon>close</mat-icon>
-     </button>
-   </mat-form-field>
- </ng-container>
+  <mat-form-field class="full-width">
+    <mat-label>Password</mat-label>
+    <input matInput formControlName="password">
+    <mat-error
+      *ngIf="getControl('password').hasError('required')"
+    >
+      Password is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
 
-  <button mat-raised-button color="accent" (click)="createUser()">Create</button>
+  <mat-form-field class="full-width">
+    <mat-label>Confirm password</mat-label>
+    <input matInput formControlName="surname">
+    <mat-error
+      *ngIf="getControl('confirm_password').hasError('required')"
+    >
+      Surname is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <mat-label>First name</mat-label>
+    <input matInput formControlName="firstName">
+    <mat-error
+      *ngIf="getControl('firstName').hasError('required')"
+    >
+      First name is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <mat-label>Surname</mat-label>
+    <input matInput formControlName="surname">
+    <mat-error
+      *ngIf="getControl('surname').hasError('required')"
+    >
+      Surname is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+
+  <mat-form-field class="full-width">
+    <mat-label>Group</mat-label>
+    <input matInput type="text" formControlName="group">
+    <button
+      *ngIf="getControl('group').value"
+      mat-button matSuffix mat-icon-button aria-label="Clear"
+      (click)="getControl('group').setValue('')">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <button mat-raised-button color="basic" (click)="createUser()">Sign up</button>
+
+  <div class="social-buttons button-container">
+    <button mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
+      <mat-icon>gmail</mat-icon>
+    </button>
+  </div>
 </form>
+
+<div *ngIf="activeAuthSection !== 'UP'" class="wrapper">
+  <button (click)="onSectionChange()">Sign up</button>
+</div>
