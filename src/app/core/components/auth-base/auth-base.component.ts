@@ -1,17 +1,18 @@
 import { EventEmitter, Input, Output } from '@angular/core';
-import { ActiveAuthSection } from '../../../dashboard/auth-page/auth-page.component';
-import { MyErrorStateMatcher } from '../../matcher/error-state-mathcer';
 import { FormGroup } from '@angular/forms';
 
+import { MyErrorStateMatcher } from '../../matcher/error-state-mathcer';
+import { AuthSection } from '../../models/types';
+
 export class AuthBaseComponent {
-  @Input() activeAuthSection: ActiveAuthSection;
-  @Output() changeActiveSection = new EventEmitter<ActiveAuthSection>();
+  @Input() activeAuthSection: AuthSection;
+  @Output() changeActiveSection = new EventEmitter<AuthSection>();
 
   authForm: FormGroup;
 
   matcher = new MyErrorStateMatcher();
 
-  onSectionChange(type: ActiveAuthSection) {
+  onSectionChange(type: AuthSection) {
     this.changeActiveSection.emit(type);
   }
 

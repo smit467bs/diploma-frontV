@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-export type ActiveAuthSection = 'IN' | 'UP';
+import { AuthSection } from '../../core/models/types';
 
 @Component({
   selector: 'app-auth',
@@ -9,10 +9,10 @@ export type ActiveAuthSection = 'IN' | 'UP';
 })
 
 export class AuthPageComponent {
-  activeAuthSection: ActiveAuthSection = null;
+  activeAuthSection: AuthSection = null;
 
 
-  onChangeActiveSection(section: ActiveAuthSection) {
+  onChangeActiveSection(section: AuthSection) {
     this.activeAuthSection = section;
   }
 }
