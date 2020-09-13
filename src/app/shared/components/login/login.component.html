@@ -1,0 +1,35 @@
+<form class="user-form" [formGroup]="userForm">
+
+  <mat-form-field class="full-width">
+    <mat-label>Email</mat-label>
+    <input matInput formControlName="email" [errorStateMatcher]="matcher"
+           placeholder="Ex. jhon.doe@gmail.com">
+    <mat-error
+      *ngIf="getControl('email').hasError('email') && !getControl('email').hasError('required')"
+    >
+      Please enter a valid email address
+    </mat-error>
+    <mat-error
+      *ngIf="getControl('email').hasError('required')"
+    >
+      Email is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <mat-label>Password</mat-label>
+    <input matInput formControlName="password">
+    <mat-error
+      *ngIf="getControl('password').hasError('required')"
+    >
+      Password is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <button mat-raised-button color="basic" (click)="loginUser()">Sign in</button>
+
+</form>
+
+<!--<div class="wrapper">-->
+<!--  <button>Sign in</button>-->
+<!--</div>-->

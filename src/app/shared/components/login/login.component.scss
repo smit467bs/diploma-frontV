@@ -1,0 +1,28 @@
+:host{
+  position: relative;
+}
+
+form{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  //height: 100%;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.full-width{
+  width: 100%;
+}
+
+.wrapper{
+  background-color: #fff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 110%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
