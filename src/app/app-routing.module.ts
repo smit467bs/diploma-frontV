@@ -6,6 +6,9 @@ const routes: Routes = [
   {
     path: 'auth',
     loadChildren: () => import('./dashboard/auth-page/auth-page.module').then(m => m.AuthPageModule),
+  }, {
+    path: '',
+    loadChildren: () => import('./dashboard/home-page/home-page.module').then(m => m.HomePageModule)
   }
 ];
 
