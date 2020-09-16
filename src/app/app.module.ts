@@ -5,7 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './dashboard/app.component';
 import { CoreModule } from './core/core.module';
-import { appInitializerFactory } from './app-initializer';
+import { APP_INITIALIZER_DEPS, appInitializerFactory } from './app-initializer';
 
 @NgModule({
   declarations: [
@@ -21,9 +21,11 @@ import { appInitializerFactory } from './app-initializer';
     {
       provide: APP_INITIALIZER,
       useFactory: appInitializerFactory,
-      multi: true
+      multi: true,
+      deps: APP_INITIALIZER_DEPS
     },
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

@@ -2,18 +2,22 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { HeaderComponent } from './components/header';
+import { LoaderComponent } from './components/loader';
 
 @NgModule({
   declarations: [
-    HeaderComponent
+    HeaderComponent,
+    LoaderComponent,
   ],
   imports: [
     FormsModule,
     ReactiveFormsModule,
   ],
   exports: [
-    HeaderComponent
+    HeaderComponent,
+    LoaderComponent,
   ]
 })
 
-export class CoreModule {}
+export class CoreModule {
+}
