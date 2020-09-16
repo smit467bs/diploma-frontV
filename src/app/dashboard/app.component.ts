@@ -1,7 +1,16 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  template: '<router-outlet></router-outlet>'
+  templateUrl: './app.component.html'
 })
-export class AppComponent {}
+export class AppComponent {
+  constructor(private router: Router) {
+  }
+
+  isAuthPage(): boolean {
+    return this.router.url === '/auth';
+  }
+
+}
