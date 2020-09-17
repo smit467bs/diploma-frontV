@@ -7,6 +7,6 @@ export class AuthService {
   }
 
   authUser() {
-    return of(true);
+    return of({firstName: 'John', surname: 'Doe', token: 'blablabla'});
   }
 }

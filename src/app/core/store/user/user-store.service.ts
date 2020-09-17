@@ -13,9 +13,9 @@ export class UserStoreService {
     this.appLoadState$ = this.store$.select(UserSelectors.getAppLoadState);
   }
 
-  public changeLoadState(isLoaded: boolean): void {
+  public changeLoadState(appLoaded: boolean): void {
     this.store$.dispatch(
-      updateLoadState({isLoaded})
+      updateLoadState({appLoaded})
     );
   }
 }

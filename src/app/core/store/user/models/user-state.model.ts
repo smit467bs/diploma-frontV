@@ -1,3 +1,3 @@
 export interface UserState {
-  isLoaded: boolean;
+  appLoaded: boolean;
 }

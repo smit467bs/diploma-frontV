@@ -4,14 +4,14 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
 import { HeaderComponent } from './components/header';
-import { LoaderComponent } from './components/loader';
+import { OverlayLoaderComponent } from './components/overlay-loader';
 import { reducers } from './store/reducers';
 import { effects } from './store/effects';
 
 @NgModule({
   declarations: [
     HeaderComponent,
-    LoaderComponent,
+    OverlayLoaderComponent,
   ],
   imports: [
     FormsModule,
@@ -21,7 +21,7 @@ import { effects } from './store/effects';
   ],
   exports: [
     HeaderComponent,
-    LoaderComponent,
+    OverlayLoaderComponent,
   ]
 })
 

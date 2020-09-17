@@ -1,5 +1,7 @@
 <!--todo: rename to overlay-loader -->
-<app-loader *ngIf="showOverlay || !isLoaded">></app-loader>
+<app-overlay-loader *ngIf="showOverlay || !isLoaded"
+            [ngStyle]="{'opacity': isLoaded ? 0.7 : 1}"
+></app-overlay-loader>
 
 <app-header *ngIf="!isAuthPage() && isLoaded"></app-header>
 <router-outlet></router-outlet>

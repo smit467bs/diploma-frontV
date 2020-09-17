@@ -3,14 +3,14 @@ import { Action, ActionReducer, createReducer, on } from '@ngrx/store';
 import { updateLoadState } from './user.actions';
 
 export const INITIAL_STATE: UserState = {
-  isLoaded: false
+  appLoaded: false
 };
 
 const userReducer: ActionReducer<UserState> = createReducer(
   INITIAL_STATE,
-  on(updateLoadState, (state, {isLoaded}) => ({
+  on(updateLoadState, (state, {appLoaded}) => ({
     ...state,
-    isLoaded
+    appLoaded
   }))
 );
 

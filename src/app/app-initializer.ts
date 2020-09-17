@@ -1,5 +1,5 @@
 import { merge } from 'rxjs';
-import { first, map } from 'rxjs/operators';
+import { first, map, tap } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 
 import { version as APP_VERSION } from '../../package.json';
@@ -22,6 +22,7 @@ export function appInitializerFactory(
   return () => merge(
     authService.authUser()
       .pipe(
+        tap(console.log),
         first(),
       )
   )

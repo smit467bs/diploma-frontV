@@ -4,7 +4,7 @@ import { Action } from '@ngrx/store';
 @Injectable()
 export class UserEffects {
   constructor(
-    private actions$: Action
+    // private actions$: Action
   ) {
   }
 }
