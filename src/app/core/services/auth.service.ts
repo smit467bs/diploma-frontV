@@ -7,6 +7,6 @@ export class AuthService {
   }
 
   authUser() {
-    return of(null);
+    return of(true);
   }
 }

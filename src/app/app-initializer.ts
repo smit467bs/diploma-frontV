@@ -1,21 +1,32 @@
 import { merge } from 'rxjs';
-import { first } from 'rxjs/operators';
+import { first, map } from 'rxjs/operators';
+import { Store } from '@ngrx/store';
 
 import { version as APP_VERSION } from '../../package.json';
 import { AuthService } from './core/services';
+import { EipState } from './core/store/reducers';
+import { UserStoreService } from './core/store/user/user-store.service';
 
 export const APP_INITIALIZER_DEPS = [
-  AuthService
+  Store,
+  AuthService,
+  UserStoreService
 ];
 
 export function appInitializerFactory(
-  authService: AuthService
+  store: Store<EipState>,
+  authService: AuthService,
+  userStoreService: UserStoreService
 ): () => void {
   console.log(`app version: ${APP_VERSION} ...`);
   return () => merge(
     authService.authUser()
+      .pipe(
+        first(),
+      )
   )
     .pipe(
-      first()
+      first(),
+      map(() => userStoreService.changeLoadState(true))
     ).toPromise();
 }

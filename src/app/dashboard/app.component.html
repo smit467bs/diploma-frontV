@@ -1,4 +1,5 @@
-<app-loader></app-loader>
+<!--todo: rename to overlay-loader -->
+<app-loader *ngIf="showOverlay || !isLoaded">></app-loader>
 
-<app-header *ngIf="!isAuthPage()"></app-header>
+<app-header *ngIf="!isAuthPage() && isLoaded"></app-header>
 <router-outlet></router-outlet>

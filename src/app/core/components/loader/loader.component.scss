@@ -5,7 +5,8 @@
   height: 100vh;
   position: absolute;
   background: $background-color;
-  z-index: 1
+  z-index: 3;
+  opacity: 0.75;
 }
 
 .container {
