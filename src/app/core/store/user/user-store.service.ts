@@ -1,0 +1,21 @@
+import { Injectable } from '@angular/core';
+import { EipState } from '../reducers';
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { UserSelectors } from './index';
+import { updateLoadState } from './user.actions';
+
+@Injectable({providedIn: 'root'})
+export class UserStoreService {
+  public appLoadState$: Observable<boolean>;
+
+  constructor(private store$: Store<EipState>) {
+    this.appLoadState$ = this.store$.select(UserSelectors.getAppLoadState);
+  }
+
+  public changeLoadState(isLoaded: boolean): void {
+    this.store$.dispatch(
+      updateLoadState({isLoaded})
+    );
+  }
+}
