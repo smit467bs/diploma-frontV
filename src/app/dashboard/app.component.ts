@@ -8,7 +8,6 @@ import {
   NavigationError
 } from '@angular/router';
 import { UserStoreService } from '../core/store/user/user-store.service';
-import { delay, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -16,16 +15,10 @@ import { delay, map } from 'rxjs/operators';
 })
 export class AppComponent {
   showOverlay: boolean = true;
-  isLoaded: boolean = false;
 
   constructor(private router: Router,
-              private userStoreService: UserStoreService
+              private userStoreService: UserStoreService,
   ) {
-    this.userStoreService.appLoadState$.pipe(
-      delay(2000),
-      map(isLoaded => this.isLoaded = isLoaded)
-    ).subscribe();
-
     router.events.subscribe((event: RouterEvent) => {
       this.navigationInterceptor(event);
     });
@@ -48,8 +41,8 @@ export class AppComponent {
     }
   }
 
-  isAuthPage(): boolean {
-    return this.router.url === '/auth';
+  hasRoute(route: string) {
+    return window.location.href.includes(route);
   }
 
 }

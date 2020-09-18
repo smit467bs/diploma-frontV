@@ -1,4 +1,5 @@
-@import "variables";
+@import "app/shared/styles/variables";
+@import "app/shared/styles/loader";
 
 html, body {
   height: 100%;
@@ -9,6 +10,6 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-.mat-success{
+.mat-success {
   background-color: $success-color;
 }

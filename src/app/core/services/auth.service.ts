@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { of } from 'rxjs';
+import { delay } from 'rxjs/operators';
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
@@ -7,6 +8,7 @@ export class AuthService {
   }
 
   authUser() {
-    return of({firstName: 'John', surname: 'Doe', token: 'blablabla'});
+    return of({firstName: 'John', surname: 'Doe', token: 'blablabla'})
+      .pipe(delay(2000));
   }
 }
