@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Logger } from '../../core/services/logger.service';
 
 @Component({
   selector: 'app-home',
@@ -7,5 +8,6 @@ import { Component } from '@angular/core';
 })
 
 export class HomePageComponent {
-
+  constructor(private logger: Logger) {
+  }
 }
