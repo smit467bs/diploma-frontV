@@ -1,13 +1,17 @@
 <button
-  [disabled]="currentDisplayType === 'line'"
   (click)="onChangeDisplayType('line')"
+  mat-icon-button
+  [ngClass]="{'active': currentDisplayType === 'line'}"
+  aria-label="Turn on list display mode"
 >
-  line
-</button>
-<button
-  [disabled]="currentDisplayType === 'square'"
-  (click)="onChangeDisplayType('square')"
->
-  square
+  <mat-icon>view_list</mat-icon>
 </button>
 
+<button
+  (click)="onChangeDisplayType('square')"
+  mat-icon-button
+  [ngClass]="{'active': currentDisplayType === 'square'}"
+  aria-label="Turn on square display mode"
+>
+  <mat-icon>view_module</mat-icon>
+</button>
