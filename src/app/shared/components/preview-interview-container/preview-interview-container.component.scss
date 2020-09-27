@@ -1,0 +1,12 @@
+.preview-interview-container{
+  display: grid;
+  &.line{
+    grid-template-columns: 1fr;
+  }
+  &.square{
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr))
+  }
+  app-preview-interview{
+    margin: 0 15px 15px 15px;
+  }
+}

@@ -1,4 +1,6 @@
 import { ErrorHandler, Injectable } from '@angular/core';
+import * as moment from 'moment';
+
 import { environment } from '../../../environments/environment';
 
 @Injectable({providedIn: 'root'})
@@ -9,7 +11,8 @@ export class Logger {
 
   log(value: any, ...rest: any[]) {
     if (!environment.production) {
-      console.log('%c[INFO]', 'color:green', value, ...rest, );
+      const date = moment().format('DD.MM.YYYY hh:mm:ss');
+      console.log(`%c[${date}] INFO: `, 'color:green', value, ...rest);
     }
   }
 

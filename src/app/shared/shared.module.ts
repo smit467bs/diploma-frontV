@@ -24,7 +24,7 @@ import { CoverComponent } from './components/cover';
     MatInputModule,
     MatFormFieldModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
   ],
   exports: [
     RegisterComponent,

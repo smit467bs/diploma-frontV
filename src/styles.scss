@@ -1,6 +1,10 @@
 @import "app/shared/styles/variables";
 @import "app/shared/styles/loader";
 
+*{
+  box-sizing: border-box;
+}
+
 html, body {
   height: 100%;
 }
