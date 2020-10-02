@@ -1,15 +1,15 @@
-<app-control-panel
-  [currentDisplayType]="currentDisplayType"
-  (changeDisplayType)="onChangeDisplayType($event)"
->
+<!--<app-control-panel-->
+<!--  [currentDisplayType]="currentDisplayType"-->
+<!--  (changeDisplayType)="onChangeDisplayType($event)"-->
+<!--&gt;-->
 
-</app-control-panel>
+<!--</app-control-panel>-->
 <div class="preview-interview-container"
      [ngClass]="currentDisplayType"
 >
   <app-preview-interview
-    *ngFor="let title of interviewTitles"
-    [title]="title"
+    *ngFor="let interview of interviews"
+    [interview]="interview"
   >
   </app-preview-interview>
 </div>

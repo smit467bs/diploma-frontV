@@ -1,9 +1,9 @@
 @import '~@angular/material/theming';
-@import "app/shared/styles/variables";
+@import "variables";
 
 @include mat-core();
 
-$app-theme: mat-light-theme($primary-palette, $accent-palette, $warn-palette);
+$app-theme: mat-light-theme($primary-palette, $secondary-palette, $error-palette);
 
 @include angular-material-theme($app-theme);
 

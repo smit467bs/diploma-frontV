@@ -1,0 +1,20 @@
+@import '../node_modules/@angular/material/theming';
+@include mat-core();
+
+$primary-palette: mat-palette($mat-blue-gray, 600);
+$secondary-palette: mat-palette($mat-teal, 100);
+
+$background-light-prime: #F4F4F4;
+$background-light-secondary: #E1E2E1;
+$primary: mat-color($primary-palette);
+$primary-light: #29434e;
+$secondary: mat-color($secondary-palette);
+$secondary-light: #e5ffff;
+
+$warn-palette: mat-palette($mat-amber, 600);
+$error-palette: mat-palette($mat-red, 600);
+$success-palette: mat-palette($mat-green, 600);
+
+$warn-color: mat-color($warn-palette);
+$error-color: mat-color($error-palette);
+$success-color: mat-color($success-palette);

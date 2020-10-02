@@ -1,5 +1,5 @@
-@import "app/shared/styles/variables";
-@import "app/shared/styles/loader";
+@import "variables";
+@import "loader";
 
 *{
   box-sizing: border-box;
@@ -12,6 +12,7 @@ html, body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: $background-light-prime;
 }
 
 .mat-success {

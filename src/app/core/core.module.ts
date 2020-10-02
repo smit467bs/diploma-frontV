@@ -7,6 +7,8 @@ import { HeaderComponent } from './components/header';
 import { OverlayLoaderComponent } from './components/overlay-loader';
 import { reducers } from './store/reducers';
 import { effects } from './store/effects';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { effects } from './store/effects';
     FormsModule,
     ReactiveFormsModule,
     StoreModule.forRoot(reducers),
-    EffectsModule.forRoot(effects)
+    EffectsModule.forRoot(effects),
+    MatIconModule,
+    MatButtonModule
   ],
   exports: [
     HeaderComponent,

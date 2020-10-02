@@ -1,6 +1,24 @@
-@import "../../../shared/styles/variables";
+@import "src/variables";
 
 header{
   height: 80px;
-  background-color: $primary-color;
+  background-color: $primary-light;
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: end;
+  align-items: center;
+  //color: $secondary-light;
+  color: $background-light-prime;
+}
+
+.mat-icon {
+  transform: scale(1.5);
+}
+
+.user-control-panel{
+  margin-right: 3rem;
+}
+
+.app-control-panel{
+  margin-right: 2rem;
 }

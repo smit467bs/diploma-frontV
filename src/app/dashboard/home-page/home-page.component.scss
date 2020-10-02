@@ -1,0 +1,34 @@
+@import "src/variables";
+
+:host {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  height: 100%;
+}
+
+.panel{
+  background-color: $background-light-secondary;
+  display: flex;
+  padding-top: 30px;
+  flex-direction: column;
+  align-items: center;
+  border-right: 1px solid $primary-light;
+}
+
+.mat-icon{
+  transform: scale(1.5);
+}
+
+mat-icon{
+  margin-bottom: 20px;
+  color: $primary;
+}
+
+.active{
+  color: $primary-light;
+}
+
+app-preview-interview-container{
+  margin-top: 40px;
+  margin-left: 20px;
+}

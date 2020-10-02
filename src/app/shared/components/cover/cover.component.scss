@@ -1,4 +1,4 @@
-@import "../../styles/variables";
+@import "../../../../variables";
 
 .wrapper{
   background-color: #fff;
@@ -16,7 +16,7 @@ a {
   position: relative;
   display: inline-block;
   padding: 15px 30px;
-  color: $primary-color;
+  color: $primary-light;
   text-transform: uppercase;
   letter-spacing: 4px;
   text-decoration: none;
@@ -27,8 +27,8 @@ a {
 
   &:hover {
     color: #fff;
-    background-color: $primary-color;
-    box-shadow: 0 0 10px $primary-color, 0 0 40px $primary-color, 0 0 80px $primary-color;
+    background-color: $primary-light;
+    box-shadow: 0 0 10px $primary-light, 0 0 40px $primary-light, 0 0 80px $primary-light;
     transition-delay: 1s;
   }
 }
@@ -42,7 +42,7 @@ a div:nth-child(1) {
   left: -100%;
   width: 100%;
   height: 2px;
-  background: linear-gradient(90deg, transparent, $primary-color);
+  background: linear-gradient(90deg, transparent, $primary-light);
 }
 
 a:hover div:nth-child(1) {
@@ -55,7 +55,7 @@ a div:nth-child(3) {
   right: -100%;
   width: 100%;
   height: 2px;
-  background: linear-gradient(270deg, transparent, $primary-color);
+  background: linear-gradient(270deg, transparent, $primary-light);
 }
 
 a:hover div:nth-child(3) {
@@ -69,7 +69,7 @@ a div:nth-child(2) {
   top: -100%;
   width: 2px;
   height: 100%;
-  background: linear-gradient(180deg, transparent, $primary-color);
+  background: linear-gradient(180deg, transparent, $primary-light);
 }
 
 a:hover div:nth-child(2) {
@@ -83,7 +83,7 @@ a div:nth-child(4) {
   bottom: -100%;
   width: 2px;
   height: 100%;
-  background: linear-gradient(180deg, transparent, $primary-color);
+  background: linear-gradient(180deg, transparent, $primary-light);
 }
 
 a:hover div:nth-child(4) {

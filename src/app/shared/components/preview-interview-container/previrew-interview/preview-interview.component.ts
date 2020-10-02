@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Interview } from '../../../../core/models';
 
 @Component({
   selector: 'app-preview-interview',
@@ -7,6 +8,6 @@ import { Component, Input } from '@angular/core';
 })
 export class PreviewInterviewComponent {
   @Input()
-  title: string;
+  interview: Interview;
 
 }
