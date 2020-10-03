@@ -2,11 +2,11 @@
 
 header{
   height: 60px;
-  background-color: $primary;
   display: grid;
   grid-auto-flow: column;
   justify-content: end;
   align-items: center;
+  background-color: $primary;
   color: $secondary-light;
 }
 

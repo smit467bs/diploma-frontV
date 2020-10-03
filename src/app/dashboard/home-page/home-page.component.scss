@@ -3,7 +3,7 @@
 :host {
   display: grid;
   grid-template-columns: 60px 1fr;
-  height: 100%;
+  height: calc(100vh - 60px);
 }
 
 app-preview-interview-container {

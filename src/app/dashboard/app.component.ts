@@ -1,12 +1,5 @@
 import { Component } from '@angular/core';
-import {
-  Router,
-  Event as RouterEvent,
-  NavigationStart,
-  NavigationEnd,
-  NavigationCancel,
-  NavigationError
-} from '@angular/router';
+import { Event as RouterEvent, NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router';
 import { UserStoreService } from '../core/store/user/user-store.service';
 
 @Component({
