@@ -1,14 +1,13 @@
 @import "src/variables";
 
 header{
-  height: 80px;
-  background-color: $primary-light;
+  height: 60px;
+  background-color: $primary;
   display: grid;
   grid-auto-flow: column;
   justify-content: end;
   align-items: center;
-  //color: $secondary-light;
-  color: $background-light-prime;
+  color: $secondary-light;
 }
 
 .mat-icon {

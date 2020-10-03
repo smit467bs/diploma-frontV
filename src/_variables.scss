@@ -6,8 +6,8 @@ $secondary-palette: mat-palette($mat-teal, 100);
 
 $background-light-prime: #F4F4F4;
 $background-light-secondary: #E1E2E1;
-$primary: mat-color($primary-palette);
-$primary-light: #29434e;
+$primary: #29434e;
+$primary-light: mat-color($primary-palette);
 $secondary: mat-color($secondary-palette);
 $secondary-light: #e5ffff;
 

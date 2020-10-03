@@ -8,12 +8,14 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { LoginComponent } from './components/login';
 import { CoverComponent } from './components/cover';
+import { NavbarComponent } from './components/navbar';
 
 @NgModule({
   declarations: [
     RegisterComponent,
     LoginComponent,
-    CoverComponent
+    CoverComponent,
+    NavbarComponent
   ],
   imports: [
     CommonModule,
@@ -29,7 +31,8 @@ import { CoverComponent } from './components/cover';
   exports: [
     RegisterComponent,
     LoginComponent,
-    CoverComponent
+    CoverComponent,
+    NavbarComponent
   ]
 })
 

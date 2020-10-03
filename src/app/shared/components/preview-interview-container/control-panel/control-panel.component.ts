@@ -1,5 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { DisplayType } from '../../../../core/models/types';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-control-panel',
@@ -7,13 +6,5 @@ import { DisplayType } from '../../../../core/models/types';
   styleUrls: ['control-panel.component.scss']
 })
 export class ControlPanelComponent {
-  @Input()
-  currentDisplayType: DisplayType;
 
-  @Output()
-  changeDisplayType = new EventEmitter<DisplayType>();
-
-  onChangeDisplayType(value: DisplayType) {
-    this.changeDisplayType.emit(value);
-  }
 }
