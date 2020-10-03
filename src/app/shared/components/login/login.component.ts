@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
-import { AuthBaseComponent } from '../../../core/components/auth-base/auth-base.component';
+import { AuthBaseComponent } from '../base';
 
 @Component({
   selector: 'app-login',
