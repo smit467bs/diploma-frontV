@@ -51,5 +51,4 @@ export class DashboardComponent {
   getClassNames(): Array<string> {
     return [`${this.theme}-theme`, `${this.theme}-theme-background`];
   }
-
 }

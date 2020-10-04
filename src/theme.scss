@@ -3,14 +3,15 @@
 
 @include mat-core();
 
-$light-theme: mat-light-theme($primary-light-palette, $accent-light-palette, $error-palette);
-
 .light-theme {
   $foreground: map-get($light-theme, foreground);
   $text: map-get($foreground, text);
   color: $text;
   height: 100vh;
   @include angular-material-theme($light-theme);
+  @include header($light-theme);
+  @include navbar($light-theme);
+  @include cover($light-theme);
 }
 
 .light-theme-background {
@@ -19,14 +20,15 @@ $light-theme: mat-light-theme($primary-light-palette, $accent-light-palette, $er
   background-color: $light-background-color;
 }
 
-$dark-theme: mat-dark-theme($primary-dark-palette, $accent-dark-palette, $error-palette);
-
 .dark-theme {
   $foreground: map-get($dark-theme, foreground);
   $text: map-get($foreground, text);
   color: $text;
   height: 100vh;
   @include angular-material-theme($dark-theme);
+  @include header($dark-theme);
+  @include navbar($dark-theme);
+  @include cover($dark-theme);
 }
 
 .dark-theme-background {

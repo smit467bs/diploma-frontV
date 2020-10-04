@@ -1,24 +1,19 @@
-@import "src/variables";
-@import "src/theme";
-
-header{
+header {
   height: 60px;
   display: grid;
   grid-auto-flow: column;
   justify-content: end;
   align-items: center;
-  background-color: primary();
-  //color: $accent-light;
 }
 
 .mat-icon {
   transform: scale(1.5);
 }
 
-.user-control-panel{
+.user-control-panel {
   margin-right: 3rem;
 }
 
-.app-control-panel{
+.app-control-panel {
   margin-right: 2rem;
 }

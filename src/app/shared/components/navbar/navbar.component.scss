@@ -1,5 +1,3 @@
-@import "src/variables";
-
 .navbar {
   height: 100%;
   display: grid;
@@ -8,15 +6,13 @@
   grid-template-rows: max-content;
   grid-gap: 1rem;
   padding-top: 1rem;
-  background-color: accent();
-  border-right: 1px solid primary();
-  color: $primary-light;
 }
 
 .mat-icon {
   transform: scale(1.5);
+  opacity: 0.8;
 }
 
 .active {
-  color: primary();
+  opacity: 1;
 }

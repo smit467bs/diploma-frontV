@@ -1,41 +1,6 @@
 @import '../node_modules/@angular/material/theming';
+
 @include mat-core();
-
-$theme: 'light';
-.dark-theme {
-  $theme: 'dark';
-}
-
-// colors for the light theme
-$primary-light-palette: mat-palette($mat-blue-gray, 600);
-$accent-light-palette: mat-palette($mat-teal, 100);
-
-$primary-light: mat-color($primary-light-palette);
-$accent-light: #e5ffff;
-
-// colors for the dark theme
-$primary-dark-palette: mat-palette($mat-cyan, 200);
-$accent-dark-palette: mat-palette($mat-red, 100);
-
-@function primary() {
-  @if $theme == 'light' {
-    $color: #29434e;
-    @return $color;
-  } @else {
-    $color: mat-color($primary-dark-palette);
-    @return $color;
-  }
-}
-
-@function accent() {
-  @if $theme == 'light' {
-    $color: mat-color($accent-light-palette);
-    @return $color;
-  } @else {
-    $color: mat-color($accent-dark-palette);
-    @return $color;
-  }
-}
 
 // colors for the common things in both themes
 $warn-palette: mat-palette($mat-amber, 600);
@@ -45,3 +10,63 @@ $success-palette: mat-palette($mat-green, 600);
 $warn-color: mat-color($warn-palette);
 $error-color: mat-color($error-palette);
 $success-color: mat-color($success-palette);
+
+// colors for the light theme
+$primary-light-palette: mat-palette($mat-blue-gray, 600);
+$accent-light-palette: mat-palette($mat-teal, 100);
+
+$light-theme: mat-light-theme($primary-light-palette, $accent-light-palette, $error-palette);
+
+// colors for the dark theme
+$primary-dark-palette: mat-palette($mat-cyan, 800);
+$accent-dark-palette: mat-palette($mat-teal, 100);
+
+$dark-theme: mat-dark-theme($primary-dark-palette, $accent-dark-palette, $error-palette);
+
+// mixin for change theme of custom components
+@mixin header($theme) {
+  $primary: map-get($theme, primary);
+  header {
+    background-color: mat-color($primary);
+  }
+}
+
+@mixin navbar($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  .navbar {
+    background-color: mat-color($accent);
+    border-right: 1px solid mat-color($primary);
+  }
+}
+
+@mixin cover($theme) {
+  $primary: map-get($theme, primary);
+  $primary-color: mat-color($primary);
+  .cover {
+    .neon-button {
+      color: $primary-color;
+
+      &hover {
+        background-color: $primary-color;
+        box-shadow: 0 0 10px $primary-color, 0 0 40px $primary-color, 0 0 80px $primary-color;
+      }
+
+      div:nth-child(1) {
+        background: linear-gradient(90deg, transparent, $primary-color);
+      }
+
+      div:nth-child(3) {
+        background: linear-gradient(270deg, transparent, $primary-color);
+      }
+
+      div:nth-child(2) {
+        background: linear-gradient(180deg, transparent, $primary-color);
+      }
+
+      div:nth-child(4) {
+        background: linear-gradient(180deg, transparent, $primary-color);
+      }
+    }
+  }
+}
