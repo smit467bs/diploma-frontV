@@ -1,18 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Event as RouterEvent, NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router';
+import { OverlayContainer } from '@angular/cdk/overlay';
+
 import { UserStoreService } from '../core/store/user/user-store.service';
 import { Theme } from '../core/models/types';
 import { LocalStoreService } from '../core/services';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html'
+  selector: 'app-root',
+  templateUrl: './app.component.html'
 })
-export class DashboardComponent {
+export class AppComponent implements OnInit{
   showOverlay: boolean = true;
   theme: Theme = 'light';
 
   constructor(private router: Router,
+              private overlayContainer: OverlayContainer,
               private userStoreService: UserStoreService,
               private localStoreService: LocalStoreService
   ) {
@@ -20,6 +23,11 @@ export class DashboardComponent {
     router.events.subscribe((event: RouterEvent) => {
       this.navigationInterceptor(event);
     });
+  }
+
+  ngOnInit(): void {
+    const overlayContainerClasses = this.overlayContainer.getContainerElement().classList;
+    overlayContainerClasses.add(`${this.theme}-theme`, `${this.theme}-theme-background`);
   }
 
   navigationInterceptor(event: RouterEvent): void {
