@@ -11,7 +11,6 @@ import { AuthSection } from '../../core/models/types';
 export class AuthPageComponent {
   activeAuthSection: AuthSection = null;
 
-
   onChangeActiveSection(section: AuthSection) {
     this.activeAuthSection = section;
   }

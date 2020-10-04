@@ -9,6 +9,6 @@ export class AuthService {
 
   authUser() {
     return of({firstName: 'John', surname: 'Doe', token: 'blablabla'})
-      .pipe(delay(1000));
+      .pipe(delay(500));
   }
 }
