@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { EipState } from '../reducers';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
+
 import { UserSelectors } from './index';
+import { EipState } from '../reducers';
 import { updateLoadState } from './user.actions';
 
 @Injectable({providedIn: 'root'})
@@ -18,4 +19,5 @@ export class UserStoreService {
       updateLoadState({appLoaded})
     );
   }
+
 }

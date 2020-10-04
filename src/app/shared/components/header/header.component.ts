@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+
+import { Theme } from 'src/app/core/models/types';
 
 @Component({
   selector: 'app-header',
@@ -7,5 +9,14 @@ import { Component } from '@angular/core';
 })
 
 export class HeaderComponent {
+  @Input()
+  theme: Theme;
 
+  @Output()
+  changeTheme = new EventEmitter<Theme>();
+
+  onChangeTheme() {
+    const theme: Theme = this.theme === 'light' ? 'dark' : 'light';
+    this.changeTheme.emit(theme);
+  }
 }

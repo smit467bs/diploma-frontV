@@ -3,7 +3,7 @@ import { Action, ActionReducer, createReducer, on } from '@ngrx/store';
 import { updateLoadState } from './user.actions';
 
 export const INITIAL_STATE: UserState = {
-  appLoaded: false
+  appLoaded: false,
 };
 
 const userReducer: ActionReducer<UserState> = createReducer(

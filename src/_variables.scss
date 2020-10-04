@@ -1,16 +1,43 @@
 @import '../node_modules/@angular/material/theming';
 @include mat-core();
 
-$primary-palette: mat-palette($mat-blue-gray, 600);
-$secondary-palette: mat-palette($mat-teal, 100);
+$theme: 'light';
+.dark-theme {
+  $theme: 'dark';
+}
 
-$background-light-prime: #F4F4F4;
-$background-light-secondary: #E1E2E1;
-$primary: #29434e;
-$primary-light: mat-color($primary-palette);
-$secondary: mat-color($secondary-palette);
-$secondary-light: #e5ffff;
+// colors for the light theme
+$primary-light-palette: mat-palette($mat-blue-gray, 600);
+$accent-light-palette: mat-palette($mat-teal, 100);
 
+$primary-light: mat-color($primary-light-palette);
+$accent-light: #e5ffff;
+
+// colors for the dark theme
+$primary-dark-palette: mat-palette($mat-cyan, 200);
+$accent-dark-palette: mat-palette($mat-red, 100);
+
+@function primary() {
+  @if $theme == 'light' {
+    $color: #29434e;
+    @return $color;
+  } @else {
+    $color: mat-color($primary-dark-palette);
+    @return $color;
+  }
+}
+
+@function accent() {
+  @if $theme == 'light' {
+    $color: mat-color($accent-light-palette);
+    @return $color;
+  } @else {
+    $color: mat-color($accent-dark-palette);
+    @return $color;
+  }
+}
+
+// colors for the common things in both themes
 $warn-palette: mat-palette($mat-amber, 600);
 $error-palette: mat-palette($mat-red, 600);
 $success-palette: mat-palette($mat-green, 600);

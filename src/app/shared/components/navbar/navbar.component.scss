@@ -8,8 +8,8 @@
   grid-template-rows: max-content;
   grid-gap: 1rem;
   padding-top: 1rem;
-  background-color: $secondary-light;
-  border-right: 1px solid $primary;
+  background-color: accent();
+  border-right: 1px solid primary();
   color: $primary-light;
 }
 
@@ -18,5 +18,5 @@
 }
 
 .active {
-  color: $primary;
+  color: primary();
 }

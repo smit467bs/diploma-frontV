@@ -3,7 +3,34 @@
 
 @include mat-core();
 
-$app-theme: mat-light-theme($primary-palette, $secondary-palette, $error-palette);
+$light-theme: mat-light-theme($primary-light-palette, $accent-light-palette, $error-palette);
 
-@include angular-material-theme($app-theme);
+.light-theme {
+  $foreground: map-get($light-theme, foreground);
+  $text: map-get($foreground, text);
+  color: $text;
+  height: 100vh;
+  @include angular-material-theme($light-theme);
+}
 
+.light-theme-background {
+  $light-background: map-get($light-theme, background);
+  $light-background-color: map-get($light-background, background);
+  background-color: $light-background-color;
+}
+
+$dark-theme: mat-dark-theme($primary-dark-palette, $accent-dark-palette, $error-palette);
+
+.dark-theme {
+  $foreground: map-get($dark-theme, foreground);
+  $text: map-get($foreground, text);
+  color: $text;
+  height: 100vh;
+  @include angular-material-theme($dark-theme);
+}
+
+.dark-theme-background {
+  $dark-background: map-get($dark-theme, background);
+  $dark-background-color: map-get($dark-background, background);
+  background-color: $dark-background-color;
+}

@@ -1,4 +1,5 @@
-@import "../../../../variables";
+@import "src/variables";
+@import "src/theme";
 
 header{
   height: 60px;
@@ -6,8 +7,8 @@ header{
   grid-auto-flow: column;
   justify-content: end;
   align-items: center;
-  background-color: $primary;
-  color: $secondary-light;
+  background-color: primary();
+  //color: $accent-light;
 }
 
 .mat-icon {

@@ -1,0 +1,9 @@
+<div [ngClass]="getClassNames()">
+  <app-overlay-loader *ngIf="showOverlay"></app-overlay-loader>
+
+  <app-header *ngIf="!hasRoute('auth')"
+              [theme]="theme"
+              (changeTheme)="onChangeTheme($event)"
+  ></app-header>
+  <router-outlet></router-outlet>
+</div>

@@ -3,7 +3,7 @@ import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './dashboard/app.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { CoreModule } from './core/core.module';
 import { APP_INITIALIZER_DEPS, appInitializerFactory } from './app-initializer';
 import { environment } from '../environments/environment';
@@ -12,7 +12,7 @@ import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +31,7 @@ import { SharedModule } from './shared/shared.module';
       deps: APP_INITIALIZER_DEPS
     },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [DashboardComponent]
 })
 export class AppModule {
 }

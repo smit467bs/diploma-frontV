@@ -24,7 +24,7 @@ export function appInitializerFactory(
       .pipe(
         tap(console.log),
         first(),
-      )
+      ),
   )
     .pipe(
       first(),
