@@ -8,9 +8,10 @@ import { LocalStoreService } from '../core/services';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html'
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   showOverlay: boolean = true;
   theme: Theme = 'light';
 
@@ -57,6 +58,6 @@ export class AppComponent implements OnInit{
   }
 
   getClassNames(): Array<string> {
-    return [`${this.theme}-theme`, `${this.theme}-theme-background`];
+    return [!this.hasRoute('auth') ? 'dashboard' : 'auth', `${this.theme}-theme`, `${this.theme}-theme-background`];
   }
 }

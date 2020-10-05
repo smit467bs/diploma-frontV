@@ -1,0 +1,18 @@
+.dashboard {
+  display: grid;
+  grid-template-rows: 60px 1fr;
+  grid-template-columns: 60px 1fr;
+  grid-template-areas: "header header" "nav main";
+
+  app-header {
+    grid-area: header;
+  }
+
+  app-navbar {
+    grid-area: nav;
+  }
+}
+
+.auth {
+  display: grid;
+}
