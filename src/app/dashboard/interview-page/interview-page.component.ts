@@ -3,11 +3,11 @@ import { Logger } from '../../core/services';
 
 @Component({
   selector: 'app-home',
-  templateUrl: './home-page.component.html',
-  styleUrls: ['./home-page.component.scss']
+  templateUrl: './interview-page.component.html',
+  styleUrls: ['./interview-page.component.scss']
 })
 
-export class HomePageComponent {
+export class InterviewPageComponent {
   constructor(private logger: Logger) {
   }
 }

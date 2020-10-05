@@ -12,6 +12,7 @@ import { LoginComponent } from './components/login';
 import { CoverComponent } from './components/cover';
 import { NavbarComponent } from './components/navbar';
 import { OverlayLoaderComponent } from './components/overlay-loader';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -22,17 +23,18 @@ import { OverlayLoaderComponent } from './components/overlay-loader';
     CoverComponent,
     NavbarComponent
   ],
-  imports: [
-    CommonModule,
+    imports: [
+        CommonModule,
 
-    FormsModule,
-    ReactiveFormsModule,
+        FormsModule,
+        ReactiveFormsModule,
 
-    MatInputModule,
-    MatFormFieldModule,
-    MatButtonModule,
-    MatIconModule,
-  ],
+        MatInputModule,
+        MatFormFieldModule,
+        MatButtonModule,
+        MatIconModule,
+        RouterModule,
+    ],
   exports: [
     HeaderComponent,
     OverlayLoaderComponent,

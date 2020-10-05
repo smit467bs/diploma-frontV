@@ -10,9 +10,12 @@
 
 .mat-icon {
   transform: scale(1.5);
-  opacity: 0.8;
 }
 
-.active {
+.route{
+  opacity: 0.5;
+}
+
+.active-route {
   opacity: 1;
 }

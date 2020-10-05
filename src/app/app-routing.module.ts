@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
 
 const routes: Routes = [
@@ -7,9 +7,10 @@ const routes: Routes = [
     path: 'auth',
     loadChildren: () => import('./dashboard/auth-page/auth-page.module').then(m => m.AuthPageModule),
   }, {
-    path: '',
-    loadChildren: () => import('./dashboard/home-page/home-page.module').then(m => m.HomePageModule)
-  }
+    path: 'interview',
+    loadChildren: () => import('./dashboard/interview-page/interview-page.module').then(m => m.InterviewPageModule)
+  },
+  {path: '', redirectTo: '/interview', pathMatch: 'full'}
 ];
 
 @NgModule({
