@@ -1,7 +1,7 @@
 import { ErrorHandler, Injectable } from '@angular/core';
 import * as moment from 'moment';
 
-import { environment } from '../../../environments/environment';
+import { environment } from 'src/environments/environment';
 
 @Injectable({providedIn: 'root'})
 export class Logger {

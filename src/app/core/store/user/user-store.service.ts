@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 
-import { UserSelectors } from './index';
+import * as UserSelectors from './user.selectors';
+import * as UserActions from './user.actions';
 import { EipState } from '../reducers';
-import { updateLoadState } from './user.actions';
 
 @Injectable({providedIn: 'root'})
 export class UserStoreService {
@@ -16,7 +16,7 @@ export class UserStoreService {
 
   public changeLoadState(appLoaded: boolean): void {
     this.store$.dispatch(
-      updateLoadState({appLoaded})
+      UserActions.updateLoadState({appLoaded})
     );
   }
 

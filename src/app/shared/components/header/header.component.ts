@@ -1,13 +1,12 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
-import { Theme } from 'src/app/core/models/types';
+import { Theme } from 'core/models/types';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-
 export class HeaderComponent {
   @Input()
   theme: Theme;

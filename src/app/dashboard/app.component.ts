@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Event as RouterEvent, NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router';
 import { OverlayContainer } from '@angular/cdk/overlay';
 
-import { UserStoreService } from '../core/store/user/user-store.service';
-import { Theme } from '../core/models/types';
-import { LocalStoreService } from '../core/services';
+import { UserStoreService } from 'core/store/user';
+import { LocalStoreService } from 'core/services';
+import { Theme } from 'core/models/types';
 
 @Component({
   selector: 'app-root',

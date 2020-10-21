@@ -1,8 +1,8 @@
 import { EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
-import { MyErrorStateMatcher } from '../../../core/matcher/error-state-mathcer';
-import { AuthSection } from '../../../core/models/types';
+import { MyErrorStateMatcher } from 'core/matcher/error-state-mathcer';
+import { AuthSection } from 'core/models/types';
 
 export class AuthBaseComponent {
   @Input() activeAuthSection: AuthSection;

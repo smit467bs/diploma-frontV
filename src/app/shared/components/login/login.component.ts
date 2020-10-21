@@ -8,7 +8,6 @@ import { AuthBaseComponent } from '../base';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-
 export class LoginComponent extends AuthBaseComponent {
 
   constructor(private fb: FormBuilder) {
