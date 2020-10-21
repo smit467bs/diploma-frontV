@@ -5,7 +5,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './dashboard/app.component';
 import { CoreModule } from './core/core.module';
-import { appInitializerFactory } from './app-initializer';
+import { APP_INITIALIZER_DEPS, appInitializerFactory } from './app-initializer';
+import { environment } from '../environments/environment';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -15,15 +18,20 @@ import { appInitializerFactory } from './app-initializer';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    CoreModule
+    environment.production ? [] : StoreDevtoolsModule.instrument({maxAge: 50}),
+
+    CoreModule,
+    SharedModule
   ],
   providers: [
     {
       provide: APP_INITIALIZER,
       useFactory: appInitializerFactory,
-      multi: true
+      multi: true,
+      deps: APP_INITIALIZER_DEPS
     },
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

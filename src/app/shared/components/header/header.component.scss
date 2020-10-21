@@ -1,0 +1,19 @@
+header {
+  height: 60px;
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: end;
+  align-items: center;
+}
+
+.mat-icon {
+  transform: scale(1.5);
+}
+
+.user-control-panel {
+  margin-right: 3rem;
+}
+
+.app-control-panel {
+  margin-right: 2rem;
+}

@@ -1,0 +1,102 @@
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+$warn-palette: mat-palette($mat-amber, 600);
+$error-palette: mat-palette($mat-red, 600);
+$success-palette: mat-palette($mat-green, 600);
+
+@mixin init-theme($theme) {
+  height: 100vh;
+  @include theme-text($theme);
+  @include angular-material-theme($theme);
+  @include loader-overlay($theme);
+  @include header($theme);
+  @include navbar($theme);
+  @include cover($theme);
+  @include interview-cart($theme);
+}
+
+// mixin for change theme of custom components
+@mixin theme-background($theme) {
+  $background: map-get($theme, background);
+  $background-color: map-get($background, background);
+  background-color: $background-color;
+}
+
+@mixin theme-text($theme) {
+  $foreground: map-get($theme, foreground);
+  $text: map-get($foreground, text);
+  color: $text;
+}
+
+@mixin header($theme) {
+  $primary: map-get($theme, primary);
+  $primary-color: mat-color($primary);
+  header {
+    background-color: $primary-color;
+  }
+}
+
+@mixin loader-overlay($theme) {
+  $primary: map-get($theme, primary);
+  $primary-color: mat-color($primary);
+  .line-preloader {
+    background: linear-gradient(to right, $primary-color, $primary-color);
+  }
+}
+
+@mixin navbar($theme) {
+  $primary: map-get($theme, primary);
+  $primary-color: mat-color($primary);
+  $accent: map-get($theme, accent);
+  $accent-color: mat-color($accent);
+  .navbar {
+    background-color: $accent-color;
+    border-right: 1px solid $primary-color;
+  }
+}
+
+@mixin cover($theme) {
+  $primary: map-get($theme, primary);
+  $primary-color: mat-color($primary);
+  .cover {
+    @include theme-background($theme);
+
+    .neon-button {
+      color: $primary-color;
+
+      &:hover {
+        background-color: $primary-color;
+        box-shadow: 0 0 10px $primary-color, 0 0 40px $primary-color, 0 0 80px $primary-color;
+      }
+
+      div:nth-child(1) {
+        background: linear-gradient(90deg, transparent, $primary-color);
+      }
+
+      div:nth-child(3) {
+        background: linear-gradient(270deg, transparent, $primary-color);
+      }
+
+      div:nth-child(2) {
+        background: linear-gradient(180deg, transparent, $primary-color);
+      }
+
+      div:nth-child(4) {
+        background: linear-gradient(180deg, transparent, $primary-color);
+      }
+    }
+  }
+}
+
+@mixin interview-cart($theme) {
+  $primary: map-get($theme, primary);
+  $primary-color: mat-color($primary);
+  .preview-interview {
+    height: 100%;
+    width: 100%;
+    border: 1px solid $primary-color;
+    padding: 10px;
+  }
+}

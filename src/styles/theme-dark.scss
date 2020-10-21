@@ -1,0 +1,16 @@
+@import '~@angular/material/theming';
+@import 'theme-base';
+
+$primary-dark-palette: mat-palette($mat-cyan, 800);
+$accent-dark-palette: mat-palette($mat-teal, 100);
+$error-palette: mat-palette($mat-red, 600);
+
+$dark-theme: mat-dark-theme($primary-dark-palette, $accent-dark-palette, $error-palette);
+
+.dark-theme {
+  @include init-theme($dark-theme);
+}
+
+.dark-theme-background {
+  @include theme-background($dark-theme)
+}

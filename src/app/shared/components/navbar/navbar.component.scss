@@ -1,0 +1,21 @@
+.navbar {
+  height: 100%;
+  display: grid;
+  align-items: start;
+  justify-content: center;
+  grid-template-rows: max-content;
+  grid-gap: 1rem;
+  padding-top: 1rem;
+}
+
+.mat-icon {
+  transform: scale(1.5);
+}
+
+.route{
+  opacity: 0.5;
+}
+
+.active-route {
+  opacity: 1;
+}

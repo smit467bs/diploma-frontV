@@ -1,0 +1,16 @@
+@import '~@angular/material/theming';
+@import 'theme-base';
+
+$primary-light-palette: mat-palette($mat-blue-gray, 600);
+$accent-light-palette: mat-palette($mat-teal, 100);
+$error-palette: mat-palette($mat-red, 600);
+
+$light-theme: mat-light-theme($primary-light-palette, $accent-light-palette, $error-palette);
+
+.light-theme {
+  @include init-theme($light-theme);
+}
+
+.light-theme-background {
+  @include theme-background($light-theme)
+}
