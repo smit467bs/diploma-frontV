@@ -1,6 +1,6 @@
 <div class="preview-interview-container module">
   <app-preview-interview
-    *ngFor="let interview of interviews"
+    *ngFor="let interview of interviews | async"
     [interview]="interview"
   >
   </app-preview-interview>
