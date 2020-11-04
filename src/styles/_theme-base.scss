@@ -14,7 +14,7 @@ $success-palette: mat-palette($mat-green, 600);
   @include header($theme);
   @include navbar($theme);
   @include cover($theme);
-  @include interview-cart($theme);
+  @include cart($theme);
 }
 
 // mixin for change theme of custom components
@@ -90,10 +90,10 @@ $success-palette: mat-palette($mat-green, 600);
   }
 }
 
-@mixin interview-cart($theme) {
+@mixin cart($theme) {
   $primary: map-get($theme, primary);
   $primary-color: mat-color($primary);
-  .preview-interview {
+  .cart {
     height: 100%;
     width: 100%;
     border: 1px solid $primary-color;

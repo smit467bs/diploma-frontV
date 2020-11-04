@@ -1,4 +1,10 @@
 <div class="preview-interview-container module">
+<!--  <app-create-button></app-create-button>-->
+  <button
+    mat-raised-button
+    color="accent"
+    [routerLink]="'/add-interview'"
+  >Add</button>
   <app-preview-interview
     *ngFor="let interview of interviews | async"
     [interview]="interview"

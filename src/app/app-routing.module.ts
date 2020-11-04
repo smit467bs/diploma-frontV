@@ -11,6 +11,9 @@ const routes: Routes = [
   }, {
     path: 'groups',
     loadChildren: () => import('./dashboard/groups-page/groups-page.module').then(m => m.GroupsPageModule)
+  }, {
+    path: 'add-interview',
+    loadChildren: () => import('./dashboard/add-interview-page/add-interview-page.module').then(m => m.AddInterviewPageModule)
   },
   {path: '', redirectTo: '/interviews', pathMatch: 'full'}
 ];

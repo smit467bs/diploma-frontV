@@ -5,6 +5,8 @@ import { CommonModule } from '@angular/common';
 import { ControlPanelComponent } from './control-panel';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { SharedModule } from 'shared/shared.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { MatButtonModule } from '@angular/material/button';
   imports: [
     CommonModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    SharedModule,
+    RouterModule
   ],
   exports: [PreviewInterviewContainerComponent]
 })

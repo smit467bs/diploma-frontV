@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 
@@ -12,7 +13,7 @@ import { LoginComponent } from './components/login';
 import { CoverComponent } from './components/cover';
 import { NavbarComponent } from './components/navbar';
 import { OverlayLoaderComponent } from './components/overlay-loader';
-import { RouterModule } from '@angular/router';
+import { CreateButtonComponent } from './components/create-button';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { RouterModule } from '@angular/router';
     RegisterComponent,
     LoginComponent,
     CoverComponent,
-    NavbarComponent
+    NavbarComponent,
+    CreateButtonComponent
   ],
     imports: [
         CommonModule,
@@ -41,7 +43,8 @@ import { RouterModule } from '@angular/router';
     RegisterComponent,
     LoginComponent,
     CoverComponent,
-    NavbarComponent
+    NavbarComponent,
+    CreateButtonComponent
   ]
 })
 

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Logger } from 'core/services';
-import { mockedInterviews } from 'core/mocked';
 import { Interview } from 'core/models';
 import { Observable } from 'rxjs';
 import { InterviewService } from 'core/services/interview.service';
@@ -21,6 +20,10 @@ export class PreviewInterviewContainerComponent implements OnInit {
 
   ngOnInit(): void {
     this.interviews = this.interviewService.getInterviewPreview();
+  }
+
+  addInterview() {
+    console.log('add');
   }
 
 }
