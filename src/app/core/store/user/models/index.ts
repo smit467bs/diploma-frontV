@@ -1,1 +1,1 @@
-export * from './user-state.model';
+export { UserState } from './user-state.model';

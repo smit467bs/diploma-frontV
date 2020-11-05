@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-
-import { Logger } from 'core/services';
-import { Interview } from 'core/models';
 import { Observable } from 'rxjs';
-import { InterviewService } from 'core/services/interview.service';
+
+import { Interview } from 'core/store/common/models';
+import { InterviewService, Logger } from 'core/services';
 
 @Component({
   selector: 'app-preview-interview-container',
