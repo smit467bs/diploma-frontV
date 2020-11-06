@@ -1,1 +1,28 @@
-add-interview
+<div class="form">
+  <form [formGroup]="interviewForm">
+    <mat-form-field class="full-width">
+      <mat-label>Label</mat-label>
+      <input matInput formControlName="label" [errorStateMatcher]="matcher">
+      <mat-error
+        *ngIf="getControl('label').hasError('required')"
+      >
+        Label is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+  </form>
+
+  <div class="button-group">
+    <button
+      mat-raised-button
+      color="warn"
+      [routerLink]="'/interviews'"
+    >Cancel
+    </button>
+    <button
+      mat-raised-button
+      color="accent"
+      (click)="submitForm()"
+    >Save
+    </button>
+  </div>
+</div>

@@ -49,11 +49,11 @@ $success-palette: mat-palette($mat-green, 600);
 @mixin navbar($theme) {
   $primary: map-get($theme, primary);
   $primary-color: mat-color($primary);
-  $accent: map-get($theme, accent);
-  $accent-color: mat-color($accent);
+  //$accent: map-get($theme, accent);
+  //$accent-color: mat-color($accent);
   .navbar {
-    background-color: $accent-color;
-    border-right: 1px solid $primary-color;
+    @include theme-background($theme);
+    border-right: 2px solid $primary-color;
   }
 }
 

@@ -1,0 +1,12 @@
+.form{
+  margin: 15px 50px;
+  .button-group{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+  }
+
+  .full-width {
+    width: 100%;
+  }
+}
