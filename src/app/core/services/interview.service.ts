@@ -11,8 +11,10 @@ export class InterviewService {
   }
 
   getInterviewPreview(): Observable<Array<Interview>> {
-    console.log(environment.apiUrl);
     return this.http.get<Array<Interview>>(`${environment.apiUrl}/interview`);
   }
 
+  addInterview(body: Interview): Observable<any> {
+    return this.http.post(`${environment.apiUrl}/interview`, body);
+  }
 }

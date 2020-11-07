@@ -12,14 +12,14 @@ export class LoginComponent extends AuthBaseComponent {
 
   constructor(private fb: FormBuilder) {
     super();
-    this.authForm = fb.group({
+    this.form = fb.group({
       email: fb.control('', [Validators.required, Validators.email]),
       password: fb.control('', [Validators.required]),
     });
   }
 
   submitForm(): void {
-    console.log(this.authForm.value);
+    console.log(this.form.value);
   }
 
 }
