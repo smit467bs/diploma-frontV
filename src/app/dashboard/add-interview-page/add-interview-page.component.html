@@ -2,7 +2,7 @@
   <form [formGroup]="form">
     <mat-form-field class="full-width">
       <mat-label>Label</mat-label>
-      <input matInput formControlName="label" [errorStateMatcher]="matcher">
+      <input matInput formControlName="label" [errorStateMatcher]="matcher" autocomplete="off" />
       <mat-error
         *ngIf="getControl('label').hasError('required')"
       >

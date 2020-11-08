@@ -13,7 +13,7 @@ import { FormBaseComponent } from 'shared/components/base';
   templateUrl: './add-interview-page.component.html',
   styleUrls: ['./add-interview-page.component.scss']
 })
-export class AddInterviewPageComponent extends FormBaseComponent{
+export class AddInterviewPageComponent extends FormBaseComponent {
   matcher = new MyErrorStateMatcher();
 
   constructor(private fb: FormBuilder,
@@ -29,7 +29,7 @@ export class AddInterviewPageComponent extends FormBaseComponent{
     this.interviewService.addInterview(this.form.value)
       .pipe(
         first(),
-        map(response => {
+        map(() => {
           this.router.navigate(['./interviews']);
         }),
         catchError(err => {
