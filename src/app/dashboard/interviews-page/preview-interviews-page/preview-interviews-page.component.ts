@@ -6,11 +6,11 @@ import { CommonStoreService } from 'core/store/common';
 import { Interview } from 'core/store/common/models';
 
 @Component({
-  selector: 'app-interviews',
-  templateUrl: './interviews-page.component.html',
-  styleUrls: ['./interviews-page.component.scss']
+  selector: 'preview-interviews',
+  templateUrl: './preview-interviews-page.component.html',
+  styleUrls: ['./preview-interviews-page.component.scss']
 })
-export class InterviewsPageComponent implements OnInit {
+export class PreviewInterviewsPageComponent implements OnInit {
   interviews$: Observable<Array<Interview>>;
 
   constructor(private logger: Logger,
