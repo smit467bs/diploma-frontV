@@ -39,10 +39,10 @@ $success-palette: mat-palette($mat-green, 600);
 }
 
 @mixin loader-overlay($theme) {
-  $primary: map-get($theme, primary);
-  $primary-color: mat-color($primary);
+  $warn: map-get($theme, warn);
+  $warn-color: mat-color($warn);
   .line-preloader {
-    background: linear-gradient(to right, $primary-color, $primary-color);
+    background: linear-gradient(to right, $warn-color, $warn-color);
   }
 }
 

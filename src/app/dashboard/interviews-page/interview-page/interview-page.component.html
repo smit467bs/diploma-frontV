@@ -1,1 +1,8 @@
-interview id: {{id}}
+<div *ngIf="interview; else loader">
+  interview id: {{interview._id}}
+  <br>
+  interview label: {{interview.label}}
+</div>
+<ng-template #loader>
+  <overlay-loader></overlay-loader>
+</ng-template>

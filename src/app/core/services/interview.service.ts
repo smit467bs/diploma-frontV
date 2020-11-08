@@ -17,4 +17,8 @@ export class InterviewService {
   addInterview(body: Interview): Observable<any> {
     return this.http.post(`${environment.apiUrl}/interview`, body);
   }
+
+  getInterviewById(id: string): Observable<Interview> {
+    return this.http.get<Interview>(`${environment.apiUrl}/interview/${id}`);
+  }
 }
