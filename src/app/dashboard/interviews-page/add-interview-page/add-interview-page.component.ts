@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { catchError, first, map } from 'rxjs/operators';
 import { of } from 'rxjs';
 
@@ -21,7 +21,8 @@ export class AddInterviewPageComponent extends FormBaseComponent {
               private interviewService: InterviewService) {
     super();
     this.form = fb.group({
-      label: fb.control('', [Validators.required])
+      label: fb.control('', [Validators.required]),
+      questions: fb.array([])
     });
   }
 
@@ -38,5 +39,26 @@ export class AddInterviewPageComponent extends FormBaseComponent {
         })
       )
       .subscribe();
+  }
+
+  addQuestion(type: string) {
+    this.formQuestions.push(this.createItem(type));
+  }
+
+  removeItem() {
+    // this.formQuestions.push(this.createItem());
+    // this.arrayItems.pop();
+    // this.questions.removeAt(this.questions.length - 1);
+  }
+
+  createItem(type: string): FormGroup {
+    return this.fb.group({
+      type,
+      label: '',
+    });
+  }
+
+  get formQuestions(): FormArray {
+    return this.form.get('questions') as FormArray;
   }
 }

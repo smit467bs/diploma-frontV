@@ -15,6 +15,7 @@ $success-palette: mat-palette($mat-green, 600);
   @include navbar($theme);
   @include cover($theme);
   @include cart($theme);
+  @include form-question($theme);
 }
 
 // mixin for change theme of custom components
@@ -96,7 +97,22 @@ $success-palette: mat-palette($mat-green, 600);
   .cart {
     height: 100%;
     width: 100%;
-    border: 1px solid $primary-color;
     padding: 10px;
+    @include primary-border($theme);
   }
+  .link:hover {
+    color: $primary-color;
+  }
+}
+
+@mixin form-question($theme) {
+  .form-question {
+    @include primary-border($theme);
+  }
+}
+
+@mixin primary-border($theme) {
+  $primary: map-get($theme, primary);
+  $primary-color: mat-color($primary);
+  border: 1px solid $primary-color;
 }

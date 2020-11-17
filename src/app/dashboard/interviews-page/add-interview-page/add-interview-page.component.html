@@ -1,28 +1,50 @@
-<div class="form">
+<div class="form-container">
   <form [formGroup]="form">
     <mat-form-field class="full-width">
       <mat-label>Label</mat-label>
-      <input matInput formControlName="label" [errorStateMatcher]="matcher" autocomplete="off" />
+      <input matInput formControlName="label" [errorStateMatcher]="matcher" autocomplete="off"/>
       <mat-error
         *ngIf="getControl('label').hasError('required')"
       >
         Label is <strong>required</strong>
       </mat-error>
     </mat-form-field>
-  </form>
 
-  <div class="button-group">
-    <button
-      mat-raised-button
-      color="warn"
-      [routerLink]="'/interviews'"
-    >Cancel
-    </button>
-    <button
-      mat-raised-button
-      color="accent"
-      (click)="submitForm()"
-    >Save
-    </button>
-  </div>
+    <div formArrayName="questions" class="form-questions">
+      <ng-container *ngFor="let question of formQuestions.controls; let i = index;">
+        <div class="form-question" [ngClass]="question.get('type').value" [formGroupName]="i">
+          Check one
+          <mat-form-field class="full-width">
+            <mat-label>Label</mat-label>
+            <input matInput formControlName="label" autocomplete="off"/>
+          </mat-form-field>
+        </div>
+      </ng-container>
+    </div>
+
+  </form>
+</div>
+
+<div class="form-button">
+  <button
+    mat-raised-button
+    color="warn"
+    [routerLink]="'/interviews'"
+  >Cancel
+  </button>
+  <button
+    mat-raised-button
+    color="accent"
+    (click)="submitForm()"
+  >Save
+  </button>
+</div>
+
+<div class="form-control">
+  <button color="primary" mat-icon-button (click)="addQuestion('check-one')">
+    <mat-icon>add_circle_outline</mat-icon>
+  </button>
+  <button color="warn" mat-icon-button>
+    <mat-icon>delete_outline</mat-icon>
+  </button>
 </div>

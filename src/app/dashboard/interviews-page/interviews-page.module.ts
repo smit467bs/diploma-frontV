@@ -10,6 +10,7 @@ import { SharedModule } from 'shared/shared.module';
 import { PreviewInterviewsPageComponent } from './preview-interviews-page';
 import { AddInterviewPageComponent } from './add-interview-page';
 import { InterviewPageComponent } from './interview-page';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -17,19 +18,20 @@ import { InterviewPageComponent } from './interview-page';
     AddInterviewPageComponent,
     InterviewPageComponent
   ],
-  imports: [
-    RouterModule.forChild([
-      {path: '', component: PreviewInterviewsPageComponent},
-      {path: 'add', component: AddInterviewPageComponent},
-      {path: ':id', component: InterviewPageComponent}
-    ]),
-    CommonModule,
-    SharedModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule
-  ],
+    imports: [
+        RouterModule.forChild([
+            {path: '', component: PreviewInterviewsPageComponent},
+            {path: 'add', component: AddInterviewPageComponent},
+            {path: ':id', component: InterviewPageComponent}
+        ]),
+        CommonModule,
+        SharedModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule,
+        MatIconModule
+    ],
   exports: [
     RouterModule
   ]

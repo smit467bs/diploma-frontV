@@ -6,4 +6,5 @@ export interface Interview {
   // createdDate: Date;
   _id: string;
   label: string;
+  questions: Array<any>;
 }

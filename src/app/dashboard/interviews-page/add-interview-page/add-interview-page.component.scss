@@ -1,9 +1,50 @@
-.form{
-  margin: 15px 50px;
-  .button-group{
+@import "src/styles/variables";
+
+:host {
+  height: 100%;
+  display: grid;
+  grid-template-areas: "form control" "button control";
+  grid-template-rows: 1fr 40px;
+  grid-template-columns: minmax(min-content, 900px) 40px;
+  justify-content: center;
+  padding: $default_space 50px;
+
+  .form-container {
+    grid-area: form;
+    overflow-y: auto;
+    margin-bottom: $default_space;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    form {
+      width: 100%;
+      height: 100%;
+
+      .form-questions {
+        display: grid;
+        grid-gap: $default_space;
+
+        .form-question {
+          padding: 10px;
+        }
+      }
+    }
+  }
+
+  .form-button {
+    grid-area: button;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-gap: 20px;
+    grid-gap: $default_space;
+  }
+
+  .form-control {
+    grid-area: control;
+    display: grid;
+    align-items: center;
+    align-content: center;
   }
 
   .full-width {
