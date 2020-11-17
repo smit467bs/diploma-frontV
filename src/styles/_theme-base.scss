@@ -16,6 +16,7 @@ $success-palette: mat-palette($mat-green, 600);
   @include cover($theme);
   @include cart($theme);
   @include form-question($theme);
+  @include custom-scrollbar($theme);
 }
 
 // mixin for change theme of custom components
@@ -115,4 +116,32 @@ $success-palette: mat-palette($mat-green, 600);
   $primary: map-get($theme, primary);
   $primary-color: mat-color($primary);
   border: 1px solid $primary-color;
+}
+
+@mixin custom-scrollbar($theme) {
+  $primary: map-get($theme, primary);
+  $primary-color: mat-color($primary);
+  .custom-scrollbar {
+    &::-webkit-scrollbar {
+      width: 3px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: #e1e1e1;
+      border-radius: 5px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: $primary-color;
+      border-radius: 5px;
+      max-height: 30px;
+      cursor: pointer;
+      opacity: 0.7;
+
+      &:hover {
+        opacity: 1;
+        cursor: pointer;
+      }
+    }
+  }
 }

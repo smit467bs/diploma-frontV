@@ -13,10 +13,7 @@
     grid-area: form;
     overflow-y: auto;
     margin-bottom: $default_space;
-
-    &::-webkit-scrollbar {
-      display: none;
-    }
+    padding-right: $default_space / 4;
 
     form {
       width: 100%;
