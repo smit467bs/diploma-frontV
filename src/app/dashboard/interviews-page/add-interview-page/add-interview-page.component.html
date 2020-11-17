@@ -24,19 +24,19 @@
                 <mat-label>Option {{optionIndex + 1}}</mat-label>
                 <input matInput [formControlName]="optionIndex" autocomplete="off"/>
               </mat-form-field>
-              <button color="accent" mat-icon-button (click)="removeOption(question, optionIndex)">
+              <button color="accent" mat-icon-button (click)="removeOption(question, optionIndex)" tabindex="-1">
                 <mat-icon matTooltip="Delete option">clear</mat-icon>
               </button>
             </div>
           </div>
           <div class="form-question-control">
-            <button color="accent" mat-icon-button (click)="addOption(question)">
+            <button mat-icon-button (click)="addOption(question)" type="button">
               <mat-icon matTooltip="Add option">library_add</mat-icon>
             </button>
-            <button color="accent" mat-icon-button (click)="cloneQuestion(question)">
+            <button mat-icon-button (click)="cloneQuestion(question)" type="button">
               <mat-icon matTooltip="Copy question">file_copy</mat-icon>
             </button>
-            <button color="warn" mat-icon-button (click)="removeQuestion(i)">
+            <button color="warn" mat-icon-button (click)="removeQuestion(i)" type="button">
               <mat-icon matTooltip="Delete question">delete_outline</mat-icon>
             </button>
           </div>

@@ -23,25 +23,8 @@ export class AddInterviewPageComponent extends FormBaseComponent {
     super();
     this.form = fb.group({
       label: fb.control('', [Validators.required]),
-      questions: fb.array([])
+      questions: fb.array([this.createItem('check-one')])
     });
-  }
-
-  submitForm(): void {
-  //   console.log(this.form);
-  //   console.log(this.form.value);
-    this.interviewService.addInterview(this.form.value)
-      .pipe(
-        first(),
-        map(() => {
-          this.router.navigate(['./interviews']);
-        }),
-        catchError(err => {
-          console.log('err', err);
-          return of(err);
-        })
-      )
-      .subscribe();
   }
 
   addQuestion(type: string) {
@@ -76,6 +59,23 @@ export class AddInterviewPageComponent extends FormBaseComponent {
         this.fb.control('')
       ])
     });
+  }
+
+  submitForm(): void {
+    // console.log(this.form);
+    // console.log(this.form.value);
+    this.interviewService.addInterview(this.form.value)
+      .pipe(
+        first(),
+        map(() => {
+          this.router.navigate(['./interviews']);
+        }),
+        catchError(err => {
+          console.log('err', err);
+          return of(err);
+        })
+      )
+      .subscribe();
   }
 
   get formQuestions(): FormArray {
