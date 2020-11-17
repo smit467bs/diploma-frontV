@@ -12,5 +12,8 @@ $light-theme: mat-light-theme($primary-light-palette, $accent-light-palette, $er
 }
 
 .light-theme-background {
-  @include theme-background($light-theme)
+  @include theme-background($light-theme);
+  &.cdk-overlay-container{
+    background-color: transparent;
+  }
 }

@@ -12,5 +12,8 @@ $dark-theme: mat-dark-theme($primary-dark-palette, $accent-dark-palette, $error-
 }
 
 .dark-theme-background {
-  @include theme-background($dark-theme)
+  @include theme-background($dark-theme);
+  &.cdk-overlay-container{
+    background-color: transparent;
+  }
 }

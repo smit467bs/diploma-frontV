@@ -22,15 +22,18 @@
       .form-questions {
         display: grid;
         grid-gap: $default_space;
+        .options{
+          .option{
+            display: grid;
+            grid-template-columns: 1fr 40px;
+          }
+        }
 
         .form-question {
           padding: 10px;
-          position: relative;
 
-          &-delete{
-            position: absolute;
-            right: 0;
-            top: 0;
+          &-control{
+
           }
         }
       }

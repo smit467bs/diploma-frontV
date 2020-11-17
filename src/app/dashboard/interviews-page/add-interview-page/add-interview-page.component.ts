@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { catchError, first, map } from 'rxjs/operators';
 import { of } from 'rxjs';
 
 import { MyErrorStateMatcher } from 'core/matcher/error-state-mathcer';
 import { InterviewService } from 'core/services';
 import { FormBaseComponent } from 'shared/components/base';
+import { copyFormControl } from 'core/utils';
 
 @Component({
   selector: 'app-add-interview',
@@ -27,7 +28,8 @@ export class AddInterviewPageComponent extends FormBaseComponent {
   }
 
   submitForm(): void {
-    // console.log(this.form.value);
+  //   console.log(this.form);
+  //   console.log(this.form.value);
     this.interviewService.addInterview(this.form.value)
       .pipe(
         first(),
@@ -46,14 +48,33 @@ export class AddInterviewPageComponent extends FormBaseComponent {
     this.formQuestions.push(this.createItem(type));
   }
 
+  addOption(questionControl: AbstractControl): void {
+    const options = questionControl.get('options') as FormArray;
+    options.push(this.fb.control(''));
+  }
+
+  cloneQuestion(questionControl: AbstractControl) {
+    const control = copyFormControl(questionControl);
+    this.formQuestions.push(control);
+  }
+
   removeQuestion(index: number) {
     this.formQuestions.removeAt(index);
+  }
+
+  removeOption(questionControl: AbstractControl, optionIndex: number): void {
+    const options = questionControl.get('options') as FormArray;
+    options.removeAt(optionIndex);
   }
 
   createItem(type: string): FormGroup {
     return this.fb.group({
       type,
-      label: '',
+      question: '',
+      options: this.fb.array([
+        this.fb.control(''),
+        this.fb.control('')
+      ])
     });
   }
 

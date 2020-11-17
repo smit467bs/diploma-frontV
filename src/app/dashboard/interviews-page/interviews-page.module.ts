@@ -11,6 +11,7 @@ import { PreviewInterviewsPageComponent } from './preview-interviews-page';
 import { AddInterviewPageComponent } from './add-interview-page';
 import { InterviewPageComponent } from './interview-page';
 import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -18,20 +19,21 @@ import { MatIconModule } from '@angular/material/icon';
     AddInterviewPageComponent,
     InterviewPageComponent
   ],
-    imports: [
-        RouterModule.forChild([
-            {path: '', component: PreviewInterviewsPageComponent},
-            {path: 'add', component: AddInterviewPageComponent},
-            {path: ':id', component: InterviewPageComponent}
-        ]),
-        CommonModule,
-        SharedModule,
-        ReactiveFormsModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatButtonModule,
-        MatIconModule
-    ],
+  imports: [
+    RouterModule.forChild([
+      {path: '', component: PreviewInterviewsPageComponent},
+      {path: 'add', component: AddInterviewPageComponent},
+      {path: ':id', component: InterviewPageComponent}
+    ]),
+    CommonModule,
+    SharedModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatIconModule,
+    MatTooltipModule
+  ],
   exports: [
     RouterModule
   ]
