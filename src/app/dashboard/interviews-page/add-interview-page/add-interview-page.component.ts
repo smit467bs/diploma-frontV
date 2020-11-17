@@ -27,6 +27,7 @@ export class AddInterviewPageComponent extends FormBaseComponent {
   }
 
   submitForm(): void {
+    // console.log(this.form.value);
     this.interviewService.addInterview(this.form.value)
       .pipe(
         first(),
@@ -45,10 +46,8 @@ export class AddInterviewPageComponent extends FormBaseComponent {
     this.formQuestions.push(this.createItem(type));
   }
 
-  removeItem() {
-    // this.formQuestions.push(this.createItem());
-    // this.arrayItems.pop();
-    // this.questions.removeAt(this.questions.length - 1);
+  removeQuestion(index: number) {
+    this.formQuestions.removeAt(index);
   }
 
   createItem(type: string): FormGroup {
