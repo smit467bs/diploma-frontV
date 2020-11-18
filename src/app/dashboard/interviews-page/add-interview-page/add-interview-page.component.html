@@ -13,7 +13,7 @@
     <div formArrayName="questions" class="form-questions">
       <ng-container *ngFor="let question of formQuestions.controls; let i = index;">
         <div class="form-question" [ngClass]="question.get('type').value" [formGroupName]="i">
-          <span class="form-question-label">Check one</span>
+          <span class="form-question-label">{{questionType[question.get('type').value]}}</span>
           <mat-form-field class="full-width">
             <mat-label>Question</mat-label>
             <input matInput formControlName="question" autocomplete="off"/>
@@ -63,7 +63,7 @@
 </div>
 
 <div class="form-control">
-  <button color="primary" mat-icon-button (click)="addQuestion('check-one')">
+  <button color="primary" mat-icon-button (click)="addQuestion()">
     <mat-icon matTooltip="Add question">add_circle_outline</mat-icon>
   </button>
 </div>

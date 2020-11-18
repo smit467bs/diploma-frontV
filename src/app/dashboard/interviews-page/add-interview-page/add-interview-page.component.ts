@@ -1,13 +1,17 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AbstractControl, FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { catchError, first, map } from 'rxjs/operators';
 import { of } from 'rxjs';
+import { isNil } from 'lodash';
 
 import { MyErrorStateMatcher } from 'core/matcher/error-state-mathcer';
 import { InterviewService } from 'core/services';
 import { FormBaseComponent } from 'shared/components/base';
 import { copyFormControl } from 'core/utils';
+import { QuestionType } from 'core/models/types';
+import { QuestionTypeDialogComponent } from './question-type-dialog';
 
 @Component({
   selector: 'app-add-interview',
@@ -17,18 +21,28 @@ import { copyFormControl } from 'core/utils';
 export class AddInterviewPageComponent extends FormBaseComponent {
   matcher = new MyErrorStateMatcher();
 
+  questionType = QuestionType;
+
   constructor(private fb: FormBuilder,
               private router: Router,
-              private interviewService: InterviewService) {
+              private interviewService: InterviewService,
+              private dialog: MatDialog) {
     super();
     this.form = fb.group({
       label: fb.control('', [Validators.required]),
-      questions: fb.array([this.createItem('check-one')])
+      questions: fb.array([this.createItem('CHOICE_ONE')])
     });
   }
 
-  addQuestion(type: string) {
-    this.formQuestions.push(this.createItem(type));
+  addQuestion() {
+    const dialogRef = this.dialog.open(QuestionTypeDialogComponent);
+
+    dialogRef.afterClosed().subscribe(type => {
+      if (!isNil(type)) {
+        this.formQuestions.push(this.createItem(type));
+      }
+    });
+
   }
 
   addOption(questionControl: AbstractControl): void {

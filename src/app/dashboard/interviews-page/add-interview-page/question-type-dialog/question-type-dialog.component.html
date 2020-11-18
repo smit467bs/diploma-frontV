@@ -1,0 +1,15 @@
+<div mat-dialog-content>
+  <p>What's your favorite animal?</p>
+  <mat-form-field>
+    <mat-label>Favorite food</mat-label>
+    <mat-select #questionType>
+      <mat-option *ngFor="let food of options" [value]="food[0]">
+        {{food[1]}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="questionType.value">Ok</button>
+</div>

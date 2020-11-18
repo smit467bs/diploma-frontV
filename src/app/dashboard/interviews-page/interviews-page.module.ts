@@ -8,16 +8,19 @@ import { MatButtonModule } from '@angular/material/button';
 
 import { SharedModule } from 'shared/shared.module';
 import { PreviewInterviewsPageComponent } from './preview-interviews-page';
-import { AddInterviewPageComponent } from './add-interview-page';
+import { AddInterviewPageComponent, QuestionTypeDialogComponent } from './add-interview-page';
 import { InterviewPageComponent } from './interview-page';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
     PreviewInterviewsPageComponent,
     AddInterviewPageComponent,
-    InterviewPageComponent
+    InterviewPageComponent,
+    QuestionTypeDialogComponent
   ],
   imports: [
     RouterModule.forChild([
@@ -32,7 +35,12 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatInputModule,
     MatButtonModule,
     MatIconModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatDialogModule,
+    MatSelectModule
+  ],
+  entryComponents: [
+    QuestionTypeDialogComponent
   ],
   exports: [
     RouterModule
