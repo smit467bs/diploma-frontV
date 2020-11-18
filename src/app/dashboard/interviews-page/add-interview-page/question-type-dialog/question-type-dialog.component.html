@@ -1,10 +1,10 @@
 <div mat-dialog-content>
   <p>What's your favorite animal?</p>
   <mat-form-field>
-    <mat-label>Favorite food</mat-label>
+    <mat-label>Type of question</mat-label>
     <mat-select #questionType>
-      <mat-option *ngFor="let food of options" [value]="food[0]">
-        {{food[1]}}
+      <mat-option *ngFor="let food of options" [value]="food">
+        {{food}}
       </mat-option>
     </mat-select>
   </mat-form-field>

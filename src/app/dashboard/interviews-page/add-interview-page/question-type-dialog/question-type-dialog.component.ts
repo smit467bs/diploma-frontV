@@ -8,16 +8,15 @@ import { QuestionType } from 'core/models/types';
   templateUrl: 'question-type-dialog.component.html',
 })
 export class QuestionTypeDialogComponent {
-  options: Array<Array<string>> = [];
+  options: Array<string> = [];
 
   constructor(
     public dialogRef: MatDialogRef<QuestionTypeDialogComponent>
   ) {
-    this.options = Object.entries(QuestionType);
+    this.options = Object.values(QuestionType);
   }
 
   onNoClick(): void {
     this.dialogRef.close();
   }
-
 }

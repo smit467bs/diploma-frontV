@@ -21,8 +21,6 @@ import { QuestionTypeDialogComponent } from './question-type-dialog';
 export class AddInterviewPageComponent extends FormBaseComponent {
   matcher = new MyErrorStateMatcher();
 
-  questionType = QuestionType;
-
   constructor(private fb: FormBuilder,
               private router: Router,
               private interviewService: InterviewService,
@@ -30,7 +28,7 @@ export class AddInterviewPageComponent extends FormBaseComponent {
     super();
     this.form = fb.group({
       label: fb.control('', [Validators.required]),
-      questions: fb.array([this.createItem('CHOICE_ONE')])
+      questions: fb.array([this.createQuestion(QuestionType.CHOICE_ONE)])
     });
   }
 
@@ -39,7 +37,8 @@ export class AddInterviewPageComponent extends FormBaseComponent {
 
     dialogRef.afterClosed().subscribe(type => {
       if (!isNil(type)) {
-        this.formQuestions.push(this.createItem(type));
+        console.log(this.createQuestion(type));
+        this.formQuestions.push(this.createQuestion(type));
       }
     });
 
@@ -64,15 +63,30 @@ export class AddInterviewPageComponent extends FormBaseComponent {
     options.removeAt(optionIndex);
   }
 
-  createItem(type: string): FormGroup {
-    return this.fb.group({
-      type,
-      question: '',
-      options: this.fb.array([
-        this.fb.control(''),
-        this.fb.control('')
-      ])
-    });
+  createQuestion(type: QuestionType): FormGroup {
+    let question: FormGroup;
+    switch (type) {
+      case QuestionType.CHOICE_ONE:
+      case QuestionType.CHOICE_MANY:
+      case QuestionType.SELECT_ONE:
+        question = this.fb.group({
+          type,
+          question: '',
+          options: this.fb.array([
+            this.fb.control(''),
+            this.fb.control('')
+          ])
+        });
+        break;
+      case QuestionType.TEXT:
+      case QuestionType.LONG_TEXT:
+        question = this.fb.group({
+          type,
+          question: ''
+        });
+        break;
+    }
+    return question;
   }
 
   submitForm(): void {

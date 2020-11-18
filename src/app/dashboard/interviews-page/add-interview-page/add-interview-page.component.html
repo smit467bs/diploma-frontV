@@ -13,12 +13,12 @@
     <div formArrayName="questions" class="form-questions">
       <ng-container *ngFor="let question of formQuestions.controls; let i = index;">
         <div class="form-question" [ngClass]="question.get('type').value" [formGroupName]="i">
-          <span class="form-question-label">{{questionType[question.get('type').value]}}</span>
+          <span class="form-question-label">{{question.get('type').value}}</span>
           <mat-form-field class="full-width">
             <mat-label>Question</mat-label>
             <input matInput formControlName="question" autocomplete="off"/>
           </mat-form-field>
-          <div class="options" formArrayName="options">
+          <div class="options" formArrayName="options" *ngIf="question.get('options')">
             <div class="option" *ngFor="let option of question.get('options')['controls']; let optionIndex = index">
               <mat-form-field class="full-width">
                 <mat-label>Option {{optionIndex + 1}}</mat-label>
