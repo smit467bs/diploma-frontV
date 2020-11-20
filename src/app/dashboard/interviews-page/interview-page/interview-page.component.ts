@@ -49,8 +49,6 @@ export class InterviewPageComponent extends FormBaseComponent implements OnInit 
               : new FormControl('')
           }), {})
         });
-        console.log(interview);
-        console.log(this.form);
       })
     ).subscribe();
   }
@@ -60,7 +58,6 @@ export class InterviewPageComponent extends FormBaseComponent implements OnInit 
   }
 
   submitForm(): void {
-    console.log(this.form);
     const request: SaveInterviewAnswers = {
       interview_id: this.interview._id,
       user_id: null,

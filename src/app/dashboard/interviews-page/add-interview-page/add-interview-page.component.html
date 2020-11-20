@@ -1,69 +1,68 @@
-<div class="form-container custom-scrollbar">
-  <form [formGroup]="form">
-    <div class="form-fields custom-scrollbar">
-      <mat-form-field class="full-width">
-        <mat-label>Label</mat-label>
-        <input matInput formControlName="label" [errorStateMatcher]="matcher" autocomplete="off"/>
-        <mat-error
-          *ngIf="getControl('label').hasError('required')"
-        >
-          Label is <strong>required</strong>
-        </mat-error>
-      </mat-form-field>
+<form [formGroup]="form">
 
-      <div formArrayName="questions" class="form-questions form-question-border">
-        <ng-container *ngFor="let question of formQuestions.controls; let i = index;">
-          <div class="form-question second-background" [ngClass]="getClasses(question.get('type').value)" [formGroupName]="i">
-            <span class="form-question-label">{{question.get('type').value}}</span>
-            <mat-form-field class="full-width">
-              <mat-label>Question</mat-label>
-              <input matInput formControlName="question" autocomplete="off"/>
-            </mat-form-field>
-            <div class="options" formArrayName="options" *ngIf="question.get('options')">
-              <div class="option" *ngFor="let option of question.get('options')['controls']; let optionIndex = index">
-                <mat-form-field class="full-width">
-                  <mat-label>Option {{optionIndex + 1}}</mat-label>
-                  <input matInput [formControlName]="optionIndex" autocomplete="off"/>
-                </mat-form-field>
-                <button color="accent" mat-icon-button (click)="removeOption(question, optionIndex)" tabindex="-1">
-                  <mat-icon matTooltip="Delete option">clear</mat-icon>
-                </button>
-              </div>
-            </div>
-            <div class="form-question-control">
-              <button mat-icon-button (click)="addOption(question)" type="button">
-                <mat-icon matTooltip="Add option">library_add</mat-icon>
-              </button>
-              <button mat-icon-button (click)="cloneQuestion(question)" type="button">
-                <mat-icon matTooltip="Copy question">file_copy</mat-icon>
-              </button>
-              <button color="warn" mat-icon-button (click)="removeQuestion(i)" type="button">
-                <mat-icon matTooltip="Delete question">delete_outline</mat-icon>
+  <div class="form-fields custom-scrollbar">
+    <mat-form-field class="full-width">
+      <mat-label>Label</mat-label>
+      <input matInput formControlName="label" [errorStateMatcher]="matcher" autocomplete="off"/>
+      <mat-error
+        *ngIf="getControl('label').hasError('required')"
+      >
+        Label is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <div formArrayName="questions" class="form-questions">
+      <ng-container *ngFor="let question of formQuestions.controls; let i = index;">
+        <div class="form-question form-question-border second-background"
+             [ngClass]="getClasses(question.get('type').value)" [formGroupName]="i">
+          <span class="form-question-label">{{question.get('type').value}}</span>
+          <mat-form-field class="full-width">
+            <mat-label>Question</mat-label>
+            <input matInput formControlName="question" autocomplete="off"/>
+          </mat-form-field>
+          <div class="options" formArrayName="options" *ngIf="question.get('options')">
+            <div class="option" *ngFor="let option of question.get('options')['controls']; let optionIndex = index">
+              <mat-form-field class="full-width">
+                <mat-label>Option {{optionIndex + 1}}</mat-label>
+                <input matInput [formControlName]="optionIndex" autocomplete="off"/>
+              </mat-form-field>
+              <button color="accent" mat-icon-button (click)="removeOption(question, optionIndex)" tabindex="-1">
+                <mat-icon matTooltip="Delete option">clear</mat-icon>
               </button>
             </div>
           </div>
-        </ng-container>
-      </div>
+          <div class="form-question-control">
+            <button mat-icon-button (click)="addOption(question)" type="button">
+              <mat-icon matTooltip="Add option">library_add</mat-icon>
+            </button>
+            <button mat-icon-button (click)="cloneQuestion(question)" type="button">
+              <mat-icon matTooltip="Copy question">file_copy</mat-icon>
+            </button>
+            <button color="warn" mat-icon-button (click)="removeQuestion(i)" type="button">
+              <mat-icon matTooltip="Delete question">delete_outline</mat-icon>
+            </button>
+          </div>
+        </div>
+      </ng-container>
     </div>
-    <div class="form-button">
-      <button
-        mat-raised-button
-        color="warn"
-        [routerLink]="'/interviews'"
-      >Cancel
-      </button>
-      <button
-        mat-raised-button
-        color="accent"
-        (click)="submitForm()"
-      >Save
-      </button>
-    </div>
+  </div>
 
-  </form>
-</div>
+  <div class="form-button">
+    <button
+      mat-raised-button
+      color="warn"
+      [routerLink]="'/interviews'"
+    >Cancel
+    </button>
+    <button
+      mat-raised-button
+      color="accent"
+      (click)="submitForm()"
+    >Save
+    </button>
+  </div>
 
-
+</form>
 
 <div class="form-control">
   <button color="primary" mat-icon-button (click)="addQuestion()">

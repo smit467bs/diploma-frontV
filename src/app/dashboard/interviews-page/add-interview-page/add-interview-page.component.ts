@@ -40,7 +40,6 @@ export class AddInterviewPageComponent extends FormBaseComponent {
 
     dialogRef.afterClosed().subscribe(type => {
       if (!isNil(type)) {
-        console.log(this.createQuestion(type));
         this.formQuestions.push(this.createQuestion(type));
       }
     });
