@@ -5,10 +5,10 @@ import { Observable } from 'rxjs';
 
 import { InterviewService } from 'core/services';
 import { Interview } from 'core/store/common/models';
-import { FormBuilder, FormControl } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl } from '@angular/forms';
 import { FormBaseComponent } from 'shared/components/base';
 import { QuestionType } from 'core/models/types';
-import { getClasses } from 'core/utils';
+import { getClasses, prepareDataToSaveAnswers } from 'core/utils';
 import { SaveInterviewAnswers } from 'core/models/request';
 
 @Component({
@@ -44,7 +44,9 @@ export class InterviewPageComponent extends FormBaseComponent implements OnInit 
         this.form = this.fb.group({
           ...interview.questions.reduce((acc, question) => ({
             ...acc,
-            [question.id]: new FormControl('')
+            [question.id]: question.type === QuestionType.CHOICE_MANY
+              ? new FormArray(question.options.map(() => new FormControl('')))
+              : new FormControl('')
           }), {})
         });
         console.log(interview);
@@ -58,10 +60,11 @@ export class InterviewPageComponent extends FormBaseComponent implements OnInit 
   }
 
   submitForm(): void {
+    console.log(this.form);
     const request: SaveInterviewAnswers = {
       interview_id: this.interview._id,
       user_id: null,
-      answers: this.form.value
+      answers: prepareDataToSaveAnswers(this.form.value, this.interview)
     };
     console.log(request);
   }

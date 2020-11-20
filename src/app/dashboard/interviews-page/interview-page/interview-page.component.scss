@@ -20,12 +20,23 @@
       grid-gap: $default_space;
 
       .question {
+        display: grid;
+        grid-gap: $default_space / 4;
         padding: $default_space / 2;
-        &-options{
+
+        &-options {
           display: grid;
           grid-gap: $default_space / 4;
-          padding-top: $default_space / 4;
+        }
+
+        .answer{
           padding-left: $default_space / 2;
+        }
+      }
+
+      .select-one, .select-many {
+        label {
+          margin-bottom: $default_space / 2;
         }
       }
     }
@@ -48,4 +59,8 @@
   .full-width {
     width: 100%;
   }
+}
+
+::ng-deep.mat-form-field-infix {
+  border-top: none;
 }
