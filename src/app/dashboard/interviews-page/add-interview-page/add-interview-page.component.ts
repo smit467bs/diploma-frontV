@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { AbstractControl, FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormArray, FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { catchError, first, map } from 'rxjs/operators';
 import { of } from 'rxjs';
@@ -21,6 +21,8 @@ import { QuestionTypeDialogComponent } from './question-type-dialog';
 export class AddInterviewPageComponent extends FormBaseComponent {
   matcher = new MyErrorStateMatcher();
   getClasses = getClasses;
+
+  @ViewChild('addInterviewForm') ngForm: NgForm;
 
   constructor(private fb: FormBuilder,
               private router: Router,
@@ -91,8 +93,6 @@ export class AddInterviewPageComponent extends FormBaseComponent {
   }
 
   submitForm(): void {
-    // console.log(this.form);
-    // console.log(this.form.value);
     this.interviewService.addInterview(this.form.value)
       .pipe(
         first(),

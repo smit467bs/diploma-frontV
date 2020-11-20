@@ -1,14 +1,14 @@
 import { isArray, isNil, keys } from 'lodash';
 
-export const prepareDataToSaveAnswers = (formData, interview) => {
-  const result =  keys(formData).reduce((acc, dataKey) => ({
-    ...acc,
-    [dataKey]: isArray(formData[dataKey])
-      ? prepareArrayData(formData[dataKey], dataKey, interview)
-      : formData[dataKey] || null
-  }), {});
-  console.log(result);
-  return result;
+import { Answer } from 'core/models';
+
+export const prepareDataToSaveAnswers = (formData, interview): Array<Answer> => {
+  return keys(formData).map((questionId) => ({
+    question_id: questionId,
+    answer: isArray(formData[questionId])
+      ? prepareArrayData(formData[questionId], questionId, interview)
+      : formData[questionId] || null
+  }));
 };
 
 const prepareArrayData = (formDataArray: Array<boolean>, key: string, interview): Array<string> => {
