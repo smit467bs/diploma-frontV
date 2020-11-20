@@ -3,21 +3,30 @@
 :host {
   height: 100%;
   display: grid;
-  grid-template-areas: "form control" "button control";
-  grid-template-rows: 1fr 40px;
   grid-template-columns: minmax(min-content, 900px) 40px;
   justify-content: center;
   padding: $default_space 50px;
 
-  .form-container {
-    grid-area: form;
+  form {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: 40px 1fr 40px;
+    grid-gap: $default_space;
     overflow-y: auto;
-    margin-bottom: $default_space;
-    padding-right: $default_space / 4;
+
+    .interview-label {
+      font-size: 40px;
+      line-height: 40px;
+      margin: 0;
+    }
 
     .questions {
       display: grid;
       grid-gap: $default_space;
+      align-content: start;
+      padding-right: $default_space / 4;
+      overflow-y: auto;
 
       .question {
         display: grid;
@@ -29,7 +38,7 @@
           grid-gap: $default_space / 4;
         }
 
-        .answer{
+        .answer {
           padding-left: $default_space / 2;
         }
       }
@@ -40,17 +49,16 @@
         }
       }
     }
+
+    .form-button {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: $default_space;
+    }
   }
 
-  .form-button {
-    grid-area: button;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: $default_space;
-  }
 
   .form-control {
-    grid-area: control;
     display: grid;
     align-items: center;
     align-content: center;
