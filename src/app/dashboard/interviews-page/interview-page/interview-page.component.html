@@ -1,8 +1,51 @@
-<div *ngIf="interview; else loader">
-  interview id: {{interview._id}}
-  <br>
-  interview label: {{interview.label}}
+<div *ngIf="interview; else loader" class="form-container custom-scrollbar">
+  <h3 class="interview-label">{{interview.label}}</h3>
+  <form [formGroup]="form">
+    <div class="questions">
+      <ng-container *ngFor="let question of interview.questions; let questionIndex = index">
+
+        <div [ngSwitch]="question.type" class="question form-question-border second-background"
+             [ngClass]="getClasses(question.type)">
+          <ng-container *ngSwitchCase="questionType.CHOICE_ONE">
+            <label class="question-label">{{question.question}}</label>
+            <mat-radio-group class="question-options" [formControlName]="question.id">
+              <mat-radio-button class="example-margin" [value]="option"
+                                *ngFor="let option of question.options">{{option}}</mat-radio-button>
+            </mat-radio-group>
+          </ng-container>
+        </div>
+
+      </ng-container>
+    </div>
+
+  </form>
 </div>
+
+<div *ngIf="isAdmin()" class="form-control">
+  <button color="primary" mat-icon-button (click)="toggleCharts()">
+    <mat-icon matTooltip="Toggle charts">donut_large</mat-icon>
+  </button>
+  <button color="primary" mat-icon-button (click)="downloadReport()">
+    <mat-icon matTooltip="Download report">assignment_returned</mat-icon>
+  </button>
+</div>
+
+<div class="form-button">
+  <button
+    mat-raised-button
+    color="warn"
+    [routerLink]="'/interviews'"
+  >Cancel
+  </button>
+  <button
+    mat-raised-button
+    color="accent"
+    (click)="submitForm()"
+  >Save
+  </button>
+</div>
+
+
 <ng-template #loader>
   <overlay-loader></overlay-loader>
 </ng-template>

@@ -17,3 +17,7 @@ export const copyFormControl = (control: AbstractControl) => {
     return copy;
   }
 };
+
+export const getClasses = (type: string): string => {
+  return type.toLocaleLowerCase().split(' ').join('-');
+};

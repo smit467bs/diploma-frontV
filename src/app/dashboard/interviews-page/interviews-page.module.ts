@@ -14,6 +14,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
+import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatIconModule,
     MatTooltipModule,
     MatDialogModule,
-    MatSelectModule
+    MatSelectModule,
+    MatRadioModule
   ],
   entryComponents: [
     QuestionTypeDialogComponent

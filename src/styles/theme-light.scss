@@ -9,6 +9,7 @@ $light-theme: mat-light-theme($primary-light-palette, $accent-light-palette, $er
 
 .light-theme {
   @include init-theme($light-theme);
+  @include second-background($light-theme, light);
 }
 
 .light-theme-background {

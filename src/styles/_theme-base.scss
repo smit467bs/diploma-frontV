@@ -26,6 +26,18 @@ $success-palette: mat-palette($mat-green, 600);
   background-color: $background-color;
 }
 
+@mixin second-background($theme, $theme-type) {
+  $background: map-get($theme, background);
+  $background-color: map-get($background, background);
+  .second-background {
+    @if ($theme-type == light) {
+      background-color: darken($background-color, 3);
+    } @else {
+      background-color: lighten($background-color, 3);
+    }
+  }
+}
+
 @mixin theme-text($theme) {
   $foreground: map-get($theme, foreground);
   $text: map-get($foreground, text);
@@ -105,15 +117,19 @@ $success-palette: mat-palette($mat-green, 600);
 }
 
 @mixin form-question($theme) {
-  .form-question {
-    @include primary-border($theme);
+  .form-question-border {
+    @include primary-border($theme, 3px, left);
   }
 }
 
-@mixin primary-border($theme) {
+@mixin primary-border($theme, $width: 1px, $position: false) {
   $primary: map-get($theme, primary);
   $primary-color: mat-color($primary);
-  border: 1px solid $primary-color;
+  @if $position {
+    border-#{$position}: $width solid $primary-color;
+  } @else {
+    border: $width solid $primary-color;
+  }
 }
 
 @mixin custom-scrollbar($theme) {

@@ -9,6 +9,7 @@ $dark-theme: mat-dark-theme($primary-dark-palette, $accent-dark-palette, $error-
 
 .dark-theme {
   @include init-theme($dark-theme);
+  @include second-background($dark-theme, dark);
 }
 
 .dark-theme-background {

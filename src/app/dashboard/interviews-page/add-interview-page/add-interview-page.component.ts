@@ -9,7 +9,7 @@ import { isNil } from 'lodash';
 import { MyErrorStateMatcher } from 'core/matcher/error-state-mathcer';
 import { InterviewService } from 'core/services';
 import { FormBaseComponent } from 'shared/components/base';
-import { copyFormControl } from 'core/utils';
+import { copyFormControl, getClasses } from 'core/utils';
 import { QuestionType } from 'core/models/types';
 import { QuestionTypeDialogComponent } from './question-type-dialog';
 
@@ -20,6 +20,7 @@ import { QuestionTypeDialogComponent } from './question-type-dialog';
 })
 export class AddInterviewPageComponent extends FormBaseComponent {
   matcher = new MyErrorStateMatcher();
+  getClasses = getClasses;
 
   constructor(private fb: FormBuilder,
               private router: Router,
