@@ -1,0 +1,14 @@
+<div mat-dialog-content>
+  <p>Select type of question</p>
+  <mat-form-field>
+    <mat-select #questionType [value]="options[0]">
+      <mat-option *ngFor="let option of options" [value]="option">
+        {{option}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="questionType.value">Ok</button>
+</div>

@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { refCount } from 'rxjs/operators';
 
 import { Interview } from './models';
 import { EipState } from '../reducers';
@@ -15,13 +14,11 @@ export class CommonStoreService {
   constructor(private store$: Store<EipState>) {
     this.interviews$ = this.store$.select(
       CommonSelectors.getInterviews
-    ).pipe(
-      refCount()
     );
   }
 
   public initialize(): void {
-    this.store$.dispatch(CommonActions.Initialize());
+    this.store$.dispatch(CommonActions.InitializeInterviews());
   }
 
 }

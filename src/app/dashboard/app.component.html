@@ -1,5 +1,5 @@
 <div [ngClass]="getClassNames()">
-  <app-overlay-loader *ngIf="showOverlay"></app-overlay-loader>
+  <overlay-loader *ngIf="showOverlay"></overlay-loader>
 
   <app-header
     *ngIf="!hasRoute('auth')"

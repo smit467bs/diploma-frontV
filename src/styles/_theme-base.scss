@@ -15,6 +15,8 @@ $success-palette: mat-palette($mat-green, 600);
   @include navbar($theme);
   @include cover($theme);
   @include cart($theme);
+  @include form-question($theme);
+  @include custom-scrollbar($theme);
 }
 
 // mixin for change theme of custom components
@@ -22,6 +24,18 @@ $success-palette: mat-palette($mat-green, 600);
   $background: map-get($theme, background);
   $background-color: map-get($background, background);
   background-color: $background-color;
+}
+
+@mixin second-background($theme, $theme-type) {
+  $background: map-get($theme, background);
+  $background-color: map-get($background, background);
+  .second-background {
+    @if ($theme-type == light) {
+      background-color: darken($background-color, 3);
+    } @else {
+      background-color: lighten($background-color, 3);
+    }
+  }
 }
 
 @mixin theme-text($theme) {
@@ -39,21 +53,19 @@ $success-palette: mat-palette($mat-green, 600);
 }
 
 @mixin loader-overlay($theme) {
-  $primary: map-get($theme, primary);
-  $primary-color: mat-color($primary);
+  $warn: map-get($theme, warn);
+  $warn-color: mat-color($warn);
   .line-preloader {
-    background: linear-gradient(to right, $primary-color, $primary-color);
+    background: linear-gradient(to right, $warn-color, $warn-color);
   }
 }
 
 @mixin navbar($theme) {
   $primary: map-get($theme, primary);
   $primary-color: mat-color($primary);
-  $accent: map-get($theme, accent);
-  $accent-color: mat-color($accent);
   .navbar {
-    background-color: $accent-color;
-    border-right: 1px solid $primary-color;
+    @include theme-background($theme);
+    border-right: 2px solid $primary-color;
   }
 }
 
@@ -96,7 +108,54 @@ $success-palette: mat-palette($mat-green, 600);
   .cart {
     height: 100%;
     width: 100%;
-    border: 1px solid $primary-color;
     padding: 10px;
+    @include primary-border($theme);
+  }
+  .link:hover {
+    color: $primary-color;
+  }
+}
+
+@mixin form-question($theme) {
+  .form-question-border {
+    @include primary-border($theme, 3px, left);
+  }
+}
+
+@mixin primary-border($theme, $width: 1px, $position: false) {
+  $primary: map-get($theme, primary);
+  $primary-color: mat-color($primary);
+  @if $position {
+    border-#{$position}: $width solid $primary-color;
+  } @else {
+    border: $width solid $primary-color;
+  }
+}
+
+@mixin custom-scrollbar($theme) {
+  $primary: map-get($theme, primary);
+  $primary-color: mat-color($primary);
+  .custom-scrollbar {
+    &::-webkit-scrollbar {
+      width: 3px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: #e1e1e1;
+      border-radius: 5px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: $primary-color;
+      border-radius: 5px;
+      max-height: 30px;
+      cursor: pointer;
+      opacity: 0.7;
+
+      &:hover {
+        opacity: 1;
+        cursor: pointer;
+      }
+    }
   }
 }

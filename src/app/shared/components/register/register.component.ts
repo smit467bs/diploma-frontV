@@ -14,7 +14,7 @@ export class RegisterComponent extends AuthBaseComponent {
 
   constructor(private fb: FormBuilder) {
     super();
-    this.authForm = fb.group({
+    this.form = fb.group({
       email: fb.control('', [Validators.required, Validators.email]),
       firstName: fb.control('', [Validators.required]),
       surname: fb.control('', [Validators.required]),
@@ -25,6 +25,6 @@ export class RegisterComponent extends AuthBaseComponent {
   }
 
   submitForm(): void {
-    console.log(this.authForm.value);
+    console.log(this.form.value);
   }
 }

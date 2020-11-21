@@ -1,7 +1,7 @@
 @import '~@angular/material/theming';
 @import 'theme-base';
 
-$primary-dark-palette: mat-palette($mat-cyan, 500);
+$primary-dark-palette: mat-palette($mat-cyan, 400);
 $accent-dark-palette: mat-palette($mat-blue-gray, 600);
 $error-palette: mat-palette($mat-red, 600);
 
@@ -9,8 +9,12 @@ $dark-theme: mat-dark-theme($primary-dark-palette, $accent-dark-palette, $error-
 
 .dark-theme {
   @include init-theme($dark-theme);
+  @include second-background($dark-theme, dark);
 }
 
 .dark-theme-background {
-  @include theme-background($dark-theme)
+  @include theme-background($dark-theme);
+  &.cdk-overlay-container{
+    background-color: transparent;
+  }
 }

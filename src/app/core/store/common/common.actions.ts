@@ -3,8 +3,8 @@ import { Interview } from './models';
 
 const actionGroup = '[COMMON]';
 
-export const INITIALIZE = `${actionGroup} INITIALIZE`;
-export const Initialize = createAction(INITIALIZE);
+export const INITIALIZE_INTERVIEWS = `${actionGroup} INITIALIZE_INTERVIEWS`;
+export const InitializeInterviews = createAction(INITIALIZE_INTERVIEWS);
 
 export const LOAD_INTERVIEWS = `${actionGroup} LOAD_INTERVIEWS`;
 export const LoadInterviews = createAction(LOAD_INTERVIEWS);

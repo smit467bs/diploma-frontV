@@ -13,7 +13,8 @@ import { LoginComponent } from './components/login';
 import { CoverComponent } from './components/cover';
 import { NavbarComponent } from './components/navbar';
 import { OverlayLoaderComponent } from './components/overlay-loader';
-import { CreateButtonComponent } from './components/create-button';
+import { PreviewInterviewComponent } from './components/previrew-interview';
+import { ControlPanelComponent } from './components/control-panel';
 
 @NgModule({
   declarations: [
@@ -23,20 +24,20 @@ import { CreateButtonComponent } from './components/create-button';
     LoginComponent,
     CoverComponent,
     NavbarComponent,
-    CreateButtonComponent
+    PreviewInterviewComponent,
+    ControlPanelComponent
   ],
-    imports: [
-        CommonModule,
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
 
-        FormsModule,
-        ReactiveFormsModule,
-
-        MatInputModule,
-        MatFormFieldModule,
-        MatButtonModule,
-        MatIconModule,
-        RouterModule,
-    ],
+    MatInputModule,
+    MatFormFieldModule,
+    MatButtonModule,
+    MatIconModule,
+    RouterModule,
+  ],
   exports: [
     HeaderComponent,
     OverlayLoaderComponent,
@@ -44,7 +45,8 @@ import { CreateButtonComponent } from './components/create-button';
     LoginComponent,
     CoverComponent,
     NavbarComponent,
-    CreateButtonComponent
+    PreviewInterviewComponent,
+    ControlPanelComponent
   ]
 })
 
