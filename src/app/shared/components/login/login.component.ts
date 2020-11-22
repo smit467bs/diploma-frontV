@@ -13,6 +13,7 @@ import { UserStoreService } from 'core/store/user';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent extends AuthBaseComponent {
+  hidePassword = true;
 
   constructor(private fb: FormBuilder,
               private router: Router,

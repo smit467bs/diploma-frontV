@@ -15,6 +15,8 @@ import { UserStoreService } from 'core/store/user';
 })
 
 export class RegisterComponent extends AuthBaseComponent {
+  hidePassword = true;
+  hideConfirmPassword = true;
 
   constructor(private fb: FormBuilder,
               private authService: AuthService,
