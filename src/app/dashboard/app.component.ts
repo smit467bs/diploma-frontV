@@ -3,7 +3,7 @@ import { Event as RouterEvent, NavigationCancel, NavigationEnd, NavigationError,
 import { OverlayContainer } from '@angular/cdk/overlay';
 
 import { UserStoreService } from 'core/store/user';
-import { LocalStoreService } from 'core/services';
+import { LocalStorageService } from 'core/services';
 import { Theme } from 'core/models/types';
 
 @Component({
@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
   constructor(private router: Router,
               private overlayContainer: OverlayContainer,
               private userStoreService: UserStoreService,
-              private localStoreService: LocalStoreService
+              private localStoreService: LocalStorageService
   ) {
     this.theme = this.localStoreService.getValueFromLocalStorage('theme');
     router.events.subscribe((event: RouterEvent) => {

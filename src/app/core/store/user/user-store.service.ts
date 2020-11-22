@@ -6,6 +6,7 @@ import { EipState } from '../reducers';
 import * as UserSelectors from './user.selectors';
 import * as UserActions from './user.actions';
 import { UserInfo } from './models';
+import { LocalStorageService } from 'core/services';
 
 @Injectable({providedIn: 'root'})
 export class UserStoreService {
@@ -13,7 +14,8 @@ export class UserStoreService {
   public userInfo$: Observable<UserInfo>;
   public token$: Observable<string>;
 
-  constructor(private store$: Store<EipState>) {
+  constructor(private store$: Store<EipState>,
+              private localStorageService: LocalStorageService) {
     this.appLoadState$ = this.store$.select(
       UserSelectors.getAppLoadState
     );
@@ -40,6 +42,7 @@ export class UserStoreService {
   }
 
   public updateToken(token: string): void {
+    this.localStorageService.storeOnLocalStorage('token', token);
     this.store$.dispatch(
       UserActions.updateToken({token})
     );

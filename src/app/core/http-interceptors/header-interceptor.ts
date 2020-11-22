@@ -1,15 +1,19 @@
 import { Injectable } from '@angular/core';
-import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
+import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { UserStoreService } from 'core/store/user';
 import { Logger } from 'core/services';
+import { tap } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class HeaderInterceptor implements HttpInterceptor {
   token: string;
 
-  constructor(private userStoreService: UserStoreService, private logger: Logger) {
+  constructor(private userStoreService: UserStoreService,
+              private logger: Logger,
+              private router: Router) {
     this.userStoreService.token$.subscribe((token) => this.token = token);
   }
 
@@ -24,7 +28,19 @@ export class HeaderInterceptor implements HttpInterceptor {
       }
       headers = headers.set('Authorization', 'Bearer ' + (this.token || ''));
     }
-    return next.handle(req.clone({headers}));
+    return next.handle(req.clone({headers}))
+      .pipe(
+        tap(() => {
+          },
+          (err: any) => {
+            if (err instanceof HttpErrorResponse) {
+              if (err.status !== 401) {
+                return;
+              }
+              this.router.navigate(['auth']);
+            }
+          })
+      );
   }
 
   private needsAuthToken(req: HttpRequest<any>): boolean {

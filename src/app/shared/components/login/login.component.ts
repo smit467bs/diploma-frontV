@@ -5,7 +5,7 @@ import { of } from 'rxjs';
 import { Router } from '@angular/router';
 
 import { AuthBaseComponent } from '../base';
-import { AuthService, LocalStoreService } from 'core/services';
+import { AuthService } from 'core/services';
 import { UserStoreService } from 'core/store/user';
 
 @Component({
@@ -18,7 +18,6 @@ export class LoginComponent extends AuthBaseComponent {
   constructor(private fb: FormBuilder,
               private router: Router,
               private authService: AuthService,
-              private localStoreService: LocalStoreService,
               private userStoreService: UserStoreService) {
     super();
     this.form = fb.group({
@@ -30,9 +29,9 @@ export class LoginComponent extends AuthBaseComponent {
   submitForm(): void {
     this.authService.login(this.form.value)
       .pipe(
-        tap((data) => {
-          this.localStoreService.storeOnLocalStorage('token', data.token);
-          this.userStoreService.loginUser(data);
+        tap(({token, userInfo}) => {
+          this.userStoreService.loginUser(userInfo);
+          this.userStoreService.updateToken(token);
         }),
         tap(() => {
           this.router.navigate(['./interviews']);
@@ -43,7 +42,6 @@ export class LoginComponent extends AuthBaseComponent {
         })
       )
       .subscribe();
-    // console.log(this.form.value);
   }
 
 }

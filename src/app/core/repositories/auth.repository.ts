@@ -17,6 +17,10 @@ export class AuthRepository {
     return this.http.post(`${environment.apiUrl}/auth/register`, body);
   }
 
+  logout(): Observable<any> {
+    return this.http.get(`${environment.apiUrl}/auth/logout`);
+  }
+
   refreshToken(token: string = null): Observable<any> {
     let headers = {};
     if (token) {
@@ -27,7 +31,6 @@ export class AuthRepository {
     const options = {
       headers: new HttpHeaders(headers)
     };
-    console.log({options});
     return this.http.get(`${environment.apiUrl}/auth/refreshToken`, options);
   }
 }

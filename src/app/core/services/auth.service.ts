@@ -12,6 +12,10 @@ export class AuthService {
     return this.authRepository.login(body);
   }
 
+  logout(): Observable<any> {
+    return this.authRepository.logout();
+  }
+
   refreshToken(token: string = null): Observable<any> {
     return this.authRepository.refreshToken(token);
   }
