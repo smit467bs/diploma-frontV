@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { AuthRepository } from '../repositories';
-import { AuthResponse } from 'core/models/responce';
+import { AuthResponse } from 'core/models/response';
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
@@ -11,6 +11,10 @@ export class AuthService {
 
   login(body: any): Observable<AuthResponse> {
     return this.authRepository.login(body);
+  }
+
+  register(body: any): Observable<AuthResponse> {
+    return this.authRepository.register(body);
   }
 
   logout(): Observable<any> {

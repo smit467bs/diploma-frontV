@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { environment } from 'src/environments/environment';
-import { AuthResponse } from 'core/models/responce';
+import { AuthResponse } from 'core/models/response';
 
 @Injectable({providedIn: 'root'})
 export class AuthRepository {

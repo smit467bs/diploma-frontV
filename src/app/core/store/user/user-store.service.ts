@@ -7,7 +7,7 @@ import * as UserSelectors from './user.selectors';
 import * as UserActions from './user.actions';
 import { UserInfo } from './models';
 import { LocalStorageService } from 'core/services';
-import { AuthResponse } from 'core/models/responce';
+import { AuthResponse } from 'core/models/response';
 
 @Injectable({providedIn: 'root'})
 export class UserStoreService {

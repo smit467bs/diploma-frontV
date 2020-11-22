@@ -2,8 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { AbstractControl, FormArray, FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { catchError, first, map } from 'rxjs/operators';
-import { of } from 'rxjs';
+import { first, map } from 'rxjs/operators';
 import { isNil } from 'lodash';
 
 import { MyErrorStateMatcher } from 'core/matcher/error-state-mathcer';
@@ -98,10 +97,6 @@ export class AddInterviewPageComponent extends FormBaseComponent {
         map(() => {
           this.router.navigate(['./interviews']);
         }),
-        catchError(err => {
-          console.log('err', err);
-          return of(err);
-        })
       )
       .subscribe();
   }

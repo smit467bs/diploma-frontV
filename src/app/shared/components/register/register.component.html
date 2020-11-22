@@ -28,19 +28,19 @@
 
   <mat-form-field class="full-width">
     <mat-label>Confirm password</mat-label>
-    <input matInput formControlName="surname">
+    <input matInput formControlName="confirm_password">
     <mat-error
       *ngIf="getControl('confirm_password').hasError('required')"
     >
-      Surname is <strong>required</strong>
+      Confirm password is <strong>required</strong>
     </mat-error>
   </mat-form-field>
 
   <mat-form-field class="full-width">
     <mat-label>First name</mat-label>
-    <input matInput formControlName="firstName">
+    <input matInput formControlName="first_name">
     <mat-error
-      *ngIf="getControl('firstName').hasError('required')"
+      *ngIf="getControl('first_name').hasError('required')"
     >
       First name is <strong>required</strong>
     </mat-error>
@@ -58,23 +58,17 @@
 
 
   <mat-form-field class="full-width">
-    <mat-label>Group</mat-label>
-    <input matInput type="text" formControlName="group">
+    <mat-label>Displayed name</mat-label>
+    <input matInput type="text" formControlName="displayed_name">
     <button
-      *ngIf="getControl('group').value"
+      *ngIf="getControl('displayed_name').value"
       mat-button matSuffix mat-icon-button aria-label="Clear"
-      (click)="getControl('group').setValue('')">
+      (click)="getControl('displayed_name').setValue('')">
       <mat-icon>close</mat-icon>
     </button>
   </mat-form-field>
 
   <button mat-raised-button color="basic" (click)="submitForm()">Sign up</button>
-
-<!--  <div class="social-buttons button-container">-->
-<!--    <button mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">-->
-<!--      <mat-icon>gmail</mat-icon>-->
-<!--    </button>-->
-<!--  </div>-->
 </form>
 
 <app-cover

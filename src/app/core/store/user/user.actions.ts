@@ -1,6 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 
-import { AuthResponse } from 'core/models/responce';
+import { AuthResponse } from 'core/models/response';
 import { UserInfo } from './models';
 
 const actionGroup = '[USER]';

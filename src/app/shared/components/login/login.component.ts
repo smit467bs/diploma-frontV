@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { catchError, tap } from 'rxjs/operators';
-import { of } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
 import { AuthBaseComponent } from '../base';
@@ -35,10 +34,6 @@ export class LoginComponent extends AuthBaseComponent {
         tap(() => {
           this.router.navigate(['./interviews']);
         }),
-        catchError(err => {
-          console.log('err', err);
-          return of(err);
-        })
       )
       .subscribe();
   }
