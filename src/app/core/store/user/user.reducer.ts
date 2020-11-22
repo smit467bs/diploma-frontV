@@ -15,11 +15,11 @@ const userReducer: ActionReducer<UserState> = createReducer(
     ...state,
     appLoaded
   })),
-  on(UserActions.loginUser, (state, {userInfo}) => ({
+  on(UserActions.saveUserInfo, (state, {userInfo}) => ({
     ...state,
     userInfo
   })),
-  on(UserActions.updateToken, (state, {token}) => ({
+  on(UserActions.saveToken, (state, {token}) => ({
     ...state,
     token
   }))

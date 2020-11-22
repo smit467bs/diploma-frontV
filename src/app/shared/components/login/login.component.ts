@@ -29,9 +29,8 @@ export class LoginComponent extends AuthBaseComponent {
   submitForm(): void {
     this.authService.login(this.form.value)
       .pipe(
-        tap(({token, userInfo}) => {
-          this.userStoreService.loginUser(userInfo);
-          this.userStoreService.updateToken(token);
+        tap((authResponse) => {
+          this.userStoreService.loginUser(authResponse);
         }),
         tap(() => {
           this.router.navigate(['./interviews']);

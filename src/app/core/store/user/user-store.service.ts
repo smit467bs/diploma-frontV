@@ -7,6 +7,7 @@ import * as UserSelectors from './user.selectors';
 import * as UserActions from './user.actions';
 import { UserInfo } from './models';
 import { LocalStorageService } from 'core/services';
+import { AuthResponse } from 'core/models/responce';
 
 @Injectable({providedIn: 'root'})
 export class UserStoreService {
@@ -35,16 +36,16 @@ export class UserStoreService {
     );
   }
 
-  public loginUser(userInfo: UserInfo): void {
+  public loginUser(authResponse: AuthResponse): void {
     this.store$.dispatch(
-      UserActions.loginUser({userInfo})
+      UserActions.loginUser({authResponse})
     );
   }
 
   public updateToken(token: string): void {
     this.localStorageService.storeOnLocalStorage('token', token);
     this.store$.dispatch(
-      UserActions.updateToken({token})
+      UserActions.saveToken({token})
     );
   }
 

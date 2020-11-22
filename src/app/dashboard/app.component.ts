@@ -14,6 +14,7 @@ import { Theme } from 'core/models/types';
 export class AppComponent implements OnInit {
   showOverlay: boolean = true;
   theme: Theme = 'light';
+  isPageLoaded = false;
 
   constructor(private router: Router,
               private overlayContainer: OverlayContainer,
@@ -24,6 +25,7 @@ export class AppComponent implements OnInit {
     router.events.subscribe((event: RouterEvent) => {
       this.navigationInterceptor(event);
     });
+    this.userStoreService.token$.subscribe( token => this.isPageLoaded = !!token);
   }
 
   ngOnInit(): void {

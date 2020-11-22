@@ -1,4 +1,6 @@
 import { createAction, props } from '@ngrx/store';
+
+import { AuthResponse } from 'core/models/responce';
 import { UserInfo } from './models';
 
 const actionGroup = '[USER]';
@@ -12,12 +14,18 @@ export const updateLoadState = createAction(
 export const LOGIN_USER = `${actionGroup} LOGIN_USER`;
 export const loginUser = createAction(
   LOGIN_USER,
-  props<{ userInfo: UserInfo }>()
+  props<{ authResponse: AuthResponse }>()
 );
 
-export const UPDATE_TOKEN = `${actionGroup} UPDATE_TOKEN`;
-export const updateToken = createAction(
-  UPDATE_TOKEN,
+export const SAVE_USER_INFO = `${actionGroup} SAVE_USER_INFO`;
+export const saveUserInfo = createAction(
+  SAVE_USER_INFO,
+  props<{userInfo: UserInfo}>()
+);
+
+export const SAVE_TOKEN = `${actionGroup} SAVE_TOKEN`;
+export const saveToken = createAction(
+  SAVE_TOKEN,
   props<{token: string}>()
 );
 

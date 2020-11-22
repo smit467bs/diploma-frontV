@@ -1,8 +1,15 @@
 <app-login
+  *ngIf="isPageLoaded; else loader"
   [activeAuthSection]="activeAuthSection"
   (changeActiveSection)="onChangeActiveSection($event)"
 ></app-login>
+
 <app-register
+  *ngIf="isPageLoaded; else loader"
   [activeAuthSection]="activeAuthSection"
   (changeActiveSection)="onChangeActiveSection($event)"
 ></app-register>
+
+<ng-template #loader>
+  <overlay-loader></overlay-loader>
+</ng-template>
