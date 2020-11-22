@@ -1,37 +1,42 @@
-import { merge } from 'rxjs';
-import { first, map, tap } from 'rxjs/operators';
+import { merge, of } from 'rxjs';
+import { catchError, first, map, tap } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 
 import { version as APP_VERSION } from '../../package.json';
 import { AuthService, LocalStoreService } from './core/services';
-import { EipState } from './core/store/reducers';
-import { UserStoreService } from './core/store/user/user-store.service';
+import { EipState } from 'core/store/reducers';
+import { UserStoreService } from 'core/store/user';
 
 export const APP_INITIALIZER_DEPS = [
   Store,
   AuthService,
   UserStoreService,
-  // LocalStoreService
+  LocalStoreService
 ];
 
 export function appInitializerFactory(
   store: Store<EipState>,
   authService: AuthService,
   userStoreService: UserStoreService,
-  // localStoreService: LocalStoreService
+  localStoreService: LocalStoreService
 ): () => void {
   console.log(`app version: ${APP_VERSION} ...`);
-  // const theme = localStoreService.getValueFromLocalStorage('theme');
-  // document.querySelector('body').classList.add(`${theme}-theme`, `${theme}-theme-background`);
-
+  const token = localStoreService.getValueFromLocalStorage('token') || '';
   return () => merge(
-    authService.authUser()
+    authService.refreshToken(token)
       .pipe(
-        tap(console.log),
+        tap((data) => {
+          localStoreService.storeOnLocalStorage('token', data.token);
+          userStoreService.loginUser(data);
+          userStoreService.updateToken(data.token);
+        }),
+        catchError(err => {
+          console.log(err);
+          return of(err);
+        }),
         first(),
-      ),
-  )
-    .pipe(
+      )
+  ).pipe(
       first(),
       map(() => userStoreService.changeLoadState(true))
     ).toPromise();

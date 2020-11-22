@@ -1,14 +1,18 @@
 import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
-import { delay } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+
+import { AuthRepository } from '../repositories';
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
-  constructor() {
+  constructor(private authRepository: AuthRepository) {
   }
 
-  authUser() {
-    return of({firstName: 'John', surname: 'Doe', token: 'blablabla'})
-      .pipe(delay(500));
+  login(body: any): Observable<any> {
+    return this.authRepository.login(body);
+  }
+
+  refreshToken(token: string = null): Observable<any> {
+    return this.authRepository.refreshToken(token);
   }
 }
