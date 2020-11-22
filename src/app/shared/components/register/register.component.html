@@ -18,12 +18,13 @@
 
   <mat-form-field class="full-width">
     <mat-label>Password</mat-label>
-    <input matInput formControlName="password" [type]="hidePassword ? 'password' : 'text'">
+    <input matInput formControlName="password" [errorStateMatcher]="crossMatcher" [type]="hidePassword ? 'password' : 'text'">
     <button mat-icon-button matSuffix
             type="button"
             (click)="hidePassword = !hidePassword"
             [attr.aria-label]="'Hide password'"
             [attr.aria-pressed]="hidePassword"
+            tabindex="-1"
     >
       <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
     </button>
@@ -32,30 +33,50 @@
     >
       Password is <strong>required</strong>
     </mat-error>
+    <mat-error
+      *ngIf="getControl('password').hasError('minlength')"
+    >
+      Password should contain <strong>minimum</strong> 8 charters
+    </mat-error>
+    <mat-error
+      *ngIf="form.hasError('passwordShouldMatch')"
+    >
+      Password & confirm password should <strong>match</strong>
+    </mat-error>
   </mat-form-field>
 
   <mat-form-field class="full-width">
     <mat-label>Confirm password</mat-label>
-    <input matInput formControlName="confirm_password" [type]="hideConfirmPassword ? 'password' : 'text'">
+    <input matInput formControlName="confirm_password" [errorStateMatcher]="crossMatcher" [type]="hideConfirmPassword ? 'password' : 'text'">
     <button mat-icon-button matSuffix
             type="button"
             (click)="hideConfirmPassword = !hideConfirmPassword"
             [attr.aria-label]="'Hide confirm password'"
             [attr.aria-pressed]="hideConfirmPassword"
+            tabindex="-1"
     >
       <mat-icon>{{hideConfirmPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
     </button>
-
     <mat-error
       *ngIf="getControl('confirm_password').hasError('required')"
     >
       Confirm password is <strong>required</strong>
     </mat-error>
+    <mat-error
+      *ngIf="getControl('confirm_password').hasError('minlength')"
+    >
+      Confirm password should contain <strong>minimum</strong> 8 charters
+    </mat-error>
+    <mat-error
+      *ngIf="form.hasError('passwordShouldMatch')"
+    >
+      Confirm password & password should <strong>match</strong>
+    </mat-error>
   </mat-form-field>
 
   <mat-form-field class="full-width">
     <mat-label>First name</mat-label>
-    <input matInput formControlName="first_name">
+    <input matInput formControlName="first_name" [errorStateMatcher]="matcher">
     <mat-error
       *ngIf="getControl('first_name').hasError('required')"
     >
@@ -65,7 +86,7 @@
 
   <mat-form-field class="full-width">
     <mat-label>Surname</mat-label>
-    <input matInput formControlName="surname">
+    <input matInput formControlName="surname" [errorStateMatcher]="matcher">
     <mat-error
       *ngIf="getControl('surname').hasError('required')"
     >
@@ -76,13 +97,12 @@
 
   <mat-form-field class="full-width">
     <mat-label>Displayed name</mat-label>
-    <input matInput type="text" formControlName="displayed_name">
-    <button
-      *ngIf="getControl('displayed_name').value"
-      mat-button matSuffix mat-icon-button aria-label="Clear"
-      (click)="getControl('displayed_name').setValue('')">
-      <mat-icon>close</mat-icon>
-    </button>
+    <input matInput type="text" formControlName="displayed_name" [errorStateMatcher]="matcher">
+    <mat-error
+      *ngIf="getControl('displayed_name').hasError('required')"
+    >
+      Displayed name is <strong>required</strong>
+    </mat-error>
   </mat-form-field>
 
   <button mat-raised-button color="basic" (click)="submitForm()">Sign up</button>

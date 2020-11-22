@@ -6,6 +6,7 @@ import { tap } from 'rxjs/operators';
 import { AuthBaseComponent } from '../base';
 import { AuthService } from 'core/services';
 import { UserStoreService } from 'core/store/user';
+import { PasswordValidators } from 'core/validators';
 
 @Component({
   selector: 'app-register',
@@ -29,21 +30,22 @@ export class RegisterComponent extends AuthBaseComponent {
       surname: fb.control('', [Validators.required]),
       password: fb.control('', [Validators.required, Validators.minLength(8)]),
       confirm_password: fb.control('', [Validators.required, Validators.minLength(8)]),
-      displayed_name: fb.control('')
-    });
+      displayed_name: fb.control('', [Validators.required])
+    }, {validators: [PasswordValidators.passwordShouldMatch]});
   }
 
   submitForm(): void {
-    this.authService.register(this.form.value)
-      .pipe(
-        tap((authResponse) => {
-          this.userStoreService.loginUser(authResponse);
-        }),
-        tap(() => {
-          this.router.navigate(['./interviews']);
-        }),
-      )
-      .subscribe();
-    console.log(this.form.value);
+    if (this.form.valid) {
+      this.authService.register(this.form.value)
+        .pipe(
+          tap((authResponse) => {
+            this.userStoreService.loginUser(authResponse);
+          }),
+          tap(() => {
+            this.router.navigate(['./interviews']);
+          }),
+        )
+        .subscribe();
+    }
   }
 }

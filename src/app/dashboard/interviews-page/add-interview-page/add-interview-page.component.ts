@@ -5,7 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { first, map } from 'rxjs/operators';
 import { isNil } from 'lodash';
 
-import { MyErrorStateMatcher } from 'core/matcher/error-state-mathcer';
+import { FieldErrorStateMatcher } from 'core/validators/error-state-mathcer';
 import { InterviewService } from 'core/services';
 import { FormBaseComponent } from 'shared/components/base';
 import { copyFormControl, getClasses } from 'core/utils';
@@ -18,7 +18,7 @@ import { QuestionTypeDialogComponent } from './question-type-dialog';
   styleUrls: ['./add-interview-page.component.scss']
 })
 export class AddInterviewPageComponent extends FormBaseComponent {
-  matcher = new MyErrorStateMatcher();
+  matcher = new FieldErrorStateMatcher();
   getClasses = getClasses;
 
   @ViewChild('addInterviewForm') ngForm: NgForm;
