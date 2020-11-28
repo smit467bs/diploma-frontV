@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { filter, map, switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
-import { InterviewService } from 'core/services';
+import { AnswerService, InterviewService } from 'core/services';
 import { Interview } from 'core/store/common/models';
 import { FormArray, FormBuilder, FormControl } from '@angular/forms';
 import { FormBaseComponent } from 'shared/components/base';
@@ -24,8 +24,9 @@ export class InterviewPageComponent extends FormBaseComponent implements OnInit 
   getClasses = getClasses;
 
   constructor(private activatedRoute: ActivatedRoute,
+              private fb: FormBuilder,
               private interviewService: InterviewService,
-              private fb: FormBuilder
+              private answerService: AnswerService
   ) {
     super();
     this.id$ = this.activatedRoute.paramMap.pipe(
@@ -58,12 +59,19 @@ export class InterviewPageComponent extends FormBaseComponent implements OnInit 
   }
 
   submitForm(): void {
-    const request: SaveInterviewAnswers = {
+    const requestBody: SaveInterviewAnswers = {
       interview_id: this.interview._id,
-      user_id: null,
       answers: prepareDataToSaveAnswers(this.form.value, this.interview)
     };
-    console.log(request);
+    this.answerService.saveAnswer(requestBody).subscribe(
+      next => {
+        console.log(next);
+      },
+      err => {
+        console.log(err);
+      }
+    );
+    // console.log(requestBody);
   }
 
   downloadReport(): void {
