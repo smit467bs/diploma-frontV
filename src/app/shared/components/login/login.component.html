@@ -34,6 +34,11 @@
     </mat-error>
   </mat-form-field>
 
+
+  <div class="server-errors">
+    <mat-error>{{errorMessage}}</mat-error>
+  </div>
+
   <button mat-raised-button color="basic" (click)="submitForm()">Sign in</button>
 
 </form>
@@ -41,7 +46,7 @@
 <app-cover
   *ngIf="activeAuthSection !== 'IN'"
   [text]="'Sign in'"
-  [section] = "'IN'"
+  [section]="'IN'"
   (sectionChange)="onSectionChange($event)"
 >
 </app-cover>

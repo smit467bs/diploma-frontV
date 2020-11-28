@@ -14,6 +14,7 @@ import { UserStoreService } from 'core/store/user';
 })
 export class LoginComponent extends AuthBaseComponent {
   hidePassword = true;
+  errorMessage: string;
 
   constructor(private fb: FormBuilder,
               private router: Router,
@@ -32,11 +33,20 @@ export class LoginComponent extends AuthBaseComponent {
         tap((authResponse) => {
           this.userStoreService.loginUser(authResponse);
         }),
-        tap(() => {
-          this.router.navigate(['./interviews']);
-        }),
       )
-      .subscribe();
+      .subscribe(
+        () => {
+          this.router.navigate(['./interviews']);
+        },
+        (err => {
+          console.log(err);
+          if (err.status === 403){
+            this.errorMessage = 'Invalid login or password';
+          } else{
+            this.errorMessage = err.message;
+          }
+        })
+      );
   }
 
 }
