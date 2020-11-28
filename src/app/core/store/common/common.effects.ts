@@ -9,7 +9,6 @@ import { InterviewService } from 'core/services';
 
 @Injectable()
 export class CommonEffects {
-
   initialize$: Observable<Action>;
   loadInterviews$: Observable<Action>;
 

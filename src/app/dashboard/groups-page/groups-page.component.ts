@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./groups-page.component.scss']
 })
 export class GroupsPageComponent {
-
+  constructor() {
+    document.cookie = 'user=John';
+  }
 }

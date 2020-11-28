@@ -2,7 +2,7 @@ import { Inject, Injectable } from '@angular/core';
 import { LOCAL_STORAGE, StorageService } from 'ngx-webstorage-service';
 
 @Injectable({providedIn: 'root'})
-export class LocalStoreService {
+export class LocalStorageService {
 
   constructor(@Inject(LOCAL_STORAGE) private storage: StorageService) {
   }

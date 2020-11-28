@@ -18,29 +18,67 @@
 
   <mat-form-field class="full-width">
     <mat-label>Password</mat-label>
-    <input matInput formControlName="password">
+    <input matInput formControlName="password" [errorStateMatcher]="crossMatcher" [type]="hidePassword ? 'password' : 'text'">
+    <button mat-icon-button matSuffix
+            type="button"
+            (click)="hidePassword = !hidePassword"
+            [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hidePassword"
+            tabindex="-1"
+    >
+      <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
     <mat-error
       *ngIf="getControl('password').hasError('required')"
     >
       Password is <strong>required</strong>
     </mat-error>
+    <mat-error
+      *ngIf="getControl('password').hasError('minlength')"
+    >
+      Password should contain <strong>minimum</strong> 8 charters
+    </mat-error>
+    <mat-error
+      *ngIf="form.hasError('passwordShouldMatch')"
+    >
+      Password & confirm password should <strong>match</strong>
+    </mat-error>
   </mat-form-field>
 
   <mat-form-field class="full-width">
     <mat-label>Confirm password</mat-label>
-    <input matInput formControlName="surname">
+    <input matInput formControlName="confirm_password" [errorStateMatcher]="crossMatcher" [type]="hideConfirmPassword ? 'password' : 'text'">
+    <button mat-icon-button matSuffix
+            type="button"
+            (click)="hideConfirmPassword = !hideConfirmPassword"
+            [attr.aria-label]="'Hide confirm password'"
+            [attr.aria-pressed]="hideConfirmPassword"
+            tabindex="-1"
+    >
+      <mat-icon>{{hideConfirmPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
     <mat-error
       *ngIf="getControl('confirm_password').hasError('required')"
     >
-      Surname is <strong>required</strong>
+      Confirm password is <strong>required</strong>
+    </mat-error>
+    <mat-error
+      *ngIf="getControl('confirm_password').hasError('minlength')"
+    >
+      Confirm password should contain <strong>minimum</strong> 8 charters
+    </mat-error>
+    <mat-error
+      *ngIf="form.hasError('passwordShouldMatch')"
+    >
+      Confirm password & password should <strong>match</strong>
     </mat-error>
   </mat-form-field>
 
   <mat-form-field class="full-width">
     <mat-label>First name</mat-label>
-    <input matInput formControlName="firstName">
+    <input matInput formControlName="first_name" [errorStateMatcher]="matcher">
     <mat-error
-      *ngIf="getControl('firstName').hasError('required')"
+      *ngIf="getControl('first_name').hasError('required')"
     >
       First name is <strong>required</strong>
     </mat-error>
@@ -48,7 +86,7 @@
 
   <mat-form-field class="full-width">
     <mat-label>Surname</mat-label>
-    <input matInput formControlName="surname">
+    <input matInput formControlName="surname" [errorStateMatcher]="matcher">
     <mat-error
       *ngIf="getControl('surname').hasError('required')"
     >
@@ -58,29 +96,22 @@
 
 
   <mat-form-field class="full-width">
-    <mat-label>Group</mat-label>
-    <input matInput type="text" formControlName="group">
-    <button
-      *ngIf="getControl('group').value"
-      mat-button matSuffix mat-icon-button aria-label="Clear"
-      (click)="getControl('group').setValue('')">
-      <mat-icon>close</mat-icon>
-    </button>
+    <mat-label>Displayed name</mat-label>
+    <input matInput type="text" formControlName="displayed_name" [errorStateMatcher]="matcher">
+    <mat-error
+      *ngIf="getControl('displayed_name').hasError('required')"
+    >
+      Displayed name is <strong>required</strong>
+    </mat-error>
   </mat-form-field>
 
   <button mat-raised-button color="basic" (click)="submitForm()">Sign up</button>
-
-<!--  <div class="social-buttons button-container">-->
-<!--    <button mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">-->
-<!--      <mat-icon>gmail</mat-icon>-->
-<!--    </button>-->
-<!--  </div>-->
 </form>
 
 <app-cover
   *ngIf="activeAuthSection !== 'UP'"
   [text]="'Sign up'"
-  [section] = "'UP'"
+  [section]="'UP'"
   (sectionChange)="onSectionChange($event)"
 >
 </app-cover>

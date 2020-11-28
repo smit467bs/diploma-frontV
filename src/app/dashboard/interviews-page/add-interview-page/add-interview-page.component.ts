@@ -2,11 +2,10 @@ import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { AbstractControl, FormArray, FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { catchError, first, map } from 'rxjs/operators';
-import { of } from 'rxjs';
+import { first, map } from 'rxjs/operators';
 import { isNil } from 'lodash';
 
-import { MyErrorStateMatcher } from 'core/matcher/error-state-mathcer';
+import { FieldErrorStateMatcher } from 'core/validators/error-state-mathcer';
 import { InterviewService } from 'core/services';
 import { FormBaseComponent } from 'shared/components/base';
 import { copyFormControl, getClasses } from 'core/utils';
@@ -19,7 +18,7 @@ import { QuestionTypeDialogComponent } from './question-type-dialog';
   styleUrls: ['./add-interview-page.component.scss']
 })
 export class AddInterviewPageComponent extends FormBaseComponent {
-  matcher = new MyErrorStateMatcher();
+  matcher = new FieldErrorStateMatcher();
   getClasses = getClasses;
 
   @ViewChild('addInterviewForm') ngForm: NgForm;
@@ -98,10 +97,6 @@ export class AddInterviewPageComponent extends FormBaseComponent {
         map(() => {
           this.router.navigate(['./interviews']);
         }),
-        catchError(err => {
-          console.log('err', err);
-          return of(err);
-        })
       )
       .subscribe();
   }

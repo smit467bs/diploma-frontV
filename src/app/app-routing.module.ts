@@ -12,7 +12,9 @@ const routes: Routes = [
     path: 'groups',
     loadChildren: () => import('./dashboard/groups-page/groups-page.module').then(m => m.GroupsPageModule)
   },
-  {path: '', redirectTo: '/interviews', pathMatch: 'full'}
+  {path: '', redirectTo: '/interviews', pathMatch: 'full'},
+  {path: 'login', redirectTo: '/auth', pathMatch: 'full'},
+  {path: 'register', redirectTo: '/auth', pathMatch: 'full'}
 ];
 
 @NgModule({

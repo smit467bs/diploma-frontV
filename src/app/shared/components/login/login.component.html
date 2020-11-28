@@ -18,13 +18,26 @@
 
   <mat-form-field class="full-width">
     <mat-label>Password</mat-label>
-    <input matInput formControlName="password">
+    <input matInput formControlName="password" [type]="hidePassword ? 'password' : 'text'">
+    <button mat-icon-button matSuffix
+            type="button"
+            (click)="hidePassword = !hidePassword"
+            [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hidePassword"
+    >
+      <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
     <mat-error
       *ngIf="getControl('password').hasError('required')"
     >
       Password is <strong>required</strong>
     </mat-error>
   </mat-form-field>
+
+
+  <div class="server-errors">
+    <mat-error>{{errorMessage}}</mat-error>
+  </div>
 
   <button mat-raised-button color="basic" (click)="submitForm()">Sign in</button>
 
@@ -33,7 +46,7 @@
 <app-cover
   *ngIf="activeAuthSection !== 'IN'"
   [text]="'Sign in'"
-  [section] = "'IN'"
+  [section]="'IN'"
   (sectionChange)="onSectionChange($event)"
 >
 </app-cover>

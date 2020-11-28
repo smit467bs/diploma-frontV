@@ -1,11 +1,13 @@
 import { AbstractControl, FormGroup } from '@angular/forms';
 
-import { MyErrorStateMatcher } from 'core/matcher/error-state-mathcer';
+import { FieldErrorStateMatcher } from 'core/validators/error-state-mathcer';
+import { CrossFieldErrorStateMatcher } from 'core/validators';
 
 export class FormBaseComponent {
   form: FormGroup;
 
-  matcher = new MyErrorStateMatcher();
+  matcher = new FieldErrorStateMatcher();
+  crossMatcher = new CrossFieldErrorStateMatcher();
 
   getControl(controlName: string): AbstractControl | null {
     return this.form.get(controlName);

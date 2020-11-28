@@ -3,7 +3,7 @@ import { Event as RouterEvent, NavigationCancel, NavigationEnd, NavigationError,
 import { OverlayContainer } from '@angular/cdk/overlay';
 
 import { UserStoreService } from 'core/store/user';
-import { LocalStoreService } from 'core/services';
+import { LocalStorageService } from 'core/services';
 import { Theme } from 'core/models/types';
 
 @Component({
@@ -14,16 +14,18 @@ import { Theme } from 'core/models/types';
 export class AppComponent implements OnInit {
   showOverlay: boolean = true;
   theme: Theme = 'light';
+  isPageLoaded = false;
 
   constructor(private router: Router,
               private overlayContainer: OverlayContainer,
               private userStoreService: UserStoreService,
-              private localStoreService: LocalStoreService
+              private localStoreService: LocalStorageService
   ) {
     this.theme = this.localStoreService.getValueFromLocalStorage('theme');
     router.events.subscribe((event: RouterEvent) => {
       this.navigationInterceptor(event);
     });
+    this.userStoreService.token$.subscribe( token => this.isPageLoaded = !!token);
   }
 
   ngOnInit(): void {
