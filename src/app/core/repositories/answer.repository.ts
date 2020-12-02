@@ -10,6 +10,6 @@ export class AnswerRepository {
   }
 
   saveAnswer(body: any): Observable<any> {
-    return this.http.post<any>(`${environment.apiUrl}/answer`, body);
+    return this.http.post<any>(`${environment.apiUrl}/answers`, body);
   }
 }

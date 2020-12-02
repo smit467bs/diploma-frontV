@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 
 import { Logger } from 'core/services';
 import { CommonStoreService } from 'core/store/common';
-import { Interview } from 'core/store/common/models';
+import { PreviewInterview } from 'core/store/common/models';
 import { UserInfo } from 'core/store/user/models';
 import { UserStoreService } from 'core/store/user';
 
@@ -13,7 +13,7 @@ import { UserStoreService } from 'core/store/user';
   styleUrls: ['./preview-interviews-page.component.scss']
 })
 export class PreviewInterviewsPageComponent implements OnInit {
-  interviews$: Observable<Array<Interview>>;
+  interviews$: Observable<Array<PreviewInterview>>;
 
   user$: Observable<UserInfo>;
 
