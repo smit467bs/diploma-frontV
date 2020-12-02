@@ -4,12 +4,12 @@ import { filter, map, switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
 import { AnswerService, InterviewService } from 'core/services';
-import { Interview } from 'core/store/common/models';
 import { FormArray, FormBuilder, FormControl } from '@angular/forms';
 import { FormBaseComponent } from 'shared/components/base';
 import { QuestionType } from 'core/models/types';
 import { getClasses, prepareDataToSaveAnswers } from 'core/utils';
 import { SaveInterviewAnswers } from 'core/models/request';
+import { Interview } from 'core/models/client';
 
 @Component({
   selector: 'interview-page',
@@ -20,7 +20,7 @@ export class InterviewPageComponent extends FormBaseComponent implements OnInit 
   id$: Observable<string>;
   interview: Interview;
   answer: any;
-  
+
   questionType = QuestionType;
   getClasses = getClasses;
 

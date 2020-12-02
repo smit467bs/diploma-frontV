@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { Interview } from 'core/store/common/models';
-import { Router } from '@angular/router';
+import { PreviewInterview } from 'core/store/common/models';
 
 @Component({
   selector: 'app-preview-interview',
@@ -10,11 +9,11 @@ import { Router } from '@angular/router';
 })
 export class PreviewInterviewComponent {
   @Input()
-  interview: Interview;
+  interview: PreviewInterview;
 
   @Input()
   isUserAdmin: boolean;
 
-  constructor(private router: Router) {
+  constructor() {
   }
 }

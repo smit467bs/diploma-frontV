@@ -7,7 +7,7 @@
   <app-preview-interview
     *ngFor="let interview of interviews$ | async"
     [interview]="interview"
-    [isUserAdmin]="interview.admin === user._id"
+    [isUserAdmin]="interview.admin._id === user._id"
   >
   </app-preview-interview>
 </div>
