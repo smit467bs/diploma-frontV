@@ -12,10 +12,9 @@ export class PreviewInterviewComponent {
   @Input()
   interview: Interview;
 
-  constructor(private router: Router) {
-  }
+  @Input()
+  isUserAdmin: boolean;
 
-  goToInterview(){
-    this.router.navigate(['/interviews', this.interview._id]);
+  constructor(private router: Router) {
   }
 }

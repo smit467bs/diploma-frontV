@@ -5,11 +5,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-
-import { SharedModule } from 'shared/shared.module';
-import { PreviewInterviewsPageComponent } from './preview-interviews-page';
-import { AddInterviewPageComponent, QuestionTypeDialogComponent } from './add-interview-page';
-import { InterviewPageComponent } from './interview-page';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -17,18 +12,26 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 
+import { SharedModule } from 'shared/shared.module';
+import { PreviewInterviewsPageComponent } from './preview-interviews-page';
+import { AddInterviewPageComponent, QuestionTypeDialogComponent } from './add-interview-page';
+import { InterviewPageComponent } from './interview-page';
+import { InterviewChartsPageComponent } from './interview-charts-page';
+
 @NgModule({
   declarations: [
     PreviewInterviewsPageComponent,
     AddInterviewPageComponent,
     InterviewPageComponent,
+    InterviewChartsPageComponent,
     QuestionTypeDialogComponent
   ],
   imports: [
     RouterModule.forChild([
       {path: '', component: PreviewInterviewsPageComponent},
       {path: 'add', component: AddInterviewPageComponent},
-      {path: ':id', component: InterviewPageComponent}
+      {path: 'charts/:id', component: InterviewChartsPageComponent},
+      {path: ':id', component: InterviewPageComponent},
     ]),
     CommonModule,
     SharedModule,

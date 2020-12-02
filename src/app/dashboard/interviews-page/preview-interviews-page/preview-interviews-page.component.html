@@ -1,4 +1,4 @@
-<div class="preview-interview-container module">
+<div class="preview-interview-container module" *ngIf="user$ | async as user">
   <button
     mat-raised-button
     color="accent"
@@ -7,6 +7,7 @@
   <app-preview-interview
     *ngFor="let interview of interviews$ | async"
     [interview]="interview"
+    [isUserAdmin]="interview.admin === user._id"
   >
   </app-preview-interview>
 </div>

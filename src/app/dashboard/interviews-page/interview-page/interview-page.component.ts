@@ -19,7 +19,8 @@ import { SaveInterviewAnswers } from 'core/models/request';
 export class InterviewPageComponent extends FormBaseComponent implements OnInit {
   id$: Observable<string>;
   interview: Interview;
-
+  answer: any;
+  
   questionType = QuestionType;
   getClasses = getClasses;
 

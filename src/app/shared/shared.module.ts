@@ -15,6 +15,7 @@ import { NavbarComponent } from './components/navbar';
 import { OverlayLoaderComponent } from './components/overlay-loader';
 import { PreviewInterviewComponent } from './components/previrew-interview';
 import { ControlPanelComponent } from './components/control-panel';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -27,17 +28,18 @@ import { ControlPanelComponent } from './components/control-panel';
     PreviewInterviewComponent,
     ControlPanelComponent
   ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
+    imports: [
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
 
-    MatInputModule,
-    MatFormFieldModule,
-    MatButtonModule,
-    MatIconModule,
-    RouterModule,
-  ],
+        MatInputModule,
+        MatFormFieldModule,
+        MatButtonModule,
+        MatIconModule,
+        RouterModule,
+        MatTooltipModule,
+    ],
   exports: [
     HeaderComponent,
     OverlayLoaderComponent,

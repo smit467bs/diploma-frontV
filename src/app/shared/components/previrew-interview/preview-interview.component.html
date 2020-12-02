@@ -1,6 +1,14 @@
 <div
   class="cart preview-interview"
-  (click)="goToInterview()"
+  [routerLink]="['/interviews', interview._id]"
 >
-  <span  class="preview-interview-label link">{{interview.label}}</span>
+  <div class="control-panel" *ngIf="isUserAdmin">
+    <button mat-icon-button [routerLink]="['/interviews/charts', interview._id]">
+      <mat-icon matTooltip="Interview charts">pie_chart</mat-icon>
+    </button>
+    <button mat-icon-button [routerLink]="['/interviews/edit', interview._id]">
+      <mat-icon matTooltip="Edit interview">edit</mat-icon>
+    </button>
+  </div>
+  <span class="preview-interview-label link">{{interview.label}}</span>
 </div>
