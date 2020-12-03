@@ -1,8 +1,7 @@
 <div
   class="cart preview-interview"
-  [routerLink]="['/interviews', interview._id]"
 >
-  <div class="control-panel" *ngIf="isUserAdmin">
+  <div class="preview-interview-control control-panel" *ngIf="isUserAdmin">
     <button mat-icon-button [routerLink]="['/interviews/charts', interview._id]">
       <mat-icon matTooltip="Interview charts">pie_chart</mat-icon>
     </button>
@@ -10,5 +9,12 @@
       <mat-icon matTooltip="Edit interview">edit</mat-icon>
     </button>
   </div>
-  <span class="preview-interview-label link">{{interview.label}}</span>
+  <div class="preview-interview-label link"
+       [routerLink]="['/interviews', interview._id]">{{interview.label}}</div>
+  <div class="preview-interview-info">
+    <div class="deadline">11.12.2020</div>
+    <div class="author">
+      {{interview.admin.first_name}} {{interview.admin.surname}}
+    </div>
+  </div>
 </div>

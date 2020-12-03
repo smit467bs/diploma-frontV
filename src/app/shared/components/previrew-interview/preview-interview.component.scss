@@ -1,10 +1,35 @@
 .preview-interview {
-  &-label {
-    cursor: pointer;
-    font-size: 1.5rem;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-areas: "control" "label" "info";
+  align-items: center;
+
+  &-control {
+    grid-area: control;
   }
 
-  .control-panel{
+  &-label {
+    grid-area: label;
+    cursor: pointer;
+    font-size: 1.5rem;
+
+  }
+
+  .link:focus {
+    outline: 0;
+  }
+
+  &-info {
+    grid-area: info;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-self: end;
+    .author{
+      text-align: right;
+    }
+  }
+
+  .control-panel {
     display: grid;
     grid-auto-flow: column;
     justify-content: end;

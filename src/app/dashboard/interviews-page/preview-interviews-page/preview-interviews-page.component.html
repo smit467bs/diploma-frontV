@@ -3,6 +3,7 @@
     mat-raised-button
     color="accent"
     [routerLink]="['add']"
+    class="add"
   >Add</button>
   <app-preview-interview
     *ngFor="let interview of interviews$ | async"
