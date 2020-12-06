@@ -17,6 +17,7 @@ import { PreviewInterviewsPageComponent } from './preview-interviews-page';
 import { AddInterviewPageComponent, QuestionTypeDialogComponent } from './add-interview-page';
 import { InterviewPageComponent } from './interview-page';
 import { InterviewChartsPageComponent } from './interview-charts-page';
+import { PieChartModule } from '@swimlane/ngx-charts';
 
 @NgModule({
   declarations: [
@@ -26,26 +27,27 @@ import { InterviewChartsPageComponent } from './interview-charts-page';
     InterviewChartsPageComponent,
     QuestionTypeDialogComponent
   ],
-  imports: [
-    RouterModule.forChild([
-      {path: '', component: PreviewInterviewsPageComponent},
-      {path: 'add', component: AddInterviewPageComponent},
-      {path: 'charts/:id', component: InterviewChartsPageComponent},
-      {path: ':id', component: InterviewPageComponent},
-    ]),
-    CommonModule,
-    SharedModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatIconModule,
-    MatTooltipModule,
-    MatDialogModule,
-    MatSelectModule,
-    MatRadioModule,
-    MatCheckboxModule
-  ],
+    imports: [
+        RouterModule.forChild([
+            {path: '', component: PreviewInterviewsPageComponent},
+            {path: 'add', component: AddInterviewPageComponent},
+            {path: 'charts/:id', component: InterviewChartsPageComponent},
+            {path: ':id', component: InterviewPageComponent},
+        ]),
+        CommonModule,
+        SharedModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule,
+        MatIconModule,
+        MatTooltipModule,
+        MatDialogModule,
+        MatSelectModule,
+        MatRadioModule,
+        MatCheckboxModule,
+        PieChartModule
+    ],
   entryComponents: [
     QuestionTypeDialogComponent
   ],

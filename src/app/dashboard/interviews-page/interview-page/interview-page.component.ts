@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { filter, map, switchMap } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
 import { AnswerService, InterviewService } from 'core/services';
 import { FormArray, FormBuilder, FormControl } from '@angular/forms';
 import { FormBaseComponent } from 'shared/components/base';
 import { QuestionType } from 'core/models/types';
-import { getClasses, prepareDataToSaveAnswers } from 'core/utils';
+import { getClasses, getRouteParam$, prepareDataToSaveAnswers } from 'core/utils';
 import { SaveInterviewAnswers } from 'core/models/request';
 import { Interview } from 'core/models/client';
 
@@ -30,10 +30,7 @@ export class InterviewPageComponent extends FormBaseComponent implements OnInit 
               private answerService: AnswerService
   ) {
     super();
-    this.id$ = this.activatedRoute.paramMap.pipe(
-      filter(paramMap => !!paramMap.get('id')),
-      map(paramMap => paramMap.get('id'))
-    );
+    this.id$ = getRouteParam$(this.activatedRoute, 'id');
   }
 
   ngOnInit(): void {
