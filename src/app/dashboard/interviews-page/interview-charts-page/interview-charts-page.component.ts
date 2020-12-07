@@ -45,14 +45,8 @@ export class InterviewChartsPageComponent implements OnInit {
 
   }
 
-
   getQuestionStatistic(id: string): Array<{ name: string, value: number }> {
     return this.answersStatistic.find(({question_id}) => question_id === id).answers;
   }
-
-  get templateRows(): string {
-    return 'repeat(' + this.interview.questions.length + 2 + ' 60%)';
-  }
-
 
 }

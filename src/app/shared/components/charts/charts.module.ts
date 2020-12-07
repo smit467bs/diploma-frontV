@@ -1,17 +1,21 @@
 import { NgModule } from '@angular/core';
-import { PieChartModule } from '@swimlane/ngx-charts';
+import { BarChartModule, PieChartModule } from '@swimlane/ngx-charts';
 
-import { PieChartComponent } from 'shared/components/charts/pie-chart';
+import { PieChartComponent } from './pie-chart';
+import { BarChartComponent } from './bar-chart';
 
 @NgModule({
   declarations: [
-    PieChartComponent
+    PieChartComponent,
+    BarChartComponent
   ],
   imports: [
-    PieChartModule
+    PieChartModule,
+    BarChartModule
   ],
   exports: [
-    PieChartComponent
+    PieChartComponent,
+    BarChartComponent
   ]
 })
 export class ChartsModule {

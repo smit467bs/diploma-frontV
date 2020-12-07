@@ -11,7 +11,6 @@ export class PieChartComponent {
 
   // chart options
   gradient: boolean = false;
-  explodeSlices: boolean = false;
   showLegend: boolean = true;
   showLabels: boolean = false;
   isDoughnut: boolean = false;

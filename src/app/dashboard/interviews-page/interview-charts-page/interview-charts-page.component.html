@@ -8,24 +8,13 @@
     <div class="question-label">
       {{question.question}}
     </div>
-    <!--      <div class="question-chart">-->
-    <!--    <div class="chart-container">-->
     <pie-chart [data]="getQuestionStatistic(question.id)"></pie-chart>
-    <!--    </div>-->
-    <!--      </div>-->
   </div>
   <div class="question" *ngFor="let question of interview.questions">
     <div class="question-label">
       {{question.question}}
     </div>
-    <!--      <div class="question-chart">-->
-    <pie-chart [data]="getQuestionStatistic(question.id)"></pie-chart>
-    <!--      </div>-->
-  </div>
-  <div class="question">
-    <div class="question-label">
-      fake-question 2
-    </div>
+    <bar-chart [data]="getQuestionStatistic(question.id)"></bar-chart>
   </div>
 </div>
 
