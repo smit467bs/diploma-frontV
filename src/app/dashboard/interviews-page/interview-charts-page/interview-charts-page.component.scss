@@ -1,0 +1,21 @@
+@import "src/styles/variables";
+
+:host {
+  height: 100%;
+  display: grid;
+  grid-template-rows: max-content 1fr;
+  padding: $default_space 50px;
+}
+
+.questions-container {
+  display: grid;
+  overflow-y: auto;
+  grid-auto-rows: 60%;
+  grid-gap: $default_space;
+}
+
+.question {
+  display: grid;
+  grid-template-rows: max-content;
+  padding: 0 20%;
+}

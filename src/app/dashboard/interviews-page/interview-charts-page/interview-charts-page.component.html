@@ -1,22 +1,32 @@
-<div *ngIf="pageLoaded; else loader">
-  {{interview.label}}
-  <ng-container *ngFor="let questionStatistic of answersStatistic">
-    <ngx-charts-pie-chart
-      [view]="view"
-      [scheme]="colorScheme"
-      [results]="questionStatistic.answers"
-      [gradient]="gradient"
-      [legend]="showLegend"
-      [labels]="showLabels"
-      [doughnut]="isDoughnut"
-      [legendPosition]="legendPosition"
-      (select)="onSelect($event)"
-      (activate)="onActivate($event)"
-      (deactivate)="onDeactivate($event)"
-    >
-    </ngx-charts-pie-chart>
-  </ng-container>
+<h3 *ngIf="pageLoaded" class="interview-label">{{interview.label}}</h3>
 
+<div
+  *ngIf="pageLoaded"
+  class="questions-container custom-scrollbar"
+>
+  <div class="question" *ngFor="let question of interview.questions">
+    <div class="question-label">
+      {{question.question}}
+    </div>
+    <!--      <div class="question-chart">-->
+    <!--    <div class="chart-container">-->
+    <pie-chart [data]="getQuestionStatistic(question.id)"></pie-chart>
+    <!--    </div>-->
+    <!--      </div>-->
+  </div>
+  <div class="question" *ngFor="let question of interview.questions">
+    <div class="question-label">
+      {{question.question}}
+    </div>
+    <!--      <div class="question-chart">-->
+    <pie-chart [data]="getQuestionStatistic(question.id)"></pie-chart>
+    <!--      </div>-->
+  </div>
+  <div class="question">
+    <div class="question-label">
+      fake-question 2
+    </div>
+  </div>
 </div>
 
 <ng-template #loader>

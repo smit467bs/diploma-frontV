@@ -17,7 +17,7 @@ import { PreviewInterviewsPageComponent } from './preview-interviews-page';
 import { AddInterviewPageComponent, QuestionTypeDialogComponent } from './add-interview-page';
 import { InterviewPageComponent } from './interview-page';
 import { InterviewChartsPageComponent } from './interview-charts-page';
-import { PieChartModule } from '@swimlane/ngx-charts';
+import { ChartsModule } from 'shared/components/charts/charts.module';
 
 @NgModule({
   declarations: [
@@ -37,6 +37,7 @@ import { PieChartModule } from '@swimlane/ngx-charts';
         CommonModule,
         SharedModule,
         ReactiveFormsModule,
+        ChartsModule,
         MatFormFieldModule,
         MatInputModule,
         MatButtonModule,
@@ -45,8 +46,7 @@ import { PieChartModule } from '@swimlane/ngx-charts';
         MatDialogModule,
         MatSelectModule,
         MatRadioModule,
-        MatCheckboxModule,
-        PieChartModule
+        MatCheckboxModule
     ],
   entryComponents: [
     QuestionTypeDialogComponent

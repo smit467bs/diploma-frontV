@@ -21,19 +21,6 @@ export class InterviewChartsPageComponent implements OnInit {
   answersStatistic: Array<AnswerStatistic>;
   interview: Interview;
 
-  view: any[] = [700, 400];
-
-  // chart options
-  gradient: boolean = true;
-  showLegend: boolean = true;
-  showLabels: boolean = true;
-  isDoughnut: boolean = false;
-  legendPosition: string = 'below';
-
-  colorScheme = {
-    domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
-  };
-
   constructor(private activatedRoute: ActivatedRoute,
               private answerService: AnswerService,
               private interviewService: InterviewService) {
@@ -58,15 +45,14 @@ export class InterviewChartsPageComponent implements OnInit {
 
   }
 
-  onSelect(data): void {
-    console.log('Item clicked', JSON.parse(JSON.stringify(data)));
+
+  getQuestionStatistic(id: string): Array<{ name: string, value: number }> {
+    return this.answersStatistic.find(({question_id}) => question_id === id).answers;
   }
 
-  onActivate(data): void {
-    console.log('Activate', JSON.parse(JSON.stringify(data)));
+  get templateRows(): string {
+    return 'repeat(' + this.interview.questions.length + 2 + ' 60%)';
   }
 
-  onDeactivate(data): void {
-    console.log('Deactivate', JSON.parse(JSON.stringify(data)));
-  }
+
 }
