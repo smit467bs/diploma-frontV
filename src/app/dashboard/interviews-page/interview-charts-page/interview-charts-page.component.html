@@ -6,7 +6,7 @@
 >
   <div class="question" *ngFor="let question of interview.questions">
     <div class="question-label">
-      {{question.question}}
+      {{question.label}}
     </div>
     <chart-type-select [questionId]="question.id" (chartTypeChange)="onChartTypeChange($event)"></chart-type-select>
     <pie-chart

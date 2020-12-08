@@ -72,7 +72,7 @@ export class AddInterviewPageComponent extends FormBaseComponent {
       case QuestionType.SELECT_ONE:
         question = this.fb.group({
           type,
-          question: '',
+          label: '',
           options: this.fb.array([
             this.fb.control(''),
             this.fb.control('')
@@ -83,7 +83,7 @@ export class AddInterviewPageComponent extends FormBaseComponent {
       case QuestionType.LONG_TEXT:
         question = this.fb.group({
           type,
-          question: ''
+          label: ''
         });
         break;
     }
