@@ -3,8 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { environment } from 'src/environments/environment';
-import { PreviewInterview } from 'core/store/common/models';
-import { Interview } from 'core/models/client';
+import { Interview, PreviewInterview } from 'core/models/response';
 
 @Injectable({providedIn: 'root'})
 export class InterviewRepository {

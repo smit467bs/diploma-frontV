@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import { PreviewInterview } from './models';
+import { PreviewInterview } from 'core/models/response';
 import { EipState } from '../reducers';
 import * as CommonSelectors from './common.selectors';
 import * as CommonActions from './common.actions';

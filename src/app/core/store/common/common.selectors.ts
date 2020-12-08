@@ -1,7 +1,8 @@
 import { createSelector, Selector } from '@ngrx/store';
 
 import { EipState } from '../reducers';
-import { CommonState, PreviewInterview } from './models';
+import { CommonState } from './models';
+import { PreviewInterview } from 'core/models/response';
 
 export const getCommonState: Selector<EipState, CommonState> = ({common}) => common;
 

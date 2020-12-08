@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { PreviewInterview } from 'core/store/common/models';
+import { PreviewInterview } from 'core/models/response';
 
 @Component({
   selector: 'app-preview-interview',

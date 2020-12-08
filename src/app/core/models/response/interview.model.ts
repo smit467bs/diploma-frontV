@@ -1,3 +1,5 @@
+import { Question } from 'core/models/questions';
+
 export interface Interview {
   // countOfPassed: number;
   // needsCountOfPassed?: number;
@@ -5,7 +7,7 @@ export interface Interview {
   label: string;
   admin: string;
   managers: Array<string>;
-  questions: Array<any>;
+  questions: Array<Question>;
   created_at: Date;
   updated_at: Date;
 }

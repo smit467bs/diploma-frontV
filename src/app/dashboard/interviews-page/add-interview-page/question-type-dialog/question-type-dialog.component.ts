@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 
-import { QuestionType } from 'core/models/types';
+import { QuestionType } from 'core/models/questions';
 
 @Component({
   selector: 'question-type-dialog',

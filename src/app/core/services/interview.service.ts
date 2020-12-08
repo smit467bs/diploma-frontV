@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { InterviewRepository } from 'core/repositories';
-import { Interview } from 'core/models/client';
+import { Interview } from 'core/models/response';
 
 @Injectable({providedIn: 'root'})
 export class InterviewService {

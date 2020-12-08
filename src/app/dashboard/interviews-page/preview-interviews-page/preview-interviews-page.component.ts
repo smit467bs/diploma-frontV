@@ -3,9 +3,9 @@ import { Observable } from 'rxjs';
 
 import { Logger } from 'core/services';
 import { CommonStoreService } from 'core/store/common';
-import { PreviewInterview } from 'core/store/common/models';
 import { UserInfo } from 'core/store/user/models';
 import { UserStoreService } from 'core/store/user';
+import { PreviewInterview } from 'core/models/response';
 
 @Component({
   selector: 'preview-interviews',

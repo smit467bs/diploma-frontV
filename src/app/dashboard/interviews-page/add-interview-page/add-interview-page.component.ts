@@ -9,7 +9,7 @@ import { FieldErrorStateMatcher } from 'core/validators/error-state-mathcer';
 import { InterviewService } from 'core/services';
 import { FormBaseComponent } from 'shared/components/base';
 import { copyFormControl, getClasses } from 'core/utils';
-import { QuestionType } from 'core/models/types';
+import { QuestionType } from 'core/models/questions';
 import { QuestionTypeDialogComponent } from './question-type-dialog';
 
 @Component({

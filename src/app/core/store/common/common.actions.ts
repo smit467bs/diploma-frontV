@@ -1,5 +1,6 @@
 import { createAction, props } from '@ngrx/store';
-import { PreviewInterview } from './models';
+
+import { PreviewInterview } from 'core/models/response';
 
 const actionGroup = '[COMMON]';
 

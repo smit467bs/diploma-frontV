@@ -7,6 +7,5 @@ import { Component } from '@angular/core';
 })
 export class GroupsPageComponent {
   constructor() {
-    document.cookie = 'user=John';
   }
 }

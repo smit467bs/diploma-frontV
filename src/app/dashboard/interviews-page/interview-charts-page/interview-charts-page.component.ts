@@ -6,8 +6,7 @@ import { filter, map, switchMap, tap } from 'rxjs/operators';
 import { isNil } from 'lodash';
 
 import { checkInterviewStatistic, getRouteParam$ } from 'core/utils';
-import { Interview } from 'core/models/client';
-import { AnswerStatistic } from 'core/models/response';
+import { AnswerStatistic, Interview } from 'core/models/response';
 import { Dictionary } from 'core/models';
 import { ChartType } from 'core/models/types';
 
