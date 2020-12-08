@@ -3,7 +3,7 @@
 :host {
   height: 100%;
   display: grid;
-  grid-template-columns: minmax(min-content, 900px) 40px;
+  grid-template-columns: minmax(min-content, $default_viewport - 40px) 40px;
   justify-content: center;
   padding: $default_space 50px;
 
@@ -16,8 +16,8 @@
     overflow-y: auto;
 
     .interview-label {
-      font-size: 40px;
-      line-height: 40px;
+      font-size: 1.8rem;
+      line-height: 1.8rem;
       margin: 0;
     }
 

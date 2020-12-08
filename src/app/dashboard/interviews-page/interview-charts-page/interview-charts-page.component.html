@@ -8,15 +8,23 @@
     <div class="question-label">
       {{question.label}}
     </div>
-    <chart-type-select [questionId]="question.id" (chartTypeChange)="onChartTypeChange($event)"></chart-type-select>
-    <pie-chart
-      *ngIf="chartType[question.id] === 'pie'"
-      [data]="getQuestionStatistic(question.id)"
-    ></pie-chart>
-    <bar-chart
-      *ngIf="chartType[question.id] === 'bar' || chartType[question.id] === undefined"
-      [data]="getQuestionStatistic(question.id)"
-    ></bar-chart>
+    <div *ngIf="isChoiceQuestion(question)" class="question-chart">
+      <chart-type-select
+        [questionId]="question.id"
+        (chartTypeChange)="onChartTypeChange($event)"
+      ></chart-type-select>
+      <pie-chart
+        *ngIf="chartType[question.id] === 'pie'"
+        [data]="getQuestionStatistic(question.id)"
+      ></pie-chart>
+      <bar-chart
+        *ngIf="chartType[question.id] === 'bar' || chartType[question.id] === undefined"
+        [data]="getQuestionStatistic(question.id)"
+      ></bar-chart>
+    </div>
+    <div *ngIf="!isChoiceQuestion(question)" class="question-table">
+      draw list of N last values
+    </div>
   </div>
 </div>
 

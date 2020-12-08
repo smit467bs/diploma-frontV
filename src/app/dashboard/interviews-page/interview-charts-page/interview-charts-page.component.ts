@@ -5,10 +5,11 @@ import { combineLatest, Observable } from 'rxjs';
 import { filter, map, switchMap, tap } from 'rxjs/operators';
 import { isNil } from 'lodash';
 
-import { checkInterviewStatistic, getRouteParam$ } from 'core/utils';
+import { checkInterviewStatistic, getRouteParam$, isChoiceQuestion } from 'core/utils';
 import { AnswerStatistic, Interview } from 'core/models/response';
 import { Dictionary } from 'core/models';
 import { ChartType } from 'core/models/types';
+import { Question } from 'core/models/questions';
 
 @Component({
   selector: 'interview-charts-page',
@@ -52,6 +53,10 @@ export class InterviewChartsPageComponent implements OnInit {
 
   onChartTypeChange(chartType: Dictionary<ChartType>): void {
     this.chartType = {...this.chartType, ...chartType};
+  }
+
+  isChoiceQuestion(question: Question): boolean {
+    return isChoiceQuestion(question);
   }
 
 }
