@@ -16,7 +16,7 @@
 
 .question {
   display: grid;
-  grid-template-rows: 40px 60px 1fr;
+  grid-template-rows: 40px 60px minmax(250px, 1fr);
   padding: 0 20%;
   grid-gap: $default_space / 2;
 }
