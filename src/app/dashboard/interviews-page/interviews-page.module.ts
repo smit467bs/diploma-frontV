@@ -18,6 +18,7 @@ import { AddInterviewPageComponent, QuestionTypeDialogComponent } from './add-in
 import { InterviewPageComponent } from './interview-page';
 import { InterviewChartsPageComponent } from './interview-charts-page';
 import { ChartsModule } from 'shared/components/charts/charts.module';
+import { ChartTypeSelectComponent } from './interview-charts-page/chart-type-select';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ChartsModule } from 'shared/components/charts/charts.module';
     AddInterviewPageComponent,
     InterviewPageComponent,
     InterviewChartsPageComponent,
-    QuestionTypeDialogComponent
+    QuestionTypeDialogComponent,
+    ChartTypeSelectComponent
   ],
     imports: [
         RouterModule.forChild([

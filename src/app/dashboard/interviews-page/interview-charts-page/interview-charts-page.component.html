@@ -8,13 +8,29 @@
     <div class="question-label">
       {{question.question}}
     </div>
-    <pie-chart [data]="getQuestionStatistic(question.id)"></pie-chart>
+    <chart-type-select [questionId]="question.id" (chartTypeChange)="onChartTypeChange($event)"></chart-type-select>
+    <pie-chart
+      *ngIf="chartType[question.id] === 'pie'"
+      [data]="getQuestionStatistic(question.id)"
+    ></pie-chart>
+    <bar-chart
+      *ngIf="chartType[question.id] === 'bar' || chartType[question.id] === undefined"
+      [data]="getQuestionStatistic(question.id)"
+    ></bar-chart>
   </div>
   <div class="question" *ngFor="let question of interview.questions">
     <div class="question-label">
       {{question.question}}
     </div>
-    <bar-chart [data]="getQuestionStatistic(question.id)"></bar-chart>
+    <chart-type-select [questionId]="question.id" (chartTypeChange)="onChartTypeChange($event)"></chart-type-select>
+    <pie-chart
+      *ngIf="chartType[question.id] === 'pie'"
+      [data]="getQuestionStatistic(question.id)"
+    ></pie-chart>
+    <bar-chart
+      *ngIf="chartType[question.id] === 'bar' || chartType[question.id] === undefined"
+      [data]="getQuestionStatistic(question.id)"
+    ></bar-chart>
   </div>
 </div>
 

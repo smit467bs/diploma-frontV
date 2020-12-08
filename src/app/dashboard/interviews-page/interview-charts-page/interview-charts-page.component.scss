@@ -10,12 +10,19 @@
 .questions-container {
   display: grid;
   overflow-y: auto;
-  grid-auto-rows: 40%;
+  grid-auto-rows: 45%;
   grid-gap: $default_space;
 }
 
 .question {
   display: grid;
-  grid-template-rows: max-content;
+  grid-template-rows: 40px 60px 1fr;
   padding: 0 20%;
+  grid-gap: $default_space / 2;
+}
+
+@media screen and (max-width: 600px) {
+  .question {
+    padding: 0;
+  }
 }

@@ -3,11 +3,13 @@ import { ActivatedRoute } from '@angular/router';
 import { AnswerService, InterviewService } from 'core/services';
 import { combineLatest, Observable } from 'rxjs';
 import { filter, map, switchMap, tap } from 'rxjs/operators';
+import { isNil } from 'lodash';
 
 import { checkInterviewStatistic, getRouteParam$ } from 'core/utils';
 import { Interview } from 'core/models/client';
 import { AnswerStatistic } from 'core/models/response';
-import { isNil } from 'lodash';
+import { Dictionary } from 'core/models';
+import { ChartType } from 'core/models/types';
 
 @Component({
   selector: 'interview-charts-page',
@@ -17,6 +19,7 @@ import { isNil } from 'lodash';
 export class InterviewChartsPageComponent implements OnInit {
   id$: Observable<string>;
 
+  chartType: Dictionary<ChartType> = {};
   pageLoaded = false;
   answersStatistic: Array<AnswerStatistic>;
   interview: Interview;
@@ -39,7 +42,6 @@ export class InterviewChartsPageComponent implements OnInit {
         this.interview = interview;
         this.answersStatistic = checkInterviewStatistic(interview, statistic);
         this.pageLoaded = true;
-        console.log(this.answersStatistic);
       })
     ).subscribe();
 
@@ -47,6 +49,10 @@ export class InterviewChartsPageComponent implements OnInit {
 
   getQuestionStatistic(id: string): Array<{ name: string, value: number }> {
     return this.answersStatistic.find(({question_id}) => question_id === id).answers;
+  }
+
+  onChartTypeChange(chartType: Dictionary<ChartType>): void {
+    this.chartType = {...this.chartType, ...chartType};
   }
 
 }
