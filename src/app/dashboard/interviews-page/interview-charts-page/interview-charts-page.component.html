@@ -23,7 +23,11 @@
       ></bar-chart>
     </div>
     <div *ngIf="!isChoiceQuestion(question)" class="question-table">
-      draw list of N last values
+      <mat-list>
+        <mat-list-item *ngFor="let answer of getQuestionStatistic(question.id)">
+          {{answer.name}} - enter {{answer.value}} times
+        </mat-list-item>
+      </mat-list>
     </div>
   </div>
 </div>

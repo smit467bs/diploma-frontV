@@ -19,6 +19,7 @@ import { InterviewPageComponent } from './interview-page';
 import { InterviewChartsPageComponent } from './interview-charts-page';
 import { ChartsModule } from 'shared/components/charts/charts.module';
 import { ChartTypeSelectComponent } from './interview-charts-page/chart-type-select';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { ChartTypeSelectComponent } from './interview-charts-page/chart-type-sel
         MatDialogModule,
         MatSelectModule,
         MatRadioModule,
-        MatCheckboxModule
+        MatCheckboxModule,
+        MatListModule
     ],
   entryComponents: [
     QuestionTypeDialogComponent
