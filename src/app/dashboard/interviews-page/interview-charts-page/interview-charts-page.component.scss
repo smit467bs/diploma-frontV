@@ -7,6 +7,7 @@
   grid-template-columns: minmax(min-content, $default_viewport);
   justify-content: center;
   padding: $default_space 50px;
+  grid-gap: $default_space;
 }
 
 .interview-label {
@@ -18,14 +19,16 @@
 .questions-container {
   display: grid;
   overflow-y: auto;
-  grid-auto-rows: 45%;
+  //grid-auto-rows: 45%;
   grid-gap: $default_space;
 }
 
 .question {
   display: grid;
-  grid-template-rows: 40px minmax(320px, 1fr);
+  grid-template-rows: 40px max-content;
   grid-gap: $default_space / 2;
+  padding: 10px;
+  margin-right: 5px;
 }
 
 .question-chart{
