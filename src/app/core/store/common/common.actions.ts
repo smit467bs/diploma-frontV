@@ -1,5 +1,6 @@
 import { createAction, props } from '@ngrx/store';
-import { Interview } from './models';
+
+import { PreviewInterview } from 'core/models/response';
 
 const actionGroup = '[COMMON]';
 
@@ -12,5 +13,5 @@ export const LoadInterviews = createAction(LOAD_INTERVIEWS);
 export const LOAD_INTERVIEWS_SUCCESS = `${actionGroup} LOAD_INTERVIEWS_SUCCESS`;
 export const LoadInterviewsSuccess = createAction(
   LOAD_INTERVIEWS_SUCCESS,
-  props<{interviews: Array<Interview>}>()
+  props<{interviews: Array<PreviewInterview>}>()
 );

@@ -9,7 +9,7 @@ import { FieldErrorStateMatcher } from 'core/validators/error-state-mathcer';
 import { InterviewService } from 'core/services';
 import { FormBaseComponent } from 'shared/components/base';
 import { copyFormControl, getClasses } from 'core/utils';
-import { QuestionType } from 'core/models/types';
+import { QuestionType } from 'core/models/questions';
 import { QuestionTypeDialogComponent } from './question-type-dialog';
 
 @Component({
@@ -72,7 +72,7 @@ export class AddInterviewPageComponent extends FormBaseComponent {
       case QuestionType.SELECT_ONE:
         question = this.fb.group({
           type,
-          question: '',
+          label: '',
           options: this.fb.array([
             this.fb.control(''),
             this.fb.control('')
@@ -83,7 +83,7 @@ export class AddInterviewPageComponent extends FormBaseComponent {
       case QuestionType.LONG_TEXT:
         question = this.fb.group({
           type,
-          question: ''
+          label: ''
         });
         break;
     }

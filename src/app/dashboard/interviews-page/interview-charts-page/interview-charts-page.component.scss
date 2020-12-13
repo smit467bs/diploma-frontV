@@ -1,0 +1,37 @@
+@import "src/styles/variables";
+
+:host {
+  height: 100%;
+  display: grid;
+  grid-template-rows: max-content 1fr;
+  grid-template-columns: minmax(min-content, $default_viewport);
+  justify-content: center;
+  padding: $default_space 50px;
+  grid-gap: $default_space;
+}
+
+.interview-label {
+  font-size: 1.8rem;
+  line-height: 1.8rem;
+  margin: 0;
+}
+
+.questions-container {
+  display: grid;
+  overflow-y: auto;
+  //grid-auto-rows: 45%;
+  grid-gap: $default_space;
+}
+
+.question {
+  display: grid;
+  grid-template-rows: 40px max-content;
+  grid-gap: $default_space / 2;
+  padding: 10px;
+  margin-right: 5px;
+}
+
+.question-chart{
+  display: grid;
+  grid-template-rows: 60px minmax(260px, 1fr);
+}

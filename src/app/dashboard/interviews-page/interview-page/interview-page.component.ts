@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { filter, map, switchMap } from 'rxjs/operators';
+import { FormArray, FormBuilder, FormControl } from '@angular/forms';
+import { map, switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
-import { InterviewService } from 'core/services';
-import { Interview } from 'core/store/common/models';
-import { FormArray, FormBuilder, FormControl } from '@angular/forms';
+import { AnswerService, InterviewService } from 'core/services';
 import { FormBaseComponent } from 'shared/components/base';
-import { QuestionType } from 'core/models/types';
-import { getClasses, prepareDataToSaveAnswers } from 'core/utils';
+import { getClasses, getRouteParam$, isChoiceQuestion, prepareDataToSaveAnswers } from 'core/utils';
 import { SaveInterviewAnswers } from 'core/models/request';
+import { QuestionType } from 'core/models/questions';
+import { Interview } from 'core/models/response';
 
 @Component({
   selector: 'interview-page',
@@ -19,19 +19,18 @@ import { SaveInterviewAnswers } from 'core/models/request';
 export class InterviewPageComponent extends FormBaseComponent implements OnInit {
   id$: Observable<string>;
   interview: Interview;
+  answer: any;
 
   questionType = QuestionType;
   getClasses = getClasses;
 
   constructor(private activatedRoute: ActivatedRoute,
+              private fb: FormBuilder,
               private interviewService: InterviewService,
-              private fb: FormBuilder
+              private answerService: AnswerService
   ) {
     super();
-    this.id$ = this.activatedRoute.paramMap.pipe(
-      filter(paramMap => !!paramMap.get('id')),
-      map(paramMap => paramMap.get('id'))
-    );
+    this.id$ = getRouteParam$(this.activatedRoute, 'id');
   }
 
   ngOnInit(): void {
@@ -44,7 +43,7 @@ export class InterviewPageComponent extends FormBaseComponent implements OnInit 
         this.form = this.fb.group({
           ...interview.questions.reduce((acc, question) => ({
             ...acc,
-            [question.id]: question.type === QuestionType.CHOICE_MANY
+            [question.id]: isChoiceQuestion(question) && question.type === QuestionType.CHOICE_MANY
               ? new FormArray(question.options.map(() => new FormControl('')))
               : new FormControl('')
           }), {})
@@ -58,12 +57,19 @@ export class InterviewPageComponent extends FormBaseComponent implements OnInit 
   }
 
   submitForm(): void {
-    const request: SaveInterviewAnswers = {
+    const requestBody: SaveInterviewAnswers = {
       interview_id: this.interview._id,
-      user_id: null,
       answers: prepareDataToSaveAnswers(this.form.value, this.interview)
     };
-    console.log(request);
+    this.answerService.saveAnswer(requestBody).subscribe(
+      next => {
+        console.log(next);
+      },
+      err => {
+        console.log(err);
+      }
+    );
+    // console.log(requestBody);
   }
 
   downloadReport(): void {

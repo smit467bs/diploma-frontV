@@ -1,5 +1,5 @@
-import { Interview } from './interview.model';
+import { PreviewInterview } from 'src/app/core/models/response/preview-interview.model';
 
 export interface CommonState {
-  interviews: Array<Interview>;
+  interviews: Array<PreviewInterview>;
 }

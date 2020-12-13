@@ -28,8 +28,8 @@ export class RegisterComponent extends AuthBaseComponent {
       email: fb.control('', [Validators.required, Validators.email]),
       first_name: fb.control('', [Validators.required]),
       surname: fb.control('', [Validators.required]),
-      password: fb.control('', [Validators.required, Validators.minLength(8)]),
-      confirm_password: fb.control('', [Validators.required, Validators.minLength(8)]),
+      password: fb.control('', [Validators.required, Validators.minLength(4)]),
+      confirm_password: fb.control('', [Validators.required, Validators.minLength(4)]),
       displayed_name: fb.control('', [Validators.required])
     }, {validators: [PasswordValidators.passwordShouldMatch]});
   }

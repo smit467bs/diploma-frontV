@@ -1,0 +1,7 @@
+<mat-form-field class="full-width">
+  <mat-label>Choose type of chart</mat-label>
+  <mat-select (selectionChange)="onChartChange($event.value)" [value]="'bar'">
+    <mat-option [value]="'pie'">Pie chart</mat-option>
+    <mat-option [value]="'bar'">Bar chart</mat-option>
+  </mat-select>
+</mat-form-field>

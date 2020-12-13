@@ -1,2 +1,2 @@
 export * from './dictionary.model';
-export * from './answer.model';
+export * from 'src/app/core/models/client/answer.model';

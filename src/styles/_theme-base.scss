@@ -16,6 +16,7 @@ $success-palette: mat-palette($mat-green, 600);
   @include cover($theme);
   @include cart($theme);
   @include form-question($theme);
+  @include chart-question-wrapper($theme);
   @include custom-scrollbar($theme);
 }
 
@@ -118,6 +119,12 @@ $success-palette: mat-palette($mat-green, 600);
 
 @mixin form-question($theme) {
   .form-question-border {
+    @include primary-border($theme, 3px, left);
+  }
+}
+
+@mixin chart-question-wrapper($theme){
+  .question-chart-border{
     @include primary-border($theme, 3px, left);
   }
 }

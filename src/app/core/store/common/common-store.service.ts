@@ -2,14 +2,14 @@ import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import { Interview } from './models';
+import { PreviewInterview } from 'core/models/response';
 import { EipState } from '../reducers';
 import * as CommonSelectors from './common.selectors';
 import * as CommonActions from './common.actions';
 
 @Injectable({providedIn: 'root'})
 export class CommonStoreService {
-  public interviews$: Observable<Array<Interview>>;
+  public interviews$: Observable<Array<PreviewInterview>>;
 
   constructor(private store$: Store<EipState>) {
     this.interviews$ = this.store$.select(

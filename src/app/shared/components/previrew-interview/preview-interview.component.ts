@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { Interview } from 'core/store/common/models';
-import { Router } from '@angular/router';
+import { PreviewInterview } from 'core/models/response';
 
 @Component({
   selector: 'app-preview-interview',
@@ -10,12 +9,11 @@ import { Router } from '@angular/router';
 })
 export class PreviewInterviewComponent {
   @Input()
-  interview: Interview;
+  interview: PreviewInterview;
 
-  constructor(private router: Router) {
-  }
+  @Input()
+  isUserAdmin: boolean;
 
-  goToInterview(){
-    this.router.navigate(['/interviews', this.interview._id]);
+  constructor() {
   }
 }

@@ -1,1 +1,14 @@
-groups-page
+<div class="preview-interview-container module" *ngIf="user$ | async as user">
+  <button
+    mat-raised-button
+    color="accent"
+    [routerLink]="['add']"
+    class="add"
+  >Add</button>
+  <app-preview-group
+    *ngFor="let group of groups$ | async"
+    [group]="group"
+    [isUserAdmin]="group.admin._id === user._id"
+  >
+  </app-preview-group>
+</div>
