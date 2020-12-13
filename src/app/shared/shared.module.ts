@@ -16,6 +16,7 @@ import { OverlayLoaderComponent } from './components/overlay-loader';
 import { PreviewInterviewComponent } from './components/previrew-interview';
 import { ControlPanelComponent } from './components/control-panel';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { PreviewGroupComponent } from 'shared/components/preview-group';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     CoverComponent,
     NavbarComponent,
     PreviewInterviewComponent,
+    PreviewGroupComponent,
     ControlPanelComponent
   ],
     imports: [
@@ -48,6 +50,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     CoverComponent,
     NavbarComponent,
     PreviewInterviewComponent,
+    PreviewGroupComponent,
     ControlPanelComponent
   ]
 })
