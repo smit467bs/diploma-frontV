@@ -1,17 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-
 import { GroupService } from 'core/services';
 import { Observable } from 'rxjs';
+
 import { UserStoreService } from 'core/store/user';
 import { UserInfo } from 'core/store/user/models';
+import { PreviewGroup } from 'core/models/response';
 
 @Component({
-  selector: 'app-groups',
-  templateUrl: './groups-page.component.html',
-  styleUrls: ['./groups-page.component.scss']
+  selector: 'app-preview-groups-page',
+  templateUrl: './preview-groups-page.component.html',
+  styleUrls: ['./preview-groups-page.component.scss']
 })
-export class GroupsPageComponent implements OnInit {
-  groups$: Observable<Array<any>>;
+export class PreviewGroupsPageComponent implements OnInit {
+  groups$: Observable<Array<PreviewGroup>>;
   user$: Observable<UserInfo>;
 
   constructor(private groupService: GroupService,

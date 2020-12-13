@@ -1,0 +1,29 @@
+<form [formGroup]="form">
+
+  <div class="form-fields custom-scrollbar">
+    <mat-form-field class="full-width">
+      <mat-label>Label</mat-label>
+      <input matInput formControlName="label" [errorStateMatcher]="matcher" autocomplete="off"/>
+      <mat-error
+        *ngIf="getControl('label').hasError('required')"
+      >
+        Label is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="form-button">
+    <button
+      mat-raised-button
+      color="warn"
+      [routerLink]="'/groups'"
+    >Cancel
+    </button>
+    <button
+      mat-raised-button
+      color="accent"
+      (click)="submitForm()"
+    >Save
+    </button>
+  </div>
+</form>

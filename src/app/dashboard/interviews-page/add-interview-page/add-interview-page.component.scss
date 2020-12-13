@@ -3,7 +3,7 @@
 :host {
   height: 100%;
   display: grid;
-  grid-template-columns: minmax(min-content, 900px) 40px;
+  grid-template-columns: minmax(min-content, $default_viewport) 40px;
   justify-content: center;
   padding: $default_space 50px;
 

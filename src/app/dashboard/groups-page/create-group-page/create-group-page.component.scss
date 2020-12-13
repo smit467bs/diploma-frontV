@@ -1,0 +1,15 @@
+@import "src/styles/variables";
+
+:host {
+  height: 100%;
+  display: grid;
+  grid-template-columns: minmax(min-content, $default_viewport) 40px;
+  justify-content: center;
+  padding: $default_space 50px;
+
+  .form-button {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: $default_space;
+  }
+}
