@@ -19,4 +19,8 @@ export class GroupRepository {
   getGroupsPreview(): Observable<Array<any>> {
     return this.http.get<Array<any>>(`${environment.apiUrl}/${this.route}/preview`);
   }
+
+  getGroupById(id: string): Observable<any> {
+    return this.http.get<Array<any>>(`${environment.apiUrl}/${this.route}/${id}`);
+  }
 }

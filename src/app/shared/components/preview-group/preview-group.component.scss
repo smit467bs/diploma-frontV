@@ -5,6 +5,9 @@
   align-items: center;
   &-control {
     grid-area: control;
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: end;
   }
 
   &-label {
@@ -20,7 +23,8 @@
   &-info {
     grid-area: info;
     display: grid;
-    justify-content: end;
+    grid-auto-flow: column;
+    justify-content: space-between;
     align-self: end;
   }
 }

@@ -14,4 +14,8 @@ export class GroupService {
   getGroupsPreview(): Observable<Array<any>> {
     return this.groupRepository.getGroupsPreview();
   }
+
+  getGroupById(id: string): Observable<any> {
+    return this.groupRepository.getGroupById(id);
+  }
 }
