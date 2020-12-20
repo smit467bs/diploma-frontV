@@ -13,6 +13,8 @@ import { PreviewGroupsPageComponent } from './preview-groups-page';
 import { CreateGroupPageComponent } from './create-group-page';
 import { GroupPageComponent } from './group-page';
 import { EditGroupPageComponent } from './edit-group-page';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,8 @@ import { EditGroupPageComponent } from './edit-group-page';
     ReactiveFormsModule,
     MatListModule,
     MatTabsModule,
+    MatIconModule,
+    MatTooltipModule,
   ],
   exports: [
     PreviewGroupsPageComponent,

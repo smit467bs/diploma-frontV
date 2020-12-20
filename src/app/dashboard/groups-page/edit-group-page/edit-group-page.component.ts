@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { getRouteParam$ } from 'core/utils';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { GroupService, UsersService } from 'core/services';
 import { first, switchMap, tap } from 'rxjs/operators';
@@ -14,10 +14,11 @@ export class EditGroupPageComponent implements OnInit {
   @ViewChild('invite') inviteField: ElementRef;
 
   id$: Observable<string>;
-
+  render$ = new BehaviorSubject(0);
   inviteError: string;
 
   group: any;
+  currentUserAction: string = null;
 
   tabs: Array<string> = ['Invited', 'Participants', 'Requested'];
   activeTab: string = 'Invited';
@@ -29,9 +30,12 @@ export class EditGroupPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.id$.pipe(
-      switchMap(id => this.groupService.getGroupById(id)),
-      tap(group => this.group = group)
+    combineLatest([this.id$, this.render$]).pipe(
+      switchMap(([id]) => this.groupService.getGroupById(id)),
+      tap(group => {
+        this.group = group;
+        this.currentUserAction = null;
+      })
     ).subscribe();
   }
 
@@ -51,5 +55,17 @@ export class EditGroupPageComponent implements OnInit {
 
   activeTabChange(tab: string): void {
     this.activeTab = tab;
+  }
+
+  removeUser(userId: string): void {
+    this.currentUserAction = userId;
+    this.id$.pipe(
+      switchMap(id => {
+        return this.groupService.removeUserFrom(id, {userId, removeFrom: this.activeTab.toLowerCase()});
+      }),
+      first()
+    ).subscribe(() => {
+      this.render$.next(this.render$.getValue() + 1);
+    });
   }
 }

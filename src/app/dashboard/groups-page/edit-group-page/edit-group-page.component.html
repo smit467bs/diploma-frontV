@@ -26,7 +26,15 @@
           *ngFor="let user of group.invited"
           class="invited-user"
         >
-          {{user.displayed_name}} : {{user.email}}
+          <div class="user-info">
+            {{user.displayed_name}} : {{user.email}}
+          </div>
+          <div class="action">
+            <button [disabled]="currentUserAction === user._id" color="warn" mat-icon-button
+                    (click)="removeUser(user._id)" tabindex="-1">
+              <mat-icon matTooltip="Remove user from invited">clear</mat-icon>
+            </button>
+          </div>
         </div>
       </div>
     </div>

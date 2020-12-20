@@ -27,4 +27,8 @@ export class GroupRepository {
   inviteUser(id: string, body): Observable<any> {
     return this.http.post<any>(`${environment.apiUrl}/${this.route}/${id}/invite`, body);
   }
+
+  removeUserFrom(id: string, body: any): Observable<any> {
+    return this.http.post<any>(`${environment.apiUrl}/${this.route}/${id}/removeUserFrom`, body);
+  }
 }

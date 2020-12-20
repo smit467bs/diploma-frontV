@@ -22,4 +22,8 @@ export class GroupService {
   inviteUser(id, body): Observable<any> {
     return this.groupRepository.inviteUser(id, body);
   }
+
+  removeUserFrom(groupId, body): Observable<any> {
+    return this.groupRepository.removeUserFrom(groupId, body);
+  }
 }
