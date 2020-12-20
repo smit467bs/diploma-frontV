@@ -2,22 +2,55 @@
   *ngIf="group; else loader"
   class="edit-group-container"
 >
-  {{group.label}}
-  <mat-button-toggle-group name="fontStyle" aria-label="Font Style" [value]="'invited'" (change)="activeSectionChange($event.value)">
-    <mat-button-toggle value="invited">Invited</mat-button-toggle>
-    <mat-button-toggle value="participants">Participants</mat-button-toggle>
-    <mat-button-toggle value="requested">Requested</mat-button-toggle>
-  </mat-button-toggle-group>
+  <h3 class="main-label">{{group.label}}</h3>
 
-  <label class="question-label">invite</label>
-  <div class="invite-error"> {{inviteError}} </div>
-  <mat-form-field class="full-width answer">
-    <input matInput #invite (keyup.enter)="inviteUser(invite.value)" autocomplete="off"/>
-  </mat-form-field>
+  <div class="tab-group">
+    <button
+      *ngFor="let tab of tabs"
+      [ngClass]="{'active-tab': activeTab === tab}"
+      (click)="activeTabChange(tab)"
+    >{{group[tab.toLowerCase()]?.length || 0}} {{tab}}</button>
+  </div>
 
-  <mat-list role="list">
-    <mat-list-item *ngFor="let user of group.invited" role="listitem">{{user.displayed_name}} : {{user.email}}</mat-list-item>
-  </mat-list>
+  <div class="tab-content">
+    <div class="invited-tab" *ngIf="activeTab === 'Invited'">
+      <div class="invite-error"> {{inviteError}} </div>
+      <mat-form-field class="full-width answer">
+        <mat-label class="question-label">Invite new user</mat-label>
+        <input matInput #invite (keyup.enter)="inviteUser(invite.value)" autocomplete="off"/>
+      </mat-form-field>
+
+      <h6 class="subtitle">{{group.invited.length}} invited users:</h6>
+      <div class="invited-users-list custom-scrollbar">
+        <div
+          *ngFor="let user of group.invited"
+          class="invited-user"
+        >
+          {{user.displayed_name}} : {{user.email}}
+        </div>
+      </div>
+    </div>
+
+    <div class="participants-tab" *ngIf="activeTab === 'Participants'">
+      <h6 class="subtitle">{{group.participants.length}} participants:</h6>
+      <div
+        *ngFor="let user of group.participants"
+        class="invited-user"
+      >
+        {{user.displayed_name}} : {{user.email}}
+      </div>
+    </div>
+
+    <div class="requested-tab" *ngIf="activeTab === 'Requested'">
+      <h6 class="subtitle">{{group.requested.length}} requested:</h6>
+      <div
+        *ngFor="let user of group.requested"
+        class="invited-user"
+      >
+        {{user.displayed_name}} : {{user.email}}
+      </div>
+    </div>
+  </div>
 
 </div>
 

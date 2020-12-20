@@ -18,6 +18,7 @@ $success-palette: mat-palette($mat-green, 600);
   @include form-question($theme);
   @include chart-question-wrapper($theme);
   @include custom-scrollbar($theme);
+  @include tab($theme);
 }
 
 // mixin for change theme of custom components
@@ -123,8 +124,8 @@ $success-palette: mat-palette($mat-green, 600);
   }
 }
 
-@mixin chart-question-wrapper($theme){
-  .question-chart-border{
+@mixin chart-question-wrapper($theme) {
+  .question-chart-border {
     @include primary-border($theme, 3px, left);
   }
 }
@@ -164,5 +165,18 @@ $success-palette: mat-palette($mat-green, 600);
         cursor: pointer;
       }
     }
+  }
+}
+
+@mixin tab($theme) {
+  $primary: map-get($theme, primary);
+  $primary-color: mat-color($primary);
+  .tab-group {
+    button {
+      @include theme-text($theme);
+    }
+  }
+  .active-tab {
+    border-bottom: 3px solid $primary-color !important;
   }
 }

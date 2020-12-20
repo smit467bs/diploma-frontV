@@ -6,13 +6,13 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatListModule } from '@angular/material/list';
+import { MatTabsModule } from '@angular/material/tabs';
 
 import { SharedModule } from 'shared/shared.module';
 import { PreviewGroupsPageComponent } from './preview-groups-page';
 import { CreateGroupPageComponent } from './create-group-page';
 import { GroupPageComponent } from './group-page';
 import { EditGroupPageComponent } from './edit-group-page';
-import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 @NgModule({
   declarations: [
@@ -35,7 +35,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
     MatInputModule,
     ReactiveFormsModule,
     MatListModule,
-    MatButtonToggleModule,
+    MatTabsModule,
   ],
   exports: [
     PreviewGroupsPageComponent,

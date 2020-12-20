@@ -1,4 +1,5 @@
 @import "src/styles/variables";
+@import "src/styles/shared";
 
 :host {
   height: 100%;
@@ -14,12 +15,6 @@
     grid-template-rows: 40px 1fr 40px;
     grid-gap: $default_space;
     overflow-y: auto;
-
-    .interview-label {
-      font-size: 1.8rem;
-      line-height: 1.8rem;
-      margin: 0;
-    }
 
     .questions {
       display: grid;

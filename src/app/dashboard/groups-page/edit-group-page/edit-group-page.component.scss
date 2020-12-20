@@ -1,0 +1,58 @@
+@import "src/styles/variables";
+@import "src/styles/shared";
+
+:host {
+  height: 100%;
+  display: grid;
+  grid-template-columns: $default_viewport;
+  justify-content: center;
+  padding: $default_space 50px;
+
+  .invited-users-template {
+    display: grid;
+    grid-template-rows: max-content max-content max-content 1fr;
+
+    .invited-users-list {
+      overflow-y: auto;
+    }
+  }
+}
+
+.edit-group-container {
+  max-height: 100%;
+  overflow-y: auto;
+  display: grid;
+  grid-template-rows: max-content max-content 1fr;
+}
+
+.tab-group {
+
+  display: grid;
+  grid-gap: $default_space/2;
+  grid-auto-flow: column;
+
+  button {
+    background-color: transparent;
+    border: none;
+    border-bottom: 3px solid gray;
+    outline: none;
+    cursor: pointer;
+  }
+}
+
+.tab-content {
+  max-height: 100%;
+  overflow-y: auto;
+  margin: $default_space/2 0;
+}
+
+.invited-tab {
+  display: grid;
+  grid-template-rows: max-content max-content max-content 1fr;
+  max-height: 100%;
+}
+
+.invited-users-list {
+  max-height: 100%;
+  overflow-y: auto;
+}

@@ -19,6 +19,9 @@ export class EditGroupPageComponent implements OnInit {
 
   group: any;
 
+  tabs: Array<string> = ['Invited', 'Participants', 'Requested'];
+  activeTab: string = 'Invited';
+
   constructor(private activatedRoute: ActivatedRoute,
               private groupService: GroupService,
               private usersService: UsersService) {
@@ -46,7 +49,7 @@ export class EditGroupPageComponent implements OnInit {
     });
   }
 
-  activeSectionChange(value: string): void {
-    console.log(value);
+  activeTabChange(tab: string): void {
+    this.activeTab = tab;
   }
 }

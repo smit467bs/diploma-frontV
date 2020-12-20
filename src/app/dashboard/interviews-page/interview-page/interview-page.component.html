@@ -1,6 +1,6 @@
 <form *ngIf="interview && form; else loader" [formGroup]="form" (ngSubmit)="submitForm()">
 
-  <h3 class="interview-label">{{interview.label}}</h3>
+  <h3 class="main-label">{{interview.label}}</h3>
 
   <div class="questions custom-scrollbar">
     <ng-container *ngFor="let question of interview.questions">
