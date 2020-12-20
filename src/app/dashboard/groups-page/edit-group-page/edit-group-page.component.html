@@ -1,0 +1,26 @@
+<div
+  *ngIf="group; else loader"
+  class="edit-group-container"
+>
+  {{group.label}}
+  <mat-button-toggle-group name="fontStyle" aria-label="Font Style" [value]="'invited'" (change)="activeSectionChange($event.value)">
+    <mat-button-toggle value="invited">Invited</mat-button-toggle>
+    <mat-button-toggle value="participants">Participants</mat-button-toggle>
+    <mat-button-toggle value="requested">Requested</mat-button-toggle>
+  </mat-button-toggle-group>
+
+  <label class="question-label">invite</label>
+  <div class="invite-error"> {{inviteError}} </div>
+  <mat-form-field class="full-width answer">
+    <input matInput #invite (keyup.enter)="inviteUser(invite.value)" autocomplete="off"/>
+  </mat-form-field>
+
+  <mat-list role="list">
+    <mat-list-item *ngFor="let user of group.invited" role="listitem">{{user.displayed_name}} : {{user.email}}</mat-list-item>
+  </mat-list>
+
+</div>
+
+<ng-template #loader>
+  <overlay-loader></overlay-loader>
+</ng-template>

@@ -18,4 +18,8 @@ export class GroupService {
   getGroupById(id: string): Observable<any> {
     return this.groupRepository.getGroupById(id);
   }
+
+  inviteUser(id, body): Observable<any> {
+    return this.groupRepository.inviteUser(id, body);
+  }
 }

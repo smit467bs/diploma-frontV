@@ -5,23 +5,28 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatListModule } from '@angular/material/list';
 
 import { SharedModule } from 'shared/shared.module';
 import { PreviewGroupsPageComponent } from './preview-groups-page';
 import { CreateGroupPageComponent } from './create-group-page';
 import { GroupPageComponent } from './group-page';
+import { EditGroupPageComponent } from './edit-group-page';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 @NgModule({
   declarations: [
     PreviewGroupsPageComponent,
     CreateGroupPageComponent,
-    GroupPageComponent
+    GroupPageComponent,
+    EditGroupPageComponent
   ],
   imports: [
     RouterModule.forChild([
       {path: '', component: PreviewGroupsPageComponent},
       {path: 'create', component: CreateGroupPageComponent},
-      {path: ':id', component: GroupPageComponent}
+      {path: ':id', component: GroupPageComponent},
+      {path: 'edit/:id', component: EditGroupPageComponent}
     ]),
     CommonModule,
     MatButtonModule,
@@ -29,11 +34,14 @@ import { GroupPageComponent } from './group-page';
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
+    MatListModule,
+    MatButtonToggleModule,
   ],
   exports: [
     PreviewGroupsPageComponent,
     CreateGroupPageComponent,
-    GroupPageComponent
+    GroupPageComponent,
+    EditGroupPageComponent
   ]
 })
 

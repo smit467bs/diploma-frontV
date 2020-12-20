@@ -23,4 +23,8 @@ export class GroupRepository {
   getGroupById(id: string): Observable<any> {
     return this.http.get<Array<any>>(`${environment.apiUrl}/${this.route}/${id}`);
   }
+
+  inviteUser(id: string, body): Observable<any> {
+    return this.http.post<any>(`${environment.apiUrl}/${this.route}/${id}/invite`, body);
+  }
 }
