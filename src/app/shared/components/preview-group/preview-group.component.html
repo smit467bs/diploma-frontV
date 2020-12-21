@@ -1,20 +1,28 @@
 <div class="cart preview-group">
-  <div class="preview-group-control control-panel" *ngIf="isUserAdmin">
-    <button mat-icon-button [routerLink]="['/groups/edit', group._id]">
-      <mat-icon matTooltip="Edit group">edit</mat-icon>
-    </button>
-    <button mat-icon-button color="warn" [routerLink]="['/groups/delete', group._id]">
-      <mat-icon matTooltip="Delete group">delete</mat-icon>
-    </button>
+  <div class="preview-group-control control-panel">
+    <ng-container *ngIf="isUserAdmin">
+      <button mat-icon-button [routerLink]="['/groups/edit', group._id]">
+        <mat-icon matTooltip="Edit group">edit</mat-icon>
+      </button>
+      <button mat-icon-button color="warn" [routerLink]="['/groups/delete', group._id]">
+        <mat-icon matTooltip="Delete group">delete</mat-icon>
+      </button>
+    </ng-container>
+    <ng-container *ngIf="!isUserAdmin">
+      <button mat-icon-button [disabled]="group.requested" (click)="requestJoinToGroup()">
+        <mat-icon  matTooltip="Join to group">control_point_duplicate</mat-icon>
+      </button>
+    </ng-container>
   </div>
+
   <div class="preview-group-label link"
        [routerLink]="['/groups', group._id]">{{group.label}}</div>
   <div class="preview-group-info">
     <span>
-      participates:
+      participants:
     </span>
     <span>
-      101
+      {{group.participants}}
     </span>
   </div>
 </div>

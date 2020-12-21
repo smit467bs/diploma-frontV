@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-preview-group',
@@ -10,4 +10,10 @@ export class PreviewGroupComponent {
   group: any;
   @Input()
   isUserAdmin: boolean;
+  @Output()
+  requestToJoin = new EventEmitter<string>();
+
+  requestJoinToGroup(): void {
+    this.requestToJoin.emit(this.group._id);
+  }
 }

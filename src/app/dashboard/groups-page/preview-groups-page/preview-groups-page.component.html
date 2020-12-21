@@ -4,11 +4,13 @@
     color="accent"
     [routerLink]="['create']"
     class="create-group"
-  >Create</button>
+  >Create
+  </button>
   <app-preview-group
     *ngFor="let group of groups$ | async"
     [group]="group"
     [isUserAdmin]="group.admin._id === user._id"
+    (requestToJoin)="onRequestToJoin($event)"
   >
   </app-preview-group>
 </div>
