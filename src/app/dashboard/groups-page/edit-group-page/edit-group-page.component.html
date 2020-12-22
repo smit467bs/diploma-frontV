@@ -46,6 +46,12 @@
         class="invited-user"
       >
         {{user.displayed_name}} : {{user.email}}
+        <div class="action">
+          <button [disabled]="currentUserAction === user._id" color="warn" mat-icon-button
+                  (click)="deleteUser(user._id)" tabindex="-1">
+            <mat-icon matTooltip="Delete user">delete</mat-icon>
+          </button>
+        </div>
       </div>
     </div>
 
@@ -56,6 +62,16 @@
         class="invited-user"
       >
         {{user.displayed_name}} : {{user.email}}
+        <div class="action">
+          <button [disabled]="currentUserAction === user._id" class="success-color" mat-icon-button
+                  (click)="acceptUser(user._id)" tabindex="-1">
+            <mat-icon matTooltip="Accept user">done</mat-icon>
+          </button>
+          <button [disabled]="currentUserAction === user._id" color="warn" mat-icon-button
+                  (click)="removeUser(user._id)" tabindex="-1">
+            <mat-icon matTooltip="Decline user">clear</mat-icon>
+          </button>
+        </div>
       </div>
     </div>
   </div>

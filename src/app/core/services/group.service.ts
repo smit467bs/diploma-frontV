@@ -27,7 +27,11 @@ export class GroupService {
     return this.groupRepository.removeUserFrom(groupId, body);
   }
 
-  addCurrentUserTo(groupId, body): Observable<any>{
+  addCurrentUserTo(groupId, body): Observable<any> {
     return this.groupRepository.addCurrentUserTo(groupId, body);
+  }
+
+  acceptUser(groupId, body): Observable<any> {
+    return this.groupRepository.acceptUser(groupId, body);
   }
 }

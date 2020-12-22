@@ -1,9 +1,12 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { getRouteParam$ } from 'core/utils';
-import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
-import { GroupService, UsersService } from 'core/services';
+import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
 import { first, switchMap, tap } from 'rxjs/operators';
+import { MatDialog } from '@angular/material/dialog';
+
+import { getRouteParam$ } from 'core/utils';
+import { GroupService } from 'core/services';
+import { ConfirmDialogComponent } from 'shared/components/confirm-dialog';
 
 @Component({
   selector: 'edit-group-page',
@@ -25,7 +28,7 @@ export class EditGroupPageComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute,
               private groupService: GroupService,
-              private usersService: UsersService) {
+              private dialog: MatDialog) {
     this.id$ = getRouteParam$(this.activatedRoute, 'id');
   }
 
@@ -57,6 +60,17 @@ export class EditGroupPageComponent implements OnInit {
     this.activeTab = tab;
   }
 
+  acceptUser(userId: string): void {
+    this.id$.pipe(
+      switchMap(id => {
+        return this.groupService.acceptUser(id, {userId});
+      }),
+      first()
+    ).subscribe(() => {
+      this.render$.next(this.render$.getValue() + 1);
+    });
+  }
+
   removeUser(userId: string): void {
     this.currentUserAction = userId;
     this.id$.pipe(
@@ -66,6 +80,16 @@ export class EditGroupPageComponent implements OnInit {
       first()
     ).subscribe(() => {
       this.render$.next(this.render$.getValue() + 1);
+    });
+  }
+
+  deleteUser(userId: string): void {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent);
+
+    dialogRef.afterClosed().subscribe(answer => {
+      if (answer) {
+        this.removeUser(userId);
+      }
     });
   }
 }

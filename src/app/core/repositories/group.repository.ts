@@ -32,7 +32,11 @@ export class GroupRepository {
     return this.http.post<any>(`${environment.apiUrl}/${this.route}/${id}/removeUserFrom`, body);
   }
 
-  addCurrentUserTo(id, body): Observable<any>{
+  addCurrentUserTo(id, body): Observable<any> {
     return this.http.post<any>(`${environment.apiUrl}/${this.route}/${id}/addUserTo`, body);
+  }
+
+  acceptUser(id, body): Observable<any> {
+    return this.http.post<any>(`${environment.apiUrl}/${this.route}/${id}/acceptUser`, body);
   }
 }
