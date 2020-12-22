@@ -23,8 +23,4 @@ export class PreviewGroupsPageComponent implements OnInit {
     this.groups$ = this.groupService.getGroupsPreview();
     this.user$ = this.userStoreService.userInfo$;
   }
-
-  onRequestToJoin(groupId: string) {
-    this.groupService.addCurrentUserTo(groupId, {addTo: 'requested'}).subscribe();
-  }
 }

@@ -9,7 +9,7 @@
       </button>
     </ng-container>
     <ng-container *ngIf="!isUserAdmin">
-      <button mat-icon-button [disabled]="group.requested" (click)="requestJoinToGroup()">
+      <button mat-icon-button [disabled]="group.requested || isDisabled" (click)="requestJoinToGroup()">
         <mat-icon  matTooltip="Join to group">control_point_duplicate</mat-icon>
       </button>
     </ng-container>

@@ -1,4 +1,6 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { GroupService } from 'core/services';
+import { catchError, first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-preview-group',
@@ -10,10 +12,22 @@ export class PreviewGroupComponent {
   group: any;
   @Input()
   isUserAdmin: boolean;
-  @Output()
-  requestToJoin = new EventEmitter<string>();
+
+  isDisabled: boolean = false;
+
+  constructor(private groupService: GroupService) {
+  }
 
   requestJoinToGroup(): void {
-    this.requestToJoin.emit(this.group._id);
+    this.isDisabled = true;
+    this.groupService.addCurrentUserTo(this.group._id, {addTo: 'requested'})
+      .pipe(
+        first(),
+        catchError(err => {
+          this.isDisabled = false;
+          return err;
+        })
+      )
+      .subscribe();
   }
 }
