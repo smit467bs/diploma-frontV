@@ -1,10 +1,16 @@
 import { Injectable } from '@angular/core';
-import { GroupRepository } from 'core/repositories';
 import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+
+import { GroupRepository } from 'core/repositories';
+import { environment } from 'src/environments/environment';
 
 @Injectable({providedIn: 'root'})
 export class GroupService {
-  constructor(private groupRepository: GroupRepository) {
+  route = 'groups';
+
+  constructor(private http: HttpClient,
+              private groupRepository: GroupRepository) {
   }
 
   createGroup(body: any) {
@@ -33,5 +39,13 @@ export class GroupService {
 
   acceptUser(groupId, body): Observable<any> {
     return this.groupRepository.acceptUser(groupId, body);
+  }
+
+  acceptInvite(groupId: string): Observable<any> {
+    return this.http.get<any>(`${environment.apiUrl}/${this.route}/${groupId}/acceptInvite`);
+  }
+
+  leaveGroup(groupId: string): Observable<any> {
+    return this.http.get<any>(`${environment.apiUrl}/${this.route}/${groupId}/leaveGroup`);
   }
 }

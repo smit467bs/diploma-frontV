@@ -1,6 +1,6 @@
 <div class="cart preview-group">
-  <div class="preview-group-control control-panel">
-    <ng-container *ngIf="isUserAdmin">
+  <div class="preview-group-control control-panel" [ngSwitch]="userActionMenu">
+    <ng-container *ngSwitchCase="'admin'">
       <button mat-icon-button [routerLink]="['/groups/edit', group._id]">
         <mat-icon matTooltip="Edit group">edit</mat-icon>
       </button>
@@ -8,13 +8,22 @@
         <mat-icon matTooltip="Delete group">delete</mat-icon>
       </button>
     </ng-container>
-    <ng-container *ngIf="!isUserAdmin">
+    <ng-container *ngSwitchCase="'invite'">
+      <button mat-icon-button class="success-color" (click)="acceptInvite()">
+        <mat-icon matTooltip="Accept invite">done</mat-icon>
+      </button>
+    </ng-container>
+    <ng-container *ngSwitchCase="'participate'">
+      <button mat-icon-button color="warn" (click)="leaveGroup()">
+        <mat-icon matTooltip="Leave group">clear</mat-icon>
+      </button>
+    </ng-container>
+    <ng-container *ngSwitchDefault>
       <button mat-icon-button [disabled]="group.requested || isDisabled" (click)="requestJoinToGroup()">
-        <mat-icon  matTooltip="Join to group">control_point_duplicate</mat-icon>
+        <mat-icon matTooltip="Join to group">control_point_duplicate</mat-icon>
       </button>
     </ng-container>
   </div>
-
   <div class="preview-group-label link"
        [routerLink]="['/groups', group._id]">{{group.label}}</div>
   <div class="preview-group-info">
