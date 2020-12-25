@@ -1,22 +1,26 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
-import { InterviewRepository } from 'core/repositories';
-import { Interview } from 'core/models/response';
+import { Interview, PreviewInterview } from 'core/models/response';
+import { environment } from 'src/environments/environment';
 
 @Injectable({providedIn: 'root'})
 export class InterviewService {
-  constructor(private interviewRepository: InterviewRepository) {
+  route = 'interviews';
+
+  constructor(private http: HttpClient) {
   }
 
-  getInterviewPreview() {
-    return this.interviewRepository.getPreviewInterview();
+  getInterviewPreview(): Observable<Array<PreviewInterview>> {
+    return this.http.get<Array<PreviewInterview>>(`${environment.apiUrl}/${this.route}/preview`);
   }
 
-  addInterview(body: Interview) {
-    return this.interviewRepository.addInterview(body);
+  addInterview(body: any): Observable<Interview> {
+    return this.http.post<Interview>(`${environment.apiUrl}/${this.route}`, body);
   }
 
-  getInterviewById(id: string) {
-    return this.interviewRepository.getInterviewById(id);
+  getInterviewById(id: string): Observable<Interview> {
+    return this.http.get<Interview>(`${environment.apiUrl}/${this.route}/${id}`);
   }
 }

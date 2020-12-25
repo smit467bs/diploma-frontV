@@ -25,6 +25,10 @@ export class GroupService {
     return this.groupRepository.getGroupById(id);
   }
 
+  getAvailableGroupsForUser(): Observable<any> {
+    return this.http.get<any>(`${environment.apiUrl}/${this.route}/getAvailableGroupsForUser`);
+  }
+
   inviteUser(id, body): Observable<any> {
     return this.groupRepository.inviteUser(id, body);
   }

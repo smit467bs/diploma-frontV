@@ -2,15 +2,16 @@ import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { AbstractControl, FormArray, FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { first, map } from 'rxjs/operators';
-import { isNil } from 'lodash';
+import { first } from 'rxjs/operators';
+import { isEmpty, isNil } from 'lodash';
 
 import { FieldErrorStateMatcher } from 'core/validators/error-state-mathcer';
-import { InterviewService } from 'core/services';
+import { GroupService, InterviewService } from 'core/services';
 import { FormBaseComponent } from 'shared/components/base';
 import { copyFormControl, getClasses } from 'core/utils';
 import { QuestionType } from 'core/models/questions';
 import { QuestionTypeDialogComponent } from './question-type-dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-add-interview',
@@ -21,12 +22,23 @@ export class AddInterviewPageComponent extends FormBaseComponent {
   matcher = new FieldErrorStateMatcher();
   getClasses = getClasses;
 
+  interviewSettings: any;
+  isPrivateInterview: boolean;
+  privateType: string = 'group';
+  groups: Array<any> = null;
+  selectedGroup: string = null;
+  invitedUsers: Array<string> = [];
+
+
   @ViewChild('addInterviewForm') ngForm: NgForm;
 
   constructor(private fb: FormBuilder,
               private router: Router,
+              private dialog: MatDialog,
               private interviewService: InterviewService,
-              private dialog: MatDialog) {
+              private groupService: GroupService,
+              private snackBar: MatSnackBar
+  ) {
     super();
     this.form = fb.group({
       label: fb.control('', [Validators.required]),
@@ -34,7 +46,7 @@ export class AddInterviewPageComponent extends FormBaseComponent {
     });
   }
 
-  addQuestion() {
+  addQuestion(): void {
     const dialogRef = this.dialog.open(QuestionTypeDialogComponent);
 
     dialogRef.afterClosed().subscribe(type => {
@@ -50,12 +62,12 @@ export class AddInterviewPageComponent extends FormBaseComponent {
     options.push(this.fb.control(''));
   }
 
-  cloneQuestion(questionControl: AbstractControl) {
+  cloneQuestion(questionControl: AbstractControl): void {
     const control = copyFormControl(questionControl);
     this.formQuestions.push(control);
   }
 
-  removeQuestion(index: number) {
+  removeQuestion(index: number): void {
     this.formQuestions.removeAt(index);
   }
 
@@ -90,15 +102,77 @@ export class AddInterviewPageComponent extends FormBaseComponent {
     return question;
   }
 
+  privateChange(value: boolean): void {
+    this.isPrivateInterview = value;
+    if (isNil(this.groups)) {
+      this.groupService.getAvailableGroupsForUser().pipe(
+        first()
+      ).subscribe(groups => this.groups = groups);
+    }
+  }
+
+  privateTypeChange(value: string): void {
+    this.privateType = value;
+  }
+
+  validateInterview(): boolean {
+    if (this.isPrivateInterview) {
+      if (this.privateType === 'group' && isNil(this.selectedGroup)) {
+        this.showStackBar('You must select a group');
+        return false;
+      } else {
+        this.interviewSettings = {
+          is_public_interview: false,
+          assigned_to_group: this.selectedGroup
+        };
+      }
+      if (this.privateType === 'email' && isEmpty(this.invitedUsers)) {
+        this.showStackBar('You must add at least one user');
+        return false;
+      } else {
+        this.interviewSettings = {
+          is_public_interview: false,
+          assigned_to_group: this.selectedGroup
+        };
+      }
+      return true;
+    } else {
+      this.interviewSettings = {
+        is_public_interview: true
+      };
+      return true;
+    }
+  }
+
   submitForm(): void {
-    this.interviewService.addInterview(this.form.value)
-      .pipe(
-        first(),
-        map(() => {
+    if (this.validateInterview()) {
+      const body = {
+        ...this.interviewSettings,
+        ...this.form.value
+      };
+      this.interviewService.addInterview(body)
+        .pipe(
+          first(),
+        )
+        .subscribe(() => {
           this.router.navigate(['./interviews']);
-        }),
-      )
-      .subscribe();
+        }, err => {
+          console.log(err);
+          this.showStackBar(err);
+        });
+    }
+  }
+
+  showStackBar(message: string): void {
+    this.snackBar.open(message, 'hide', {
+      horizontalPosition: 'center',
+      verticalPosition: 'top',
+      duration: 15000,
+    });
+  }
+
+  isEmpty<T>(value: Array<T>): boolean {
+    return isEmpty(value);
   }
 
   get formQuestions(): FormArray {

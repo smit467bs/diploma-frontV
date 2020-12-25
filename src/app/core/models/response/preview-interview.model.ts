@@ -3,7 +3,7 @@ export interface PreviewInterview {
   label: string;
   admin: {
     _id: string;
-    first_name: string;
-    surname: string;
+    displayed_name: string;
   };
+  assignTo: string;
 }
