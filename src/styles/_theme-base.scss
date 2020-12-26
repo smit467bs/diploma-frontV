@@ -19,6 +19,7 @@ $success-palette: mat-palette($mat-green, 600);
   @include chart-question-wrapper($theme);
   @include custom-scrollbar($theme);
   @include tab($theme);
+  @include primary-color($theme)
 }
 
 // mixin for change theme of custom components
@@ -178,5 +179,13 @@ $success-palette: mat-palette($mat-green, 600);
   }
   .active-tab {
     border-bottom: 3px solid $primary-color !important;
+  }
+}
+
+@mixin primary-color($theme) {
+  $primary: map-get($theme, primary);
+  $primary-color: mat-color($primary);
+  .primary-color {
+    color: $primary-color;
   }
 }
