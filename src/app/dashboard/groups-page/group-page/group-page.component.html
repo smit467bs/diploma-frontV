@@ -1,13 +1,16 @@
-
-<div *ngIf="group; else loader">
+<div *ngIf="group; else loader" class="group-template">
   <h3 class="main-label">{{group.label}}</h3>
 
-  participants
+  <h5 class="subtitle">Participants</h5>
 
-  <label class="question-label">invite</label>
-  <mat-form-field class="full-width answer">
-    <input matInput #invite (keyup.enter)="inviteUser(invite.value)" autocomplete="off"/>
-  </mat-form-field>
+  <mat-list class="participants-list custom-scrollbar">
+
+    <ng-container *ngFor="let user of group.participants; let i = index">
+      <mat-list-item>{{user.displayed_name}} : {{user.email}}</mat-list-item>
+      <mat-divider *ngIf="i !== group.participants.length - 1"></mat-divider>
+    </ng-container>
+
+  </mat-list>
 
 </div>
 

@@ -14,6 +14,7 @@ import { GroupPageComponent } from './group-page';
 import { EditGroupPageComponent } from './edit-group-page';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -22,23 +23,24 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     GroupPageComponent,
     EditGroupPageComponent
   ],
-  imports: [
-    RouterModule.forChild([
-      {path: '', component: PreviewGroupsPageComponent},
-      {path: 'create', component: CreateGroupPageComponent},
-      {path: ':id', component: GroupPageComponent},
-      {path: 'edit/:id', component: EditGroupPageComponent}
-    ]),
-    CommonModule,
-    MatButtonModule,
-    SharedModule,
-    MatFormFieldModule,
-    MatInputModule,
-    ReactiveFormsModule,
-    MatTabsModule,
-    MatIconModule,
-    MatTooltipModule,
-  ],
+    imports: [
+        RouterModule.forChild([
+            {path: '', component: PreviewGroupsPageComponent},
+            {path: 'create', component: CreateGroupPageComponent},
+            {path: ':id', component: GroupPageComponent},
+            {path: 'edit/:id', component: EditGroupPageComponent}
+        ]),
+        CommonModule,
+        MatButtonModule,
+        SharedModule,
+        MatFormFieldModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        MatTabsModule,
+        MatIconModule,
+        MatTooltipModule,
+        MatListModule,
+    ],
   exports: [
     PreviewGroupsPageComponent,
     CreateGroupPageComponent,
