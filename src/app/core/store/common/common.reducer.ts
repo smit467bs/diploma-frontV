@@ -4,7 +4,8 @@ import { CommonState } from './models';
 import * as CommonActions from './common.actions';
 
 export const INITIAL_STATE: CommonState = {
-  interviews: null
+  interviews: null,
+  groups: null
 };
 
 const commonReducer: ActionReducer<CommonState> = createReducer(
@@ -12,6 +13,10 @@ const commonReducer: ActionReducer<CommonState> = createReducer(
   on(CommonActions.LoadInterviewsSuccess, (state, {interviews}) => ({
     ...state,
     interviews
+  })),
+  on(CommonActions.LoadGroupsSuccess, (state, {groups}) => ({
+    ...state,
+    groups
   }))
 );
 

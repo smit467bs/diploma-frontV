@@ -23,7 +23,7 @@ export class PreviewInterviewsPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.commonStoreService.initialize();
+    this.commonStoreService.initializeInterviews();
 
     this.interviews$ = this.commonStoreService.interviews$;
     this.user$ = this.userStoreService.userInfo$;

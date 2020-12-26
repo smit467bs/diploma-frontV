@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { UserStoreService } from 'core/store/user';
 import { UserInfo } from 'core/store/user/models';
 import { PreviewGroup } from 'core/models/response';
+import { CommonStoreService } from 'core/store/common';
 
 @Component({
   selector: 'app-preview-groups-page',
@@ -15,12 +16,19 @@ export class PreviewGroupsPageComponent implements OnInit {
   groups$: Observable<Array<PreviewGroup>>;
   user$: Observable<UserInfo>;
 
-  constructor(private groupService: GroupService,
+  constructor(private commonStoreService: CommonStoreService,
+              private groupService: GroupService,
               private userStoreService: UserStoreService) {
   }
 
   ngOnInit(): void {
-    this.groups$ = this.groupService.getGroupsPreview();
+    this.commonStoreService.initializeGroups();
+
+    this.groups$ = this.commonStoreService.groups$;
     this.user$ = this.userStoreService.userInfo$;
+  }
+
+  onDeleteGroup(groupId: string) {
+    console.log(groupId);
   }
 }

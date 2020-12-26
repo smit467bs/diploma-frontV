@@ -10,15 +10,22 @@ import * as CommonActions from './common.actions';
 @Injectable({providedIn: 'root'})
 export class CommonStoreService {
   public interviews$: Observable<Array<PreviewInterview>>;
+  public groups$: Observable<Array<any>>;
 
   constructor(private store$: Store<EipState>) {
     this.interviews$ = this.store$.select(
       CommonSelectors.getInterviews
     );
+    this.groups$ = this.store$.select(
+      CommonSelectors.getGroups
+    );
   }
 
-  public initialize(): void {
+  public initializeInterviews(): void {
     this.store$.dispatch(CommonActions.InitializeInterviews());
   }
 
+  public initializeGroups(): void {
+    this.store$.dispatch(CommonActions.InitializeGroups());
+  }
 }

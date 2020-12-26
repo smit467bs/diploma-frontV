@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { GroupService } from 'core/services';
 import { catchError, first } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
@@ -14,6 +14,9 @@ export class PreviewGroupComponent implements OnInit {
   group: any;
   @Input()
   isUserAdmin: boolean;
+
+  @Output()
+  deleteGroup = new EventEmitter<string>();
 
   userActionMenu: string;
 
@@ -74,6 +77,17 @@ export class PreviewGroupComponent implements OnInit {
         });
       }
     });
+  }
+
+  onDeleteGroup(): void {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent);
+
+    dialogRef.afterClosed().subscribe(answer => {
+      if (answer) {
+        this.deleteGroup.emit(this.group._id);
+      }
+    });
+
   }
 
 

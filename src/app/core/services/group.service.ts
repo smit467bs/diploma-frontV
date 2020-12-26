@@ -52,4 +52,8 @@ export class GroupService {
   leaveGroup(groupId: string): Observable<any> {
     return this.http.get<any>(`${environment.apiUrl}/${this.route}/${groupId}/leaveGroup`);
   }
+
+  deleteGroup(groupId: string): Observable<any> {
+    return this.http.delete<any>(`${environment.apiUrl}/${this.route}/${groupId}`);
+  }
 }

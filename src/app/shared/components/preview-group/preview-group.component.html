@@ -4,7 +4,7 @@
       <button mat-icon-button [routerLink]="['/groups/edit', group._id]">
         <mat-icon matTooltip="Edit group">edit</mat-icon>
       </button>
-      <button mat-icon-button color="warn" [routerLink]="['/groups/delete', group._id]">
+      <button mat-icon-button color="warn" (click)="onDeleteGroup()">
         <mat-icon matTooltip="Delete group">delete</mat-icon>
       </button>
     </ng-container>
