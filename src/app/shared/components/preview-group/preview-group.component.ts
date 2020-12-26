@@ -3,6 +3,7 @@ import { GroupService } from 'core/services';
 import { catchError, first } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from 'shared/components/confirm-dialog';
+import { CommonStoreService } from 'core/store/common';
 
 @Component({
   selector: 'app-preview-group',
@@ -20,9 +21,11 @@ export class PreviewGroupComponent implements OnInit {
 
   userActionMenu: string;
 
-  isDisabled: boolean = false;
+  isRequestDisabled: boolean = false;
+  isDeleteDisabled: boolean = false;
 
   constructor(private groupService: GroupService,
+              private commonStoreService: CommonStoreService,
               private dialog: MatDialog) {
   }
 
@@ -43,12 +46,12 @@ export class PreviewGroupComponent implements OnInit {
   }
 
   requestJoinToGroup(): void {
-    this.isDisabled = true;
+    this.isRequestDisabled = true;
     this.groupService.addCurrentUserTo(this.group._id, {addTo: 'requested'})
       .pipe(
         first(),
         catchError(err => {
-          this.isDisabled = false;
+          this.isRequestDisabled = false;
           return err;
         })
       )
@@ -84,7 +87,8 @@ export class PreviewGroupComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(answer => {
       if (answer) {
-        this.deleteGroup.emit(this.group._id);
+        this.isDeleteDisabled = true;
+        this.commonStoreService.deleteGroup(this.group._id);
       }
     });
 

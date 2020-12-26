@@ -4,7 +4,7 @@
       <button mat-icon-button [routerLink]="['/groups/edit', group._id]">
         <mat-icon matTooltip="Edit group">edit</mat-icon>
       </button>
-      <button mat-icon-button color="warn" (click)="onDeleteGroup()">
+      <button mat-icon-button color="warn" [disabled]="isDeleteDisabled" (click)="onDeleteGroup()">
         <mat-icon matTooltip="Delete group">delete</mat-icon>
       </button>
     </ng-container>
@@ -19,7 +19,7 @@
       </button>
     </ng-container>
     <ng-container *ngSwitchDefault>
-      <button mat-icon-button [disabled]="group.requested || isDisabled" (click)="requestJoinToGroup()">
+      <button mat-icon-button [disabled]="group.requested || isRequestDisabled" (click)="requestJoinToGroup()">
         <mat-icon matTooltip="Join to group">control_point_duplicate</mat-icon>
       </button>
     </ng-container>

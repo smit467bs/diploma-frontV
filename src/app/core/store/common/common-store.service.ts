@@ -28,4 +28,8 @@ export class CommonStoreService {
   public initializeGroups(): void {
     this.store$.dispatch(CommonActions.InitializeGroups());
   }
+
+  public deleteGroup(id: string): void {
+    this.store$.dispatch(CommonActions.DeleteGroup({id}));
+  }
 }

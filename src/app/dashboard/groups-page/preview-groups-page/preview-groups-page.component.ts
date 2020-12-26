@@ -27,8 +27,4 @@ export class PreviewGroupsPageComponent implements OnInit {
     this.groups$ = this.commonStoreService.groups$;
     this.user$ = this.userStoreService.userInfo$;
   }
-
-  onDeleteGroup(groupId: string) {
-    console.log(groupId);
-  }
 }

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { switchMap, switchMapTo } from 'rxjs/operators';
+import { map, switchMap, switchMapTo } from 'rxjs/operators';
 
 import * as CommonActions from './common.actions';
 import { GroupService, InterviewService } from 'core/services';
@@ -13,6 +13,7 @@ export class CommonEffects {
   loadInterviews$: Observable<Action>;
   initializeGroups$: Observable<Action>;
   loadGroups$: Observable<Action>;
+  deleteGroup$: Observable<Action>;
 
   constructor(
     private actions$: Actions,
@@ -31,9 +32,7 @@ export class CommonEffects {
       this.actions$.pipe(
         ofType(CommonActions.LoadInterviews),
         switchMapTo(interviewService.getInterviewPreview()),
-        switchMap((interviews) => [
-          CommonActions.LoadInterviewsSuccess({interviews})
-        ])
+        map((interviews) => CommonActions.LoadInterviewsSuccess({interviews}))
       ));
 
     this.initializeGroups$ = createEffect(() =>
@@ -48,9 +47,15 @@ export class CommonEffects {
       this.actions$.pipe(
         ofType(CommonActions.LoadGroups),
         switchMapTo(groupService.getGroupsPreview()),
-        switchMap((groups) => [
-          CommonActions.LoadGroupsSuccess({groups})
-        ])
+        map((groups) => CommonActions.LoadGroupsSuccess({groups}))
       ));
+
+    this.deleteGroup$ = createEffect(() =>
+      this.actions$.pipe(
+        ofType(CommonActions.DeleteGroup),
+        switchMap(({id}) => groupService.deleteGroup(id)),
+        map(() => CommonActions.LoadGroups())
+      ));
+
   }
 }
