@@ -11,6 +11,37 @@
       </mat-error>
     </mat-form-field>
 
+    <div class="form-question-border interview-settings second-background">
+      <mat-checkbox class="example-margin" color="primary" [checked]="isPrivateInterview"
+                    (change)="privateChange($event.checked)">Private
+      </mat-checkbox>
+      <div *ngIf="isPrivateInterview" class="private-type">
+        <mat-radio-group aria-label="Select an option"
+                         color="primary"
+                         [value]="privateType"
+                         (change)="privateTypeChange($event.value)"
+        >
+          <mat-radio-button value="group">Assign to group</mat-radio-button>
+          <mat-radio-button value="email">Send invite by email</mat-radio-button>
+        </mat-radio-group>
+      </div>
+
+      <div class="private-group" *ngIf="isPrivateInterview && privateType === 'group'">
+        <mat-form-field *ngIf="!isEmpty(groups) && groups !== null" class="full-width">
+          <mat-label>Choose a group</mat-label>
+          <mat-select [(value)]="selectedGroup">
+            <mat-option *ngFor="let group of groups" [value]="group._id">{{group.label}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <span *ngIf="isEmpty(groups) && groups !== null" class="error-message">NO AVAILABLE GROUPS</span>
+      </div>
+
+      <div class="private-email" *ngIf="isPrivateInterview && privateType === 'email'">
+        send email
+      </div>
+
+    </div>
+
     <div formArrayName="questions" class="form-questions">
       <ng-container *ngFor="let question of formQuestions.controls; let i = index;">
         <div class="form-question form-question-border second-background"

@@ -10,3 +10,8 @@ export const getInterviews: Selector<EipState, Array<PreviewInterview>> = create
   getCommonState,
   ({interviews}) => interviews
 );
+
+export const getGroups: Selector<EipState, Array<any>> = createSelector(
+  getCommonState,
+  ({groups}) => groups
+);

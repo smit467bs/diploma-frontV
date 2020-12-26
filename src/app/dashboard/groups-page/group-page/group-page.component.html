@@ -1,0 +1,22 @@
+<div *ngIf="group;" class="group-template">
+  <h3 class="main-label">{{group.label}}</h3>
+
+  <h5 class="subtitle">Participants</h5>
+
+  <mat-list class="participants-list custom-scrollbar">
+
+    <ng-container *ngFor="let user of group.participants; let i = index">
+      <mat-list-item>{{user.displayed_name}} : {{user.email}}</mat-list-item>
+      <mat-divider *ngIf="i !== group.participants.length - 1"></mat-divider>
+    </ng-container>
+
+  </mat-list>
+
+</div>
+
+<div *ngIf="errorMessage">
+  <h3 class="main-label">{{errorMessage}}</h3>
+  <a class="link primary-color" [routerLink]="['/groups']">go back</a>
+</div>
+
+<overlay-loader *ngIf="loading"></overlay-loader>

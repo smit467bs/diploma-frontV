@@ -19,6 +19,7 @@ import { InterviewPageComponent } from './interview-page';
 import { InterviewChartsPageComponent } from './interview-charts-page';
 import { ChartsModule } from 'shared/components/charts/charts.module';
 import { ChartTypeSelectComponent } from './interview-charts-page/chart-type-select';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatListModule } from '@angular/material/list';
 
 @NgModule({
@@ -30,28 +31,29 @@ import { MatListModule } from '@angular/material/list';
     QuestionTypeDialogComponent,
     ChartTypeSelectComponent
   ],
-    imports: [
-        RouterModule.forChild([
-            {path: '', component: PreviewInterviewsPageComponent},
-            {path: 'add', component: AddInterviewPageComponent},
-            {path: 'charts/:id', component: InterviewChartsPageComponent},
-            {path: ':id', component: InterviewPageComponent},
-        ]),
-        CommonModule,
-        SharedModule,
-        ReactiveFormsModule,
-        ChartsModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatButtonModule,
-        MatIconModule,
-        MatTooltipModule,
-        MatDialogModule,
-        MatSelectModule,
-        MatRadioModule,
-        MatCheckboxModule,
-        MatListModule
-    ],
+  imports: [
+    RouterModule.forChild([
+      {path: '', component: PreviewInterviewsPageComponent},
+      {path: 'add', component: AddInterviewPageComponent},
+      {path: 'charts/:id', component: InterviewChartsPageComponent},
+      {path: ':id', component: InterviewPageComponent},
+    ]),
+    CommonModule,
+    SharedModule,
+    ReactiveFormsModule,
+    ChartsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatIconModule,
+    MatTooltipModule,
+    MatDialogModule,
+    MatSelectModule,
+    MatRadioModule,
+    MatCheckboxModule,
+    MatSnackBarModule,
+    MatListModule
+  ],
   entryComponents: [
     QuestionTypeDialogComponent
   ],

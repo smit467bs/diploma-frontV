@@ -1,10 +1,11 @@
-<div class="preview-interview-container module" *ngIf="user$ | async as user">
+<div class="preview-groups-container module" *ngIf="user$ | async as user">
   <button
     mat-raised-button
     color="accent"
-    [routerLink]="['add']"
-    class="add"
-  >Add</button>
+    [routerLink]="['create']"
+    class="create-group"
+  >Create
+  </button>
   <app-preview-group
     *ngFor="let group of groups$ | async"
     [group]="group"

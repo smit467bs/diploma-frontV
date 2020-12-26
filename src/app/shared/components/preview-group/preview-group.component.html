@@ -1,22 +1,37 @@
-<div
-  class="cart preview-group"
->
-
-  {{group.label}}
-<!--  <div class="preview-interview-control control-panel" *ngIf="isUserAdmin">-->
-<!--    <button mat-icon-button [routerLink]="['/interviews/charts', interview._id]">-->
-<!--      <mat-icon matTooltip="Interview charts">pie_chart</mat-icon>-->
-<!--    </button>-->
-<!--    <button mat-icon-button [routerLink]="['/interviews/edit', interview._id]">-->
-<!--      <mat-icon matTooltip="Edit interview">edit</mat-icon>-->
-<!--    </button>-->
-<!--  </div>-->
-<!--  <div class="preview-interview-label link"-->
-<!--       [routerLink]="['/interviews', interview._id]">{{interview.label}}</div>-->
-<!--  <div class="preview-interview-info">-->
-<!--    <div class="deadline">11.12.2020</div>-->
-<!--    <div class="author">-->
-<!--      {{interview.admin.first_name}} {{interview.admin.surname}}-->
-<!--    </div>-->
-<!--  </div>-->
+<div class="cart preview-group">
+  <div class="preview-group-control control-panel" [ngSwitch]="userActionMenu">
+    <ng-container *ngSwitchCase="'admin'">
+      <button mat-icon-button [routerLink]="['/groups/edit', group._id]">
+        <mat-icon matTooltip="Edit group">edit</mat-icon>
+      </button>
+      <button mat-icon-button color="warn" [disabled]="isDeleteDisabled" (click)="onDeleteGroup()">
+        <mat-icon matTooltip="Delete group">delete</mat-icon>
+      </button>
+    </ng-container>
+    <ng-container *ngSwitchCase="'invite'">
+      <button mat-icon-button class="success-color" (click)="acceptInvite()">
+        <mat-icon matTooltip="Accept invite">done</mat-icon>
+      </button>
+    </ng-container>
+    <ng-container *ngSwitchCase="'participate'">
+      <button mat-icon-button color="warn" (click)="leaveGroup()">
+        <mat-icon matTooltip="Leave group">clear</mat-icon>
+      </button>
+    </ng-container>
+    <ng-container *ngSwitchDefault>
+      <button mat-icon-button [disabled]="group.requested || isRequestDisabled" (click)="requestJoinToGroup()">
+        <mat-icon matTooltip="Join to group">control_point_duplicate</mat-icon>
+      </button>
+    </ng-container>
+  </div>
+  <div class="preview-group-label link"
+       [routerLink]="['/groups', group._id]">{{group.label}}</div>
+  <div class="preview-group-info">
+    <span>
+      participants:
+    </span>
+    <span>
+      {{group.participants}}
+    </span>
+  </div>
 </div>

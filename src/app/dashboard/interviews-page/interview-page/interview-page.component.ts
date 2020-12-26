@@ -35,9 +35,7 @@ export class InterviewPageComponent extends FormBaseComponent implements OnInit 
 
   ngOnInit(): void {
     this.id$.pipe(
-      switchMap(id => {
-        return this.interviewService.getInterviewById(id);
-      }),
+      switchMap(id => this.interviewService.getInterviewById(id)),
       map(interview => {
         this.interview = interview;
         this.form = this.fb.group({

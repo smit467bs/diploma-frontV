@@ -2,21 +2,25 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { switchMap, switchMapTo } from 'rxjs/operators';
+import { map, switchMap, switchMapTo } from 'rxjs/operators';
 
 import * as CommonActions from './common.actions';
-import { InterviewService } from 'core/services';
+import { GroupService, InterviewService } from 'core/services';
 
 @Injectable()
 export class CommonEffects {
-  initialize$: Observable<Action>;
+  initializeInterviews$: Observable<Action>;
   loadInterviews$: Observable<Action>;
+  initializeGroups$: Observable<Action>;
+  loadGroups$: Observable<Action>;
+  deleteGroup$: Observable<Action>;
 
   constructor(
     private actions$: Actions,
-    private interviewService: InterviewService
+    private interviewService: InterviewService,
+    private groupService: GroupService
   ) {
-    this.initialize$ = createEffect(() =>
+    this.initializeInterviews$ = createEffect(() =>
       this.actions$.pipe(
         ofType(CommonActions.InitializeInterviews),
         switchMapTo([
@@ -28,9 +32,30 @@ export class CommonEffects {
       this.actions$.pipe(
         ofType(CommonActions.LoadInterviews),
         switchMapTo(interviewService.getInterviewPreview()),
-        switchMap((interviews) => [
-          CommonActions.LoadInterviewsSuccess({interviews})
+        map((interviews) => CommonActions.LoadInterviewsSuccess({interviews}))
+      ));
+
+    this.initializeGroups$ = createEffect(() =>
+      this.actions$.pipe(
+        ofType(CommonActions.InitializeGroups),
+        switchMapTo([
+          CommonActions.LoadGroups()
         ])
       ));
+
+    this.loadGroups$ = createEffect(() =>
+      this.actions$.pipe(
+        ofType(CommonActions.LoadGroups),
+        switchMapTo(groupService.getGroupsPreview()),
+        map((groups) => CommonActions.LoadGroupsSuccess({groups}))
+      ));
+
+    this.deleteGroup$ = createEffect(() =>
+      this.actions$.pipe(
+        ofType(CommonActions.DeleteGroup),
+        switchMap(({id}) => groupService.deleteGroup(id)),
+        map(() => CommonActions.LoadGroups())
+      ));
+
   }
 }

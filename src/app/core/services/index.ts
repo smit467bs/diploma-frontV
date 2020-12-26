@@ -3,5 +3,6 @@ export * from './logger.service';
 export * from './local-storage.service';
 export * from './answer.service';
 export * from './group.service';
+export * from './users.service';
 
 export * from './interview.service';

@@ -1,6 +1,6 @@
 @import "src/styles/variables";
 
-.preview-interview-container{
+.preview-groups-container{
   display: grid;
   grid-gap: 15px;
   margin: $default_space;
@@ -9,7 +9,7 @@
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr))
   }
 
-  .add{
+  .create-group{
     font-size: 2rem;
     text-transform: uppercase;
     min-height: 140px;

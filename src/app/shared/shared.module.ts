@@ -6,6 +6,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { HeaderComponent } from './components/header';
 import { RegisterComponent } from './components/register';
@@ -15,8 +17,8 @@ import { NavbarComponent } from './components/navbar';
 import { OverlayLoaderComponent } from './components/overlay-loader';
 import { PreviewInterviewComponent } from './components/previrew-interview';
 import { ControlPanelComponent } from './components/control-panel';
-import { MatTooltipModule } from '@angular/material/tooltip';
-import { PreviewGroupComponent } from 'shared/components/preview-group';
+import { PreviewGroupComponent } from './components/preview-group';
+import { ConfirmDialogComponent } from './components/confirm-dialog';
 
 @NgModule({
   declarations: [
@@ -28,20 +30,22 @@ import { PreviewGroupComponent } from 'shared/components/preview-group';
     NavbarComponent,
     PreviewInterviewComponent,
     PreviewGroupComponent,
-    ControlPanelComponent
+    ControlPanelComponent,
+    ConfirmDialogComponent
   ],
-    imports: [
-        CommonModule,
-        FormsModule,
-        ReactiveFormsModule,
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
 
-        MatInputModule,
-        MatFormFieldModule,
-        MatButtonModule,
-        MatIconModule,
-        RouterModule,
-        MatTooltipModule,
-    ],
+    MatInputModule,
+    MatFormFieldModule,
+    MatButtonModule,
+    MatIconModule,
+    RouterModule,
+    MatTooltipModule,
+    MatDialogModule,
+  ],
   exports: [
     HeaderComponent,
     OverlayLoaderComponent,
@@ -51,7 +55,11 @@ import { PreviewGroupComponent } from 'shared/components/preview-group';
     NavbarComponent,
     PreviewInterviewComponent,
     PreviewGroupComponent,
-    ControlPanelComponent
+    ControlPanelComponent,
+    ConfirmDialogComponent
+  ],
+  entryComponents: [
+    ConfirmDialogComponent
   ]
 })
 

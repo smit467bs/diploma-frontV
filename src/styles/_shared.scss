@@ -1,0 +1,13 @@
+@import "variables";
+
+.main-label {
+  font-size: 2rem;
+  line-height: 2rem;
+  margin: 0 0 $default_space 0;
+}
+
+.subtitle{
+  font-size: 1.2rem;
+  line-height: 1.2rem;
+  margin: $default_space/2 0;
+}

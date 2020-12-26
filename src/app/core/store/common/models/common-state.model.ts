@@ -2,4 +2,5 @@ import { PreviewInterview } from 'src/app/core/models/response/preview-interview
 
 export interface CommonState {
   interviews: Array<PreviewInterview>;
+  groups: Array<any>;
 }

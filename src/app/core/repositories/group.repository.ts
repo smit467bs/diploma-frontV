@@ -17,6 +17,26 @@ export class GroupRepository {
   }
 
   getGroupsPreview(): Observable<Array<any>> {
-    return this.http.get<Array<any>>(`${environment.apiUrl}/${this.route}`);
+    return this.http.get<Array<any>>(`${environment.apiUrl}/${this.route}/preview`);
+  }
+
+  getGroupById(id: string): Observable<any> {
+    return this.http.get<Array<any>>(`${environment.apiUrl}/${this.route}/${id}`);
+  }
+
+  inviteUser(id: string, body): Observable<any> {
+    return this.http.post<any>(`${environment.apiUrl}/${this.route}/${id}/invite`, body);
+  }
+
+  removeUserFrom(id: string, body: any): Observable<any> {
+    return this.http.post<any>(`${environment.apiUrl}/${this.route}/${id}/removeUserFrom`, body);
+  }
+
+  addCurrentUserTo(id, body): Observable<any> {
+    return this.http.post<any>(`${environment.apiUrl}/${this.route}/${id}/addUserTo`, body);
+  }
+
+  acceptUser(id, body): Observable<any> {
+    return this.http.post<any>(`${environment.apiUrl}/${this.route}/${id}/acceptUser`, body);
   }
 }
